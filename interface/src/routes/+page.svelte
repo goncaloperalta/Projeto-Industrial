@@ -1,37 +1,17 @@
 <script>
+    import LinePlot from "./LinePlot.svelte";
     let presets = {
-        rb: {
-            pressTime: 1,
-            ntimes: 1,
-            maxForce: 1,
-            interval: 1,
-        },
-        fr: {
-            pressTime: 2,
-            ntimes: 2,
-            maxForce: 2,
-            interval: 2
-        },
-        wps: {
-            pressTime: 3,
-            ntimes: 3,
-            maxForce: 3,
-            interval: 3,
-        },
-        inf: {
-            pressTime: 4,
-            ntimes: 4,
-            maxForce: 4,
-            interval: 4,
-        }
+        rb: { pressTime: 1, ntimes: 1, maxForce: 1, interval: 1 },
+        fr: { pressTime: 2, ntimes: 2, maxForce: 2, interval: 2 },
+        wps: { pressTime: 3, ntimes: 3, maxForce: 3, interval: 3 },
+        inf: { pressTime: 4, ntimes: 4, maxForce: 4, interval: 4 }
     }
     let val = 'rb';
     let results = 0;
-
     function showResults(){
         results = 1;
     }
-    
+
 </script>
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -100,11 +80,13 @@
 
 
     <div class="text-white inline-block align-middle p-20 text-center">
-        Results
-        {#if results == 0}
-            123
-        {:else}
-            41321
-        {/if}
+        <div>
+            Results
+        </div>
+        <div class="inline-block align-middle">
+            {#if results == 1}
+                <LinePlot />
+            {/if}
+        </div>
     </div>
 </div>
