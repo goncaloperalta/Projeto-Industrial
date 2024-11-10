@@ -58,7 +58,7 @@
 									<td class="whitespace-nowrap px-6 py-4">{post.model}</td>
 									<td class="whitespace-nowrap px-6 py-4">
 										{#if post.success == 1}
-											Yes
+											Yes perhaps
 										{:else}
 											No
 										{/if}
