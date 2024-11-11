@@ -1,4 +1,5 @@
 <script>
+
     import LinePlot from "./LinePlot.svelte";
     import TopBar from "./TopBar.svelte";
     let presets = {
@@ -12,56 +13,63 @@
     function showResults(){
         results = 1;
     }
-
 </script>
+
+<!-- Title Container -->
+<div class="fixed top-0 left-50 w-full text-#333 text-center p-4 z-10">
+    <h1 class="text-3xl font-normal">Button testing web interface and platform</h1>
+</div>
 
 <TopBar tabName="Home" />
 
-<div class="bg-slate-800 grid grid-cols-2 gap-4 content-start h-screen">
-    <div class="text-white inline-block align-middle p-20 text-center">
-        Start a Test
-        <br>
-        <div class="mt-5">
-            <label for="testType" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Presets: </label>
-            <select id="testType" bind:value={val} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected value="rb">Choose a type of test</option>
+<!-- Centered Test Prompt -->
+<div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col">
+    <!-- Test Form Section -->
+    <div class="text-center p-10 bg-white shadow-lg rounded-lg">
+        <h2 class="text-2xl mb-5">Define the test</h2>
+        
+        <div class="mt-5 flex flex-col items-center">
+            <label for="testType" class="mb-2 text-sm font-medium text-center">Default Configurations: </label>
+            <select id="testType" bind:value={val} class="bg-gray-50 border border-gray-300 text-center rounded-lg p-2.5 text-center">
+                <option selected value="rb">Select...</option>
                 <option value="rb">Reset (Reboot)</option>
                 <option value="fr">Factory Reset</option>
                 <option value="wps">WPS</option>
                 <option value="inf">Info</option>
             </select>
         </div>
-        <div class="flex justify-between">
-            <label for="testType" class=" mt-auto mb-auto text-sm font-medium text-gray-900 dark:text-white">Button press time (sec): </label>
-            <input type="number" value={presets[val].pressTime} class="bg-gray-50 text-right border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        </div>
-        <div class="flex justify-between">
-            <label for="testType" class=" mt-auto mb-auto text-sm font-medium text-gray-900 dark:text-white">Number of times to be pressed: </label>
-            <input type="number" value={presets[val].ntimes} class="bg-gray-50 text-right border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        </div>
-        <div class="flex justify-between">
-            <label for="testType" class=" mt-auto mb-auto text-sm font-medium text-gray-900 dark:text-white">Maximum force to apply (N): </label>
-            <input type="number" value={presets[val].maxForce} class="bg-gray-50 text-right border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        </div>
-        <div class="flex justify-between">
-            <label for="testType" class=" mt-auto mb-auto text-sm font-medium text-gray-900 dark:text-white">Interval between actuations (sec): </label>
-            <input type="number" value={presets[val].interval} class="bg-gray-50 text-right border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        </div>
-        <div class=" mt-auto mb-auto flex float-right">
-            <button on:click={showResults} class=" bg-slate-500 w-52 h-10 mt-10 rounded-lg hover:bg-slate-600 transition-all">Start</button>
-        </div>
-        
-    </div>
 
-
-    <div class="text-white inline-block align-middle p-20 text-center">
-        <div>
-            Results
+        <!-- Input Fields for Test Parameters -->
+        <div class="mt-2">
+            <label for="pressTime" class="text-sm font-medium">Button press time (sec): </label>
+            <input type="number" id="pressTime" value={presets[val].pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
         </div>
-        <div class="inline-block align-middle">
-            {#if results == 1}
-                <LinePlot />
-            {/if}
+        <div class="mt-2">
+            <label for="ntimes" class="text-sm font-medium">Number of times to be pressed: </label>
+            <input type="number" id="ntimes" value={presets[val].ntimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+        </div>
+        <div class="mt-2">
+            <label for="maxForce" class="text-sm font-medium">Maximum force to apply (N): </label>
+            <input type="number" id="maxForce" value={presets[val].maxForce} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+        </div>
+        <div class="mt-2">
+            <label for="interval" class="text-sm font-medium">Interval between actuations (sec): </label>
+            <input type="number" id="interval" value={presets[val].interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+        </div>
+
+        <!-- Start Button -->
+        <div class="mt-10">
+            <button on:click={showResults} class="bg-[#DA8359] text-gray-700 font-bold w-full h-10 rounded-lg hover:bg-[#b86d48] transition-all">Start</button>
         </div>
     </div>
 </div>
+
+<!-- Results Section -->
+{#if results}
+    <div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col transition-transform duration-500 ease-in-out transform translate-y-0">
+        <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4">
+            <h2 class="text-2xl mb-5">Results</h2>
+            <LinePlot />
+        </div>
+    </div>
+{/if}

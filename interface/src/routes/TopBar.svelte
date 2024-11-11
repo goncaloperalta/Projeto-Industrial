@@ -1,31 +1,90 @@
 <script>
-    let {tabName} = $props();
+    let sidebarOpen = false;
+
+    function toggleSidebar() {
+        sidebarOpen = !sidebarOpen;
+    }
 </script>
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{tabName}</span>
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                    <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
-                </li>
-                <li>
-                    <a href="/history" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">History</a>
-                </li>
-                <li>
-                    <a href="/statistics" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Statistics</a>
-                </li>
-                <li>
-                    <a href="/about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<style>
+    /* Sidebar styling */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Hidden initially */
+        width: 250px;
+        height: 100%;
+        background-color: #A5B68D;
+        color: white;
+        overflow-x: hidden;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar a {
+        padding: 15px 25px;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+    }
+
+    /* Hamburger icon styling */
+    .hamburger-icon {
+        position: fixed;
+        top: 50px;
+        left: 25px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .hamburger-icon span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+    }
+
+    /* Main content styling */
+    .main-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        text-align: center;
+        background-color: #ECDFCC; /* Set background color */
+    }
+
+    .main-content h1 {
+        font-size: 2rem; /* Increase font size */
+        color: white; /* Dark text color for readability */
+        top: 50px;
+        padding: 20px;
+        margin: 0;
+    }
+</style>
+
+<!-- Hamburger icon to open sidebar -->
+<div class="hamburger-icon" on:click={toggleSidebar}>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- Sidebar menu -->
+<div class="sidebar {sidebarOpen ? 'open' : ''}">
+    <a href="#" on:click={toggleSidebar}></a>
+    <a href="/">Home</a>
+    <a href="/history">History</a>
+    <a href="/statistics">Statistics</a>
+    <a href="/about">About</a>
+</div>
