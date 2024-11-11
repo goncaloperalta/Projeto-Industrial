@@ -59,7 +59,7 @@
 
         <!-- Start Button -->
         <div class="mt-10">
-            <button on:click={showResults} class="bg-[#DA8359] text-gray-700 font-bold w-full h-10 rounded-lg hover:bg-[#b86d48] transition-all">Start</button>
+            <a onclick={showResults} href="#Graph" class="bg-[#DA8359] pl-48 pr-48 pt-2 pb-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all">Start</a>
         </div>
     </div>
 </div>
@@ -69,7 +69,9 @@
     <div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col transition-transform duration-500 ease-in-out transform translate-y-0">
         <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4">
             <h2 class="text-2xl mb-5">Results</h2>
-            <LinePlot />
+            <div id="Graph" class="h-[400px]">
+                <LinePlot />
+            </div>
         </div>
     </div>
 {/if}
