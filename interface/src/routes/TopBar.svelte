@@ -86,5 +86,6 @@
     <a href="/">Home</a>
     <a href="/history">History</a>
     <a href="/statistics">Statistics</a>
+    <a href="/APIDocumentation">API Documentation</a>
     <a href="/about">About</a>
 </div>

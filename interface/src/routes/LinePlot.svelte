@@ -41,7 +41,7 @@
             .attr("class", "line")
             .attr("d", line)
             .attr("fill", "none")
-            .attr("stroke", "steelblue")
+            .attr("stroke", "#DA8359")
             .attr("stroke-width", 2);
 
         // Add X axis
@@ -57,28 +57,30 @@
             .append("g")
             .call(d3.axisLeft(yScale));
 
-        // Add X axis label
+        // Add X-axis label
         d3.select(svg)
             .select("g")
             .append("text")
             .attr("class", "x-axis-label")
             .attr("x", innerWidth / 2) // Position it in the middle of the X axis
-            .attr("y", innerHeight + 40) // Move it below the X axis
+            .attr("y", innerHeight + margin.bottom - 10) // Move it below the X axis with padding
             .style("text-anchor", "middle")
-            .style("fill", "white") // Set label text color to white
-            .text("Time (s)");
+            .style("font-weight", "bold")
+            .style("fill", "black") // Set label text color
+            .text("Time (sec)");
 
-        // Add Y axis label
+        // Add Y-axis label
         d3.select(svg)
             .select("g")
             .append("text")
             .attr("class", "y-axis-label")
             .attr("x", -innerHeight / 2) // Position it in the middle of the Y axis
-            .attr("y", -40) // Move it to the left of the Y axis
+            .attr("y", -margin.left + 15) // Adjust the padding to keep it clear from the axis line
+            .attr("transform", "rotate(-90)") // Rotate for vertical alignment
             .style("text-anchor", "middle")
-            .style("transform", "rotate(-90deg)") // Rotate the label for vertical alignment
-            .style("fill", "white") // Set label text color to white
-            .text("Force (N)");
+            .style("font-weight", "bold")
+            .style("fill", "black") // Set label text color
+            .text("Applied Force (N)");
     });
 </script>
 
