@@ -66,7 +66,7 @@
 
     .main-content h1 {
         font-size: 2rem; /* Increase font size */
-        color: white; /* Dark text color for readability */
+        color: white; /* Light text color for readability */
         top: 50px;
         padding: 20px;
         margin: 0;
@@ -74,18 +74,18 @@
 </style>
 
 <!-- Hamburger icon to open sidebar -->
-<div class="hamburger-icon" on:click={toggleSidebar}>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+    <div class="hamburger-icon" on:click={toggleSidebar}>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
 <!-- Sidebar menu -->
-<div class="sidebar {sidebarOpen ? 'open' : ''}">
-    <a href="#" on:click={toggleSidebar}></a>
-    <a href="/">Home</a>
-    <a href="/history">History</a>
-    <a href="/statistics">Statistics</a>
-    <a href="/APIDocumentation">API Documentation</a>
-    <a href="/about">About</a>
-</div>
+    <div class="sidebar {sidebarOpen ? 'open' : ''}">
+        <a href="#" on:click={toggleSidebar}></a>
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+        <a href="/statistics">Statistics</a>
+        <a href="/APIDocumentation">API Documentation</a>
+        <a href="/about">About</a>
+    </div>

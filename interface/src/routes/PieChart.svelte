@@ -52,7 +52,7 @@ function drawPieChart() {
         .style("font-weight", "bold")
         .text(d => `${d.data.label}: ${((d.data.value / totalPresses) * 100).toFixed(1)}%`);
 }
-    // Call `drawPieChart` whenever `dataPie` changes
+    // Call 'drawPieChart' whenever `dataPie` changes
     $: if (totalPresses && successfulPresses) drawPieChart();
 </script>
 

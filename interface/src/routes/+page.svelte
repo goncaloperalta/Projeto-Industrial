@@ -89,7 +89,7 @@
                     <LinePlot />
                 </div>
                 <div class="w-1/2 p-4">
-                    <PieChart {totalPresses} {successfulPresses} />
+                    <PieChart {totalPresses} {successfulPresses}/>
                 </div>
             </div>
         </div>
