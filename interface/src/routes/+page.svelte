@@ -10,10 +10,10 @@
         inf: { pressTime: 4, ntimes: 15, maxForce: 4, interval: 3 }
     };
 
-    let val = 'rb';
+    let val = ''; // Set to empty so "Select..." appears initially
     let results = 0;
 
-    // Computed values based on selection - in Select... shows and empty string ' '
+    // Computed values based on selection - in Select... shows an empty string ' '
     $: presetValues = val === 'rb' || val === 'fr' || val === 'wps' || val === 'inf' 
         ? { ...presets[val] }
         : { pressTime: '', ntimes: '', maxForce: '', interval: '' };
