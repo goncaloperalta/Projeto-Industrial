@@ -1,6 +1,7 @@
 <script>
     import LinePlot from "./LinePlot.svelte";
     import PieChart from "./PieChart.svelte";
+    import PieChart2 from "./statistics/PieChart2.svelte";
     import TopBar from "./TopBar.svelte";
     
     let presets = {
@@ -28,6 +29,7 @@
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
         }, 0);
     }
+    let successRate = 90;
 </script>
 
 <!-- Title Container -->
@@ -85,13 +87,14 @@
         <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4">
             <h2 class="text-2xl mb-5">Results</h2>
             <div class="flex justify-around">
-                <div class="w-1/2 p-4">
+                <div>
                     <LinePlot />
                 </div>
-                <div class="w-1/2 p-4">
-                    {#if totalPresses > 0 && successfulPresses >= 0}
+                <div>
+                    <!-- {#if totalPresses > 0 && successfulPresses >= 0}
                         <PieChart {totalPresses} {successfulPresses} />
-                    {/if}
+                    {/if} -->            
+                    <PieChart2 successRate={successRate} />
                 </div>
             </div>
         </div>
