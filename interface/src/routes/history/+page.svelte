@@ -3,14 +3,30 @@
 	import TopBar from "../TopBar.svelte";
     import LinePlot from "../LinePlot.svelte";
 	let posts = [];
+	let filteredQuery = [];
 
     onMount(() => {
         fetch('http://localhost:3000/')
             .then(resp => resp.json())
             .then(data => {
                 posts = data.devices
+				filteredQuery = posts
 	    });
     });
+
+	let searchQuery = '';
+	let fromDate = '';
+	let toDate = '';
+	function search(){
+		filteredQuery = posts.filter(post => {
+			let model = post.model.toLowerCase();
+			let modelfilter = model.includes(searchQuery.toLowerCase())
+			if(fromDate != '' && toDate != ''){
+				modelfilter = modelfilter && ((post.date > fromDate && post.date < toDate) ? 1 : 0)
+			}
+			return modelfilter
+		})
+	}
 
 	let shDetails = -1;
 	function showDetails(ind){
@@ -30,11 +46,15 @@
 			History
 		</div>
 		<div class="text-center block">
-			<div class="flex w-3/4 m-auto h-10 bg-gray-500 rounded-sm">
-				<svg class=" text-gray-200 w-10 h-5 mt-auto mb-auto ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+			<div class="flex w-3/4 m-auto h-10 bg-gray-500 text-gray-200 rounded-sm shadow-2xl">
+				<svg class=" w-10 h-5 mt-auto mb-auto ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
 					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
 				</svg>
-				<input placeholder="Search for model, date, ..." class="bg-gray-500 outline-none placeholder-gray-200 w-full rounded-sm">
+				<input bind:value={searchQuery} oninput={search} placeholder="Search for model" class="bg-gray-500 outline-none placeholder-gray-200 w-full rounded-sm">
+				<span class="m-auto">From:</span>
+				<input bind:value={fromDate} oninput={search} type="date" class="bg-gray-500 ml-1">
+				<span class="m-auto ml-5">To:</span>
+				<input bind:value={toDate} oninput={search} type="date" class="bg-gray-500 ml-1 mr-2">
 			</div>
 
 			<table class="w-3/4 mt-5 transparent m-auto p-10 table-fixed">
@@ -46,7 +66,7 @@
 					</tr>
 				</thead>
 				<tbody class="border-b">
-					{#each posts as post, index}
+					{#each filteredQuery as post, index}
 						<tr onclick={() => showDetails(index)} class="h-12 border-b border-gray-700 hover:bg-slate-700 transition-all cursor-pointer">
 							<td>{post.model}</td>
 							<td>
