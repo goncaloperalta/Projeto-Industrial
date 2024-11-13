@@ -89,7 +89,9 @@
                     <LinePlot />
                 </div>
                 <div class="w-1/2 p-4">
-                    <PieChart {totalPresses} {successfulPresses}/>
+                    {#if totalPresses > 0 && successfulPresses >= 0}
+                        <PieChart {totalPresses} {successfulPresses} />
+                    {/if}
                 </div>
             </div>
         </div>

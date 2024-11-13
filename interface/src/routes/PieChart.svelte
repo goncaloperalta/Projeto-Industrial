@@ -10,12 +10,14 @@
     let svgPie;
 
     // Reactive `dataPie` based on `totalPresses` and `successfulPresses`
-    $: dataPie = [
-    { label: "Success", value: successfulPresses || 0 },
-    { label: "Failure", value: (totalPresses || 0) - (successfulPresses || 0) }
-];
+    $: dataPie = totalPresses > 0
+    ? [
+        { label: "Success", value: successfulPresses },
+        { label: "Failure", value: totalPresses - successfulPresses }
+      ]
+    : [];
 
-function drawPieChart() {
+    function drawPieChart() {
     console.log("Drawing pie chart with data:", dataPie);
 
     const width = 300;
@@ -25,7 +27,7 @@ function drawPieChart() {
     const pie = d3.pie().value(d => d.value)(dataPie);
     const arc = d3.arc().outerRadius(radius).innerRadius(0);
 
-    // Clear existing chart elements
+    // Clear existing chart elements before re-drawing
     d3.select(svgPie).selectAll("*").remove();
 
     const color = d3.scaleOrdinal()
@@ -53,7 +55,7 @@ function drawPieChart() {
         .text(d => `${d.data.label}: ${((d.data.value / totalPresses) * 100).toFixed(1)}%`);
 }
     // Call 'drawPieChart' whenever `dataPie` changes
-    $: if (totalPresses && successfulPresses) drawPieChart();
+    $: if (dataPie.length > 0) drawPieChart();
 </script>
 
 <style>
