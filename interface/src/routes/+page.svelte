@@ -1,27 +1,22 @@
 <script>
     import LinePlot from "./LinePlot.svelte";
-    import PieChart from "./PieChart.svelte";
     import PieChart2 from "./statistics/PieChart2.svelte";
     import TopBar from "./TopBar.svelte";
     
     let presets = {
         rb: { pressTime: 1, ntimes: 10, maxForce: 1, interval: 5 },
         fr: { pressTime: 2, ntimes: 5, maxForce: 1, interval: 6 },
-        wps: { pressTime: 3, ntimes: 15, maxForce: 4, interval: 3 },
-        inf: { pressTime: 4, ntimes: 15, maxForce: 4, interval: 3 }
+        wps_info: { pressTime: 3, ntimes: 15, maxForce: 4, interval: 3 },
+        on: { pressTime: 1, ntimes: 15, maxForce: 5, interval: 3 }
     };
 
     let val = ''; // Set to empty so "Select..." appears initially
     let results = 0;
 
     // Computed values based on selection - in Select... shows an empty string ' '
-    $: presetValues = val === 'rb' || val === 'fr' || val === 'wps' || val === 'inf' 
+    $: presetValues = val === 'rb' || val === 'fr' || val === 'wps_info' || val === 'on' 
         ? { ...presets[val] }
         : { pressTime: '', ntimes: '', maxForce: '', interval: '' };
-
-    // Calculate totalPresses and successfulPresses based on the selected test preset
-    $: totalPresses = presetValues.ntimes || 0;
-    $: successfulPresses = Math.floor(totalPresses * 0.87);  // 87% success rate assumption
 
     function showResults() {
         results = 1;
@@ -51,8 +46,8 @@
                 <option value="">Select...</option>
                 <option value="rb">Reset (Reboot)</option>
                 <option value="fr">Factory Reset</option>
-                <option value="wps">WPS</option>
-                <option value="inf">Info</option>
+                <option value="wps_info">WPS/Info</option>
+                <option value="on">On</option>
             </select>
         </div>
 
