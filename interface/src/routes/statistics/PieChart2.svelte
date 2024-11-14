@@ -7,7 +7,7 @@
     let element;
     
     onMount(() => {
-        let width = 400, height = 400, radius = Math.min(width, height)/2;
+        let width = 350, height = 350, radius = Math.min(width, height)/2;
         
         var svg = d3.select(element)
             .attr("width", width)
@@ -16,7 +16,7 @@
         var g = svg.append("g")
             .attr("transform", "translate(" + radius + "," + radius + ")");
 
-        var color = d3.scaleOrdinal(["#22c55e", "#ef4444"]);
+        var color = d3.scaleOrdinal(["#aac597","#ef6d80"]);
 
         var pie = d3.pie().value((d) => {
             return d;
