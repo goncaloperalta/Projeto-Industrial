@@ -9,6 +9,8 @@
         wps_info: { pressTime: 3, ntimes: 15, maxForce: 4, interval: 3 },
         on: { pressTime: 1, ntimes: 15, maxForce: 5, interval: 3 }
     };
+    let profiles = [];
+    let profilesCounter = 0;
 
     let val = ''; // Set to empty so "Select..." appears initially
     let results = 0;
@@ -16,9 +18,17 @@
     // Computed values based on selection - in Select... shows an empty string ' '
     $: presetValues = val === 'rb' || val === 'fr' || val === 'wps_info' || val === 'on' 
         ? { ...presets[val] }
+        : val.includes('profile') ? {...profiles[Number(val.charAt(val.length-1))-1]}
         : { pressTime: '', ntimes: '', maxForce: '', interval: '' };
 
-    function showResults() {
+    function saveProfile(){
+        if(!val.includes('profile')){
+            profiles.push(presetValues)
+            profilesCounter += 1;
+        }
+    }
+
+    function showResults(){
         results = 1;
         setTimeout(() => {
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
@@ -48,6 +58,11 @@
                 <option value="fr">Factory Reset</option>
                 <option value="wps_info">WPS/Info</option>
                 <option value="on">On</option>
+                {#key profilesCounter}
+                    {#each profiles as profile, index}
+                        <option value="profile{index+1}">Profile {index+1}</option>
+                    {/each}
+                {/key}
             </select>
         </div>
 
@@ -70,9 +85,15 @@
         </div>
 
         <!-- Start Button -->
-        <div class="mt-10">
-            <button on:click={showResults} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all">Start</button>
+        <div class="flex justify-center">
+            <div class="mt-10">
+                <button on:click={showResults} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all">Start</button>
+            </div>
+            <div class="mt-10 ml-auto">
+                <button on:click={saveProfile} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all">Save </button>
+            </div>        
         </div>
+        
     </div>
 </div>
 
