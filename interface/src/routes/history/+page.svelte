@@ -41,26 +41,26 @@
 
 <TopBar tabName="History" />
 
-<main class="bg-slate-800 h-screen text-white">
+<main class="bg-[#ECDFCC] min-h-screen text-[#111827]">
 	<div class="text-center block">
 		<div class="p-20 text-3xl">
 			History
 		</div>
 		<div class="text-center block">
-			<div class="flex w-3/4 m-auto h-10 bg-gray-500 text-gray-200 rounded-sm shadow-2xl">
+			<div class="flex w-3/4 m-auto h-10 bg-[#DA8359] text-gray-200 rounded-sm shadow-2xl">
 				<svg class=" w-10 h-5 mt-auto mb-auto ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
 					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
 				</svg>
-				<input bind:value={searchQuery} oninput={search} placeholder="Search for model" class="bg-gray-500 outline-none placeholder-gray-200 w-full rounded-sm">
+				<input bind:value={searchQuery} oninput={search} placeholder="Search for model" class="bg-[#DA8359] outline-none placeholder-gray-200 w-full rounded-sm">
 				<span class="m-auto">From:</span>
-				<input bind:value={fromDate} oninput={search} type="date" class="bg-gray-500 ml-1">
+				<input bind:value={fromDate} oninput={search} type="date" class="bg-[#DA8359] ml-1">
 				<span class="m-auto ml-5">To:</span>
-				<input bind:value={toDate} oninput={search} type="date" class="bg-gray-500 ml-1 mr-2">
+				<input bind:value={toDate} oninput={search} type="date" class="bg-[#DA8359] ml-1 mr-2">
 			</div>
 
 			<table class="w-3/4 mt-5 transparent m-auto p-10 table-fixed">
-				<thead class="italic">
-					<tr class="bg-slate-700 h-12">
+				<thead class="text-white">
+					<tr class="bg-[#DA8359] h-12">
 						<th scope="col">MODEL</th>
 						<th scope="col">SUCCESS</th>
 						<th scope="col">DATE</th>
@@ -72,9 +72,9 @@
 							<td>{post.model}</td>
 							<td>
 								{#if post.success == 1}
-									<span class="bg-green-500 p-1 pl-4 pr-4 rounded-sm">Yes</span>
+									<span class="bg-[#aac597] p-1 pl-4 pr-4 rounded-sm">Yes</span>
 								{:else}
-									<span class="bg-red-500 p-1 pl-4 pr-4 rounded-sm">No</span>
+									<span class="bg-[#ef6d80] p-1 pl-4 pr-4 rounded-sm">No</span>
 								{/if}
 							</td>
 							<td>{post.date}</td>
@@ -82,16 +82,23 @@
 						{#if shDetails == index}
 							<tr>
 								<td colspan="3">
-									<div class="flex justify-center h-[400px] pl-20">
-										<ul class="mt-auto mb-auto mr-40 bg-slate-600 rounded-sm p-20">
-											<li>CPU:2.4GHz</li>
-											<li>RAM:6GB</li>
-										</ul>
-										<div class="mt-auto mb-auto mr-20">
+									<div class="flex justify-start h-[500px] pl-20">
+										<!-- Smaller square box for gateway information -->
+										<div class="ml-20 mr-20 gateway-info-box mt-auto mb-auto">
+											<ul class="info-list">
+												<li>CPU: 2.4GHz</li>
+												<li>RAM: 6GB</li>
+											</ul>
+										</div>
+										
+										<!-- Line plot with spacing applied via CSS above -->
+										<div class="ml-20 mr-20 mt-20">
 											<LinePlot />
 										</div>
-										<div class="mt-auto mb-auto ">
-											<PieChart2 successRate={10} />
+										
+										<!-- Pie chart component -->
+										<div class="ml-20 mr-20 mt-auto mb-auto">
+											<PieChart2 successRate={92} />
 										</div>
 									</div>
 								</td>
@@ -104,4 +111,26 @@
 	</div>
 </main>
 
-<style></style>
+<style>
+    /* Styling for smaller square box */
+    .gateway-info-box {
+        background-color: #ffffff; /* White background */
+        border-radius: 8px; /* Rounded corners */
+        width: 150px; /* Fixed width to create a square */
+        height: 150px; /* Fixed height to match width */
+        padding: 15px; /* Inner padding for spacing */
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        text-align: left; /* Left-align text */
+        margin-right: 20px; /* Space between box and line plot */
+        display: flex;
+        align-items: center; /* Center content vertically */
+        justify-content: center; /* Center content horizontally */
+    }
+
+    /* Adjust text inside the square box */
+    .info-list li {
+        color: #333; /* Text color */
+        font-size: 0.9rem; /* Slightly smaller font size */
+        margin-bottom: 5px;
+    }
+</style>
