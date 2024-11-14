@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
 	import TopBar from "../TopBar.svelte";
     import LinePlot from "../LinePlot.svelte";
+    import PieChart2 from "../statistics/PieChart2.svelte";
 	let posts = [];
 	let filteredQuery = [];
 
@@ -81,12 +82,17 @@
 						{#if shDetails == index}
 							<tr>
 								<td colspan="3">
-									<div class="flex h-[400px] pl-20">
-										<ul class="mt-auto mb-auto mr-20">
+									<div class="flex justify-center h-[400px] pl-20">
+										<ul class="mt-auto mb-auto mr-40 bg-slate-600 rounded-sm p-20">
 											<li>CPU:2.4GHz</li>
 											<li>RAM:6GB</li>
 										</ul>
-										<LinePlot />
+										<div class="mt-auto mb-auto mr-20">
+											<LinePlot />
+										</div>
+										<div class="mt-auto mb-auto ">
+											<PieChart2 successRate={10} />
+										</div>
 									</div>
 								</td>
 							</tr>
