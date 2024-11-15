@@ -1,5 +1,4 @@
 <script>
-	import TopBar from "../TopBar.svelte";
     import LinePlot from "../LinePlot.svelte";
     import PieChart2 from "../statistics/PieChart2.svelte";
 	
@@ -32,28 +31,26 @@
 	}
 </script>
 
-<TopBar tabName="History" />
-
-<main class="bg-[#ECDFCC] min-h-screen text-[#111827]">
+<main class="bg-[#ECDFCC] min-h-screen text-[#111827] dark:bg-slate-800 dark:text-white">
 	<div class="text-center block">
 		<div class="p-20 text-3xl">
 			History
 		</div>
 		<div class="text-center block">
-			<div class="flex w-3/4 m-auto h-10 bg-[#DA8359] text-gray-200 rounded-sm shadow-2xl">
+			<div class="flex w-3/4 m-auto h-10 bg-[#DA8359] text-gray-200 rounded-sm shadow-2xl dark:bg-slate-500">
 				<svg class=" w-10 h-5 mt-auto mb-auto ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
 					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
 				</svg>
-				<input bind:value={searchQuery} oninput={search} placeholder="Search for model" class="bg-[#DA8359] outline-none placeholder-gray-200 w-full rounded-sm">
+				<input bind:value={searchQuery} oninput={search} placeholder="Search for model" class="bg-[#DA8359] outline-none placeholder-gray-200 w-full rounded-sm dark:bg-slate-500">
 				<span class="m-auto">From:</span>
-				<input bind:value={fromDate} oninput={search} type="date" class="bg-[#DA8359] ml-1">
+				<input bind:value={fromDate} oninput={search} type="date" class="bg-[#DA8359] ml-1 dark:bg-slate-500">
 				<span class="m-auto ml-5">To:</span>
-				<input bind:value={toDate} oninput={search} type="date" class="bg-[#DA8359] ml-1 mr-2">
+				<input bind:value={toDate} oninput={search} type="date" class="bg-[#DA8359] ml-1 mr-2 dark:bg-slate-500">
 			</div>
 
 			<table class="w-3/4 mt-5 transparent m-auto p-10 table-fixed">
 				<thead class="text-white">
-					<tr class="bg-[#DA8359] h-12">
+					<tr class="bg-[#DA8359] h-12 dark:bg-slate-700">
 						<th scope="col">MODEL</th>
 						<th scope="col">SUCCESS</th>
 						<th scope="col">DATE</th>
@@ -65,9 +62,9 @@
 							<td>{post.model}</td>
 							<td>
 								{#if post.success == 1}
-									<span class="bg-[#aac597] p-1 pl-4 pr-4 rounded-sm">Yes</span>
+									<span class="bg-[#aac597] p-1 pl-4 pr-4 rounded-sm dark:bg-green-500">Yes</span>
 								{:else}
-									<span class="bg-[#ef6d80] p-1 pl-4 pr-4 rounded-sm">No</span>
+									<span class="bg-[#ef6d80] p-1 pl-4 pr-4 rounded-sm dark:bg-red-500">No</span>
 								{/if}
 							</td>
 							<td>{post.date}</td>
@@ -77,7 +74,7 @@
 								<td colspan="3">
 									<div class="flex justify-start h-[500px] pl-20">
 										<!-- Smaller square box for gateway information -->
-										<div class="ml-20 mr-20 gateway-info-box mt-auto mb-auto">
+										<div class="ml-20 mr-20 gateway-info-box mt-auto mb-auto dark:bg-slate-700">
 											<ul class="info-list">
 												<li>CPU: 2.4GHz</li>
 												<li>RAM: 6GB</li>

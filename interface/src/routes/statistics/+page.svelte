@@ -1,5 +1,4 @@
 <script>
-	import TopBar from "../TopBar.svelte";
     import PieChart2 from "./PieChart2.svelte";
     import LinePlot from "../LinePlot.svelte";
 
@@ -13,8 +12,6 @@
 	});
 	successRate = successRate / posts.length * 100;
 </script>
-
-<TopBar tabName="Statistics" />
 
 <main class="bg-slate-800 h-screen text-white">
 	<div class="text-center block">

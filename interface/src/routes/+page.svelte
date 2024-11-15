@@ -1,7 +1,6 @@
 <script>
     import LinePlot from "./LinePlot.svelte";
     import PieChart2 from "./statistics/PieChart2.svelte";
-    import TopBar from "./TopBar.svelte";
 
     let presets = {
         rb: { pressTime: 1, ntimes: 10, maxForce: 1, interval: 5 },
@@ -38,21 +37,19 @@
 </script>
 
 <!-- Title Container -->
-<div class="fixed top-0 left-50 w-full text-#333 text-center p-4 z-10">
+<div class="fixed top-0 left-50 w-full text-#333 text-center p-4 z-10 dark:text-white">
     <h1 class="text-3xl font-normal">Button testing web interface and platform</h1>
 </div>
 
-<TopBar tabName="Home" />
-
 <!-- Centered Test Prompt -->
-<div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col">
-    <div class="text-center p-10 bg-white shadow-lg rounded-lg">
+<div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col dark:bg-slate-800 dark:text-white">
+    <div class="text-center p-10 bg-white dark:bg-slate-700 shadow-lg rounded-lg">
         <h2 class="text-2xl mb-5">Define the test</h2>
         
         <!-- Test Type Selection -->
         <div class="mt-5 flex flex-col items-center">
             <label for="testType" class="mb-2 text-sm font-medium text-center">Default Configurations: </label>
-            <select id="testType" bind:value={val} class="bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-center">
+            <select id="testType" bind:value={val} class="bg-gray-50 border border-gray-300 dark:bg-slate-600 dark:border-slate-600 rounded-lg p-2.5 text-center">
                 <option value="">Select...</option>
                 <option value="rb">Reset (Reboot)</option>
                 <option value="fr">Factory Reset</option>
@@ -69,28 +66,28 @@
         <!-- Input Fields for Test Parameters -->
         <div class="mt-2">
             <label for="pressTime" class="text-sm font-medium">Button press time (sec): </label>
-            <input type="number" id="pressTime" bind:value={presetValues.pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+            <input type="number" id="pressTime" bind:value={presetValues.pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
         <div class="mt-2">
             <label for="ntimes" class="text-sm font-medium">Number of times to be pressed: </label>
-            <input type="number" id="ntimes" bind:value={presetValues.ntimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+            <input type="number" id="ntimes" bind:value={presetValues.ntimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
         <div class="mt-2">
             <label for="maxForce" class="text-sm font-medium">Maximum force to apply (N): </label>
-            <input type="number" id="maxForce" bind:value={presetValues.maxForce} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+            <input type="number" id="maxForce" bind:value={presetValues.maxForce} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
         <div class="mt-2">
             <label for="interval" class="text-sm font-medium">Interval between actuations (sec): </label>
-            <input type="number" id="interval" bind:value={presetValues.interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full">
+            <input type="number" id="interval" bind:value={presetValues.interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
 
         <!-- Start Button -->
         <div class="flex justify-center">
             <div class="mt-10">
-                <button on:click={showResults} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all">Start</button>
+                <button on:click={showResults} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Start</button>
             </div>
             <div class="mt-10 ml-auto">
-                <button on:click={saveProfile} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all">Save </button>
+                <button on:click={saveProfile} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Save </button>
             </div>        
         </div>
         
@@ -99,8 +96,8 @@
 
 <!-- Results Section -->
 {#if results}
-    <div id="results-section" class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col">
-        <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4">
+    <div id="results-section" class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col dark:bg-slate-800 dark:text-white">
+        <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4 dark:bg-slate-700">
             <h2 class="text-2xl mb-5">Results</h2>
             <div class="flex justify-around">
                 <div>
