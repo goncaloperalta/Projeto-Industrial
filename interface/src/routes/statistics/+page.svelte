@@ -1,22 +1,17 @@
 <script>
-    import { onMount } from "svelte";
 	import TopBar from "../TopBar.svelte";
     import PieChart2 from "./PieChart2.svelte";
     import LinePlot from "../LinePlot.svelte";
-	let posts = [];
-	let successRate = 0;
 
-    onMount(() => {
-        fetch('http://localhost:3000/')
-            .then(resp => resp.json())
-            .then(data => {
-                posts = data.devices
-				posts.forEach(post => {
-					successRate += post.success
-				});
-				successRate = successRate / posts.length * 100;
-	    });
-    });
+	export let data;
+	console.log(data)
+
+	let successRate = 0;
+	let posts = data.devices;
+	posts.forEach(post => {
+		successRate += post.success
+	});
+	successRate = successRate / posts.length * 100;
 </script>
 
 <TopBar tabName="Statistics" />

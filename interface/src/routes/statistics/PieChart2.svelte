@@ -47,7 +47,7 @@
             })
             .attr("text-anchor", "middle")
             .text((d) => {
-                return d.data + "%";
+                return d.data.toFixed(1) + "%";
             })
             .style("fill", "white");
     })

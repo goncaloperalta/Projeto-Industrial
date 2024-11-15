@@ -1,19 +1,12 @@
 <script>
-    import { onMount } from "svelte";
 	import TopBar from "../TopBar.svelte";
     import LinePlot from "../LinePlot.svelte";
     import PieChart2 from "../statistics/PieChart2.svelte";
-	let posts = [];
-	let filteredQuery = [];
+	
+	export let data;
 
-    onMount(() => {
-        fetch('http://localhost:3000/')
-            .then(resp => resp.json())
-            .then(data => {
-                posts = data.devices
-				filteredQuery = posts
-	    });
-    });
+	let posts = data.devices;
+	let filteredQuery = posts;
 
 	let searchQuery = '';
 	let fromDate = '';
@@ -23,7 +16,7 @@
 			let model = post.model.toLowerCase();
 			let modelfilter = model.includes(searchQuery.toLowerCase())
 			if(fromDate != '' && toDate != ''){
-				modelfilter = modelfilter && ((post.date > fromDate && post.date < toDate) ? 1 : 0)
+				modelfilter = modelfilter && ((post.date >= fromDate && post.date <= toDate) ? 1 : 0)
 			}
 			return modelfilter
 		})

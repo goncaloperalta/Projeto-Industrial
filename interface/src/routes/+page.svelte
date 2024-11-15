@@ -2,9 +2,6 @@
     import LinePlot from "./LinePlot.svelte";
     import PieChart2 from "./statistics/PieChart2.svelte";
     import TopBar from "./TopBar.svelte";
-    
-    export let data;
-    console.log(data)
 
     let presets = {
         rb: { pressTime: 1, ntimes: 10, maxForce: 1, interval: 5 },
@@ -46,12 +43,6 @@
 </div>
 
 <TopBar tabName="Home" />
-
-<div>
-    {#each data.devices as device}
-        <p>{device.model} {console.log(device.model)}</p>
-    {/each}
-</div>
 
 <!-- Centered Test Prompt -->
 <div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col">
