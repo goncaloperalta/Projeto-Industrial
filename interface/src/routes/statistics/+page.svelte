@@ -3,7 +3,6 @@
     import LinePlot from "../LinePlot.svelte";
 
 	export let data;
-	console.log(data)
 
 	let successRate = 0;
 	let posts = data.devices;
