@@ -3,8 +3,7 @@
     import * as d3 from 'd3';
 
     // Data points
-    const X = [0, 1, 2, 3, 4, 5];
-    const Y = [0, 2, 3, 4, 5, 5];
+    let { X, Y } = $props()
 
     // Combine X and Y into a single array of objects for D3 to work with
     const data = X.map((x, i) => ({ x, y: Y[i] }));

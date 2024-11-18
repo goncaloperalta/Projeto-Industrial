@@ -3,13 +3,19 @@ from numpy import random
 from numpy import linspace
 from requests import post
 from threading import Semaphore
-from semaphores import sem_api
+import shared_memory as sh
+from time import sleep
 
 def SensorReader():
     while True:
-        sem_api.acquire()
+        sh.sem_api.acquire()            # Wait for the API to start
         
-        x = {}
-        x['val'] = [random.randint(1, 10) for _ in range(10)]
-        x['time'] = linspace(0, 10, 11).tolist()
-        post("http://localhost:8000/sensor_readings", json=x)
+        sh.readings = {}                # Reset the old readings
+
+        # Code to read the sensor goes here
+        # just sending random data for now...
+        sh.readings['val'] = [random.randint(1, 10) for _ in range(10)]
+        sh.readings['time'] = linspace(0, 10, 11).tolist()
+        sleep(2)
+        
+        sh.sem_readings_ready.release() # Signal that the Readings are ready to send

@@ -13,6 +13,7 @@
 
     let val = ''; // Set to empty so "Select..." appears initially
     let results = 0;
+    let readings = {};
 
     // Computed values based on selection - in Select... shows an empty string ' '
     $: presetValues = val === 'rb' || val === 'fr' || val === 'wps_info' || val === 'on' 
@@ -29,11 +30,16 @@
 
     function showResults(){
         results = 1;
+        readings = getReadings();
         setTimeout(() => {
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
         }, 0);
+    }
 
-        fetch('http://localhost:8000/start')
+    async function getReadings() {
+        const res = await fetch('api/start_test', { signal: AbortSignal.timeout(5000) });
+        const data = await res.json()
+        return data.data
     }
     let successRate = 90;
 </script>
@@ -102,15 +108,16 @@
         <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4 dark:bg-slate-700">
             <h2 class="text-2xl mb-5">Results</h2>
             <div class="flex justify-around">
-                <div>
-                    <LinePlot />
-                </div>
-                <div>
-                    <!-- {#if totalPresses > 0 && successfulPresses >= 0}
-                        <PieChart {totalPresses} {successfulPresses} />
-                    {/if} -->            
-                    <PieChart2 successRate={successRate} />
-                </div>
+                {#await readings}
+                        <p>Loading...</p>
+                {:then readings}
+                    <div>
+                        <LinePlot X={readings.time} Y={readings.val} />
+                    </div>
+                    <div>          
+                        <PieChart2 successRate={successRate} />
+                    </div>
+                {/await}
             </div>
         </div>
     </div>
