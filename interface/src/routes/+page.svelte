@@ -32,6 +32,8 @@
         setTimeout(() => {
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
         }, 0);
+
+        fetch('http://localhost:8000/start')
     }
     let successRate = 90;
 </script>
