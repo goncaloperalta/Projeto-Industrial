@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP STPST5H100AF
+D 100 V, 5 A Power Schottky Trench Rectifier
+K
+F https://www.st.com/resource/en/datasheet/stpst5h100.pdf
+$ENDCMP
+#
+#End Doc Library

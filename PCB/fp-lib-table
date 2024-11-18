@@ -1,0 +1,12 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "CTSpotentiometer")(type "KiCad")(uri "${KIPRJMOD}/CTSpotentiometer.pretty")(options "")(descr ""))
+  (lib (name "L6205D")(type "KiCad")(uri "${KIPRJMOD}/L6205D/footprints.pretty")(options "")(descr ""))
+  (lib (name "INA381A1IDSGR")(type "KiCad")(uri "${KIPRJMOD}/INA381A1IDSGR/footprints.pretty")(options "")(descr ""))
+  (lib (name "INA381A1IDGSR")(type "KiCad")(uri "${KIPRJMOD}/INA381A1IDGSR/footprints.pretty")(options "")(descr ""))
+  (lib (name "PJ-079BH")(type "KiCad")(uri "${KIPRJMOD}/PJ-079BH")(options "")(descr ""))
+  (lib (name "TLV9032QDGKRQ1")(type "KiCad")(uri "${KIPRJMOD}/TLV9032QDGKRQ1")(options "")(descr ""))
+  (lib (name "FMAMSDXX025WCSC3")(type "KiCad")(uri "${KIPRJMOD}/FMAMSDXX025WCSC3/footprints.pretty")(options "")(descr ""))
+  (lib (name "RE-H022TD-1190_LF__SN_")(type "KiCad")(uri "${KIPRJMOD}/RE-H022TD-1190_LF__SN_")(options "")(descr ""))
+  (lib (name "STPST5H100AF")(type "KiCad")(uri "${KIPRJMOD}/STPST5H100AF/")(options "")(descr ""))
+)
