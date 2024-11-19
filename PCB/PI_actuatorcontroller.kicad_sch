@@ -2737,12 +2737,6 @@
 		(uuid "8aaefa63-a377-4d57-b035-810f450cec2b")
 	)
 	(junction
-		(at 54.61 95.25)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8ea0ea57-0f11-4df2-99a2-4a7caeebb8d0")
-	)
-	(junction
 		(at 62.23 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2771,6 +2765,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c3e9cb94-e0ab-4514-9f33-4b3f4ad2d087")
+	)
+	(junction
+		(at 54.61 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c41e3bdb-36d9-4d30-a82c-327b6e73ea1d")
 	)
 	(junction
 		(at 105.41 44.45)
@@ -2940,16 +2940,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 95.25) (xy 54.61 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1f1e5401-c1f4-41b4-8852-1359419e3742")
-	)
-	(wire
-		(pts
 			(xy 68.58 66.04) (xy 68.58 76.2)
 		)
 		(stroke
@@ -3090,16 +3080,6 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 95.25) (xy 90.17 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b45ff77-af4f-4320-abf4-fce5071f9024")
-	)
-	(wire
-		(pts
 			(xy 58.42 102.87) (xy 62.23 102.87)
 		)
 		(stroke
@@ -3130,6 +3110,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 95.25) (xy 62.23 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b376541-8c3f-4d06-9914-21854242627a")
+	)
+	(wire
+		(pts
 			(xy 148.59 95.25) (xy 148.59 96.52)
 		)
 		(stroke
@@ -3147,16 +3137,6 @@
 			(type default)
 		)
 		(uuid "87fa79e2-923e-4025-8f4a-253bec115a3b")
-	)
-	(wire
-		(pts
-			(xy 54.61 95.25) (xy 62.23 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8958bde4-0b03-4399-821d-5b10f94aa925")
 	)
 	(wire
 		(pts
@@ -3207,6 +3187,16 @@
 			(type default)
 		)
 		(uuid "92e0efb0-e8d6-4bf1-858a-e296d306e0fa")
+	)
+	(wire
+		(pts
+			(xy 35.56 95.25) (xy 38.1 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94486d3b-2218-499c-ae87-c7ef63a5dfab")
 	)
 	(wire
 		(pts
@@ -3280,7 +3270,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 95.25) (xy 68.58 95.25)
+			(xy 62.23 95.25) (xy 90.17 95.25)
 		)
 		(stroke
 			(width 0)
@@ -3397,6 +3387,16 @@
 			(type default)
 		)
 		(uuid "cb6809bd-212d-4f85-868c-8400a0b7faca")
+	)
+	(wire
+		(pts
+			(xy 53.34 95.25) (xy 54.61 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd3a27ae-9f7f-4132-9280-b35132e6c6a5")
 	)
 	(wire
 		(pts
@@ -5674,7 +5674,7 @@
 	)
 	(symbol
 		(lib_id "STPST5H100AF:STPST5H100AF")
-		(at 86.36 95.25 180)
+		(at 55.88 95.25 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5683,7 +5683,7 @@
 		(fields_autoplaced yes)
 		(uuid "81917cd1-7c83-4f32-9931-793e74b38046")
 		(property "Reference" "D3"
-			(at 76.2 87.63 0)
+			(at 45.72 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5691,7 +5691,7 @@
 			)
 		)
 		(property "Value" "STPST5H100AF"
-			(at 76.2 90.17 0)
+			(at 45.72 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5699,7 +5699,7 @@
 			)
 		)
 		(property "Footprint" "STPST5H100AF:SODFL4724X103N"
-			(at 73.66 1.6 0)
+			(at 43.18 1.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5709,7 +5709,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stpst5h100.pdf"
-			(at 73.66 -98.4 0)
+			(at 43.18 -98.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5719,7 +5719,7 @@
 			)
 		)
 		(property "Description" "100 V, 5 A Power Schottky Trench Rectifier"
-			(at 86.36 95.25 0)
+			(at 55.88 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5728,7 +5728,7 @@
 			)
 		)
 		(property "Height" "1.03"
-			(at 73.66 -298.4 0)
+			(at 43.18 -298.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5738,7 +5738,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "STMicroelectronics"
-			(at 73.66 -398.4 0)
+			(at 43.18 -398.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5748,7 +5748,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "STPST5H100AF"
-			(at 73.66 -498.4 0)
+			(at 43.18 -498.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5758,7 +5758,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 73.66 -598.4 0)
+			(at 43.18 -598.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5768,7 +5768,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 73.66 -698.4 0)
+			(at 43.18 -698.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
