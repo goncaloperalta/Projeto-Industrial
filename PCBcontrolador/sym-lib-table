@@ -1,0 +1,10 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "INA381A1IDSGR")(type "KiCad")(uri "${KIPRJMOD}/INA381A1IDSGR/2024-11-07_15-00-36.kicad_sym")(options "")(descr ""))
+  (lib (name "INA381A1IDGSR")(type "KiCad")(uri "${KIPRJMOD}/INA381A1IDGSR/2024-11-11_14-06-14.kicad_sym")(options "")(descr ""))
+  (lib (name "L6205D")(type "KiCad")(uri "${KIPRJMOD}/L6205D/2024-11-07_15-05-20.kicad_sym")(options "")(descr ""))
+  (lib (name "TLV9032QDGKRQ1")(type "KiCad")(uri "${KIPRJMOD}/TLV9032QDGKRQ1/TLV9032QDGKRQ1.kicad_sym")(options "")(descr ""))
+  (lib (name "RE-H022TD-1190_LF__SN_")(type "KiCad")(uri "${KIPRJMOD}/RE-H022TD-1190_LF__SN_/RE-H022TD-1190_LF__SN_.kicad_sym")(options "")(descr ""))
+  (lib (name "FMAMSDXX025WCSC3")(type "KiCad")(uri "${KIPRJMOD}/FMAMSDXX025WCSC3/2024-11-07_15-44-10.kicad_sym")(options "")(descr ""))
+  (lib (name "STPST5H100AF")(type "KiCad")(uri "${KIPRJMOD}/STPST5H100AF/STPST5H100AF.kicad_sym")(options "")(descr ""))
+)
