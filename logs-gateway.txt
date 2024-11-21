@@ -1,0 +1,565 @@
+
+
+root@gen8:/# journalctl | grep PTIN
+Jan 01 00:31:45 gen8 kernel: PTIN Botton implementation -- timeInMs:160568 family: 0x1   func:0x0
+Jan 01 00:31:45 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:160568 family: 0x1   func:0x0
+Jan 01 00:31:45 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:31:45 gen8 kernel: PTIN Botton:  PRESSED WLAN 
+Jan 01 00:31:45 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:31:45 gen8 kernel[2067]: PTIN Botton:  PRESSED WLAN
+Jan 01 00:31:45 gen8 kernel: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:31:45 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:31:45 gen8 kernel: PTIN Botton:  RELEASE WLAN 
+Jan 01 00:31:45 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:31:45 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:31:45 gen8 kernel[2067]: PTIN Botton:  RELEASE WLAN
+Jan 01 00:45:56 gen8 kernel: PTIN Botton implementation -- timeInMs:245685 family: 0x1   func:0x0
+Jan 01 00:45:56 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:45:56 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:245685 family: 0x1   func:0x0
+Jan 01 00:45:56 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:45:56 gen8 kernel: PTIN Botton:  PRESSED WLAN 
+Jan 01 00:45:56 gen8 kernel[2067]: PTIN Botton:  PRESSED WLAN
+Jan 01 00:45:56 gen8 kernel: PTIN Botton implementation -- timeInMs:100 family: 0x1   func:0x4
+Jan 01 00:45:56 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:45:56 gen8 kernel: PTIN Botton:  RELEASE WLAN 
+Jan 01 00:45:56 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:100 family: 0x1   func:0x4
+Jan 01 00:45:56 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:45:56 gen8 kernel[2067]: PTIN Botton:  RELEASE WLAN
+Jan 01 00:45:57 gen8 kernel: PTIN Botton implementation -- timeInMs:245755 family: 0x1   func:0x0
+Jan 01 00:45:57 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:45:57 gen8 kernel: PTIN Botton:  PRESSED WLAN 
+Jan 01 00:45:57 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:245755 family: 0x1   func:0x0
+Jan 01 00:45:57 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:45:57 gen8 kernel[2067]: PTIN Botton:  PRESSED WLAN
+Jan 01 00:45:57 gen8 kernel: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:45:57 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:45:57 gen8 kernel: PTIN Botton:  RELEASE WLAN 
+Jan 01 00:45:57 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:45:57 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:45:57 gen8 kernel[2067]: PTIN Botton:  RELEASE WLAN
+Jan 01 00:46:35 gen8 kernel: PTIN Botton implementation -- timeInMs:249560 family: 0x1   func:0x0
+Jan 01 00:46:35 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:46:35 gen8 kernel: PTIN Botton:  PRESSED WLAN 
+Jan 01 00:46:35 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:249560 family: 0x1   func:0x0
+Jan 01 00:46:35 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:46:35 gen8 kernel[2067]: PTIN Botton:  PRESSED WLAN
+Jan 01 00:46:35 gen8 kernel: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:46:35 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:46:35 gen8 kernel: PTIN Botton:  RELEASE WLAN 
+Jan 01 00:46:35 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:46:35 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:46:35 gen8 kernel[2067]: PTIN Botton:  RELEASE WLAN
+Jan 01 00:46:44 gen8 kernel: PTIN Botton implementation -- timeInMs:250450 family: 0x1   func:0x0
+Jan 01 00:46:44 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:46:44 gen8 kernel: PTIN Botton:  PRESSED WLAN 
+Jan 01 00:46:44 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:250450 family: 0x1   func:0x0
+Jan 01 00:46:44 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:46:44 gen8 kernel[2067]: PTIN Botton:  PRESSED WLAN
+Jan 01 00:46:44 gen8 kernel: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:46:44 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:46:44 gen8 kernel: PTIN Botton:  RELEASE WLAN 
+Jan 01 00:46:44 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+Jan 01 00:46:44 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:46:44 gen8 kernel[2067]: PTIN Botton:  RELEASE WLAN
+Jan 01 00:47:25 gen8 kernel: PTIN Botton implementation -- timeInMs:254574 family: 0x1   func:0x0
+Jan 01 00:47:25 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:47:25 gen8 kernel: PTIN Botton:  PRESSED WLAN 
+Jan 01 00:47:25 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:254574 family: 0x1   func:0x0
+Jan 01 00:47:25 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:47:25 gen8 kernel[2067]: PTIN Botton:  PRESSED WLAN
+Jan 01 00:47:27 gen8 kernel: PTIN Botton implementation -- timeInMs:2200 family: 0x1   func:0x4
+Jan 01 00:47:27 gen8 kernel: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+Jan 01 00:47:27 gen8 kernel: PTIN Botton:  RELEASE WLAN 
+Jan 01 00:47:27 gen8 kernel[2067]: PTIN Botton implementation -- timeInMs:2200 family: 0x1   func:0x4
+Jan 01 00:47:27 gen8 kernel[2067]: PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+Jan 01 00:47:27 gen8 kernel[2067]: PTIN Botton:  RELEASE WLAN
+root@gen8:/# journalctl | grep ptin_hotplug_state
+Jan 01 00:31:45 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3 
+Jan 01 00:31:45 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3  --- ret :0 
+Jan 01 00:31:45 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4  --- ret :0 
+Jan 01 00:31:45 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3
+Jan 01 00:31:45 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3  --- ret :0
+Jan 01 00:31:45 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4  --- ret :0
+Jan 01 00:45:56 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4 
+Jan 01 00:45:56 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4  --- ret :0 
+Jan 01 00:45:56 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5  --- ret :0 
+Jan 01 00:45:56 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4
+Jan 01 00:45:56 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4  --- ret :0
+Jan 01 00:45:56 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5  --- ret :0
+Jan 01 00:45:57 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5 
+Jan 01 00:45:57 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5  --- ret :0 
+Jan 01 00:45:57 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5
+Jan 01 00:45:57 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5  --- ret :0
+Jan 01 00:45:57 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6  --- ret :0
+Jan 01 00:45:57 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6  --- ret :0 
+Jan 01 00:46:35 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6 
+Jan 01 00:46:35 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6  --- ret :0 
+Jan 01 00:46:35 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6
+Jan 01 00:46:35 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6  --- ret :0
+Jan 01 00:46:35 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0 
+Jan 01 00:46:35 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0
+Jan 01 00:46:44 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7 
+Jan 01 00:46:44 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0 
+Jan 01 00:46:44 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7
+Jan 01 00:46:44 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0
+Jan 01 00:46:44 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0
+Jan 01 00:46:44 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0 
+Jan 01 00:47:27 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8 
+Jan 01 00:47:27 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0 
+Jan 01 00:47:27 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8
+Jan 01 00:47:27 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0
+Jan 01 00:47:27 gen8 kernel[2067]: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:9  --- ret :0
+Jan 01 00:47:27 gen8 kernel: (ptin_hotplug_state)  --state: 1 old_state : 1 cnt:9  --- ret :0 
+root@gen8:/# 
+root@gen8:/# 
+root@gen8:/# 
+root@gen8:/# 
+root@gen8:/# dmesg 
+dhd_wmf_igs_broadcast: WMF: send failure
+IGMP Query send failed
+dhd_wmf_igs_broadcast: WMF: send failure
+IGMP Query send failed
+wl1: dhd_prot_ioctl: status ret value is -2 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -20 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -11 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+dhd_hwa_event: Dongle(wl1) schedule hwa event
+dhd_hwa_event_handler: Dongle(wl1) hwa event scheduled
+wl1: dhd_prot_ioctl: status ret value is -44 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -44 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -44 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -44 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -44 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -7 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -7 cmd=263
+dhd_set_mac_addr_handler: MACID is overwritten
+dhd_set_mac_addr_handler: MACID is overwritten
+wl1: dhd_prot_ioctl: status ret value is -7 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 iov=p2p
+CFG80211-ERROR) dhd_config_dongle : Dongle is already up
+wl1: dhd_prot_ioctl: status ret value is -23 iov=wowl
+CFG80211-ERROR) wl_allocate_wowl_config : Wowl not supported (-23)
+device wl0 entered promiscuous mode
+brlan0: port 6(wl0) entered forwarding state
+brlan0: port 6(wl0) entered forwarding state
+device wl1 entered promiscuous mode
+brlan0: port 7(wl1) entered forwarding state
+brlan0: port 7(wl1) entered forwarding state
+wl0: dhd_prot_ioctl: status ret value is -7 cmd=263
+wl0: dhd_prot_ioctl: status ret value is -7 cmd=263
+wl0: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl0: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl0: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -7 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -7 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -23 cmd=263
+wl0: dhd_prot_ioctl: status ret value is -29 cmd=263
+wl1: dhd_prot_ioctl: status ret value is -29 cmd=263
+eth0 
+cfg80211: Calling CRDA to update world regulatory domain
+EGPHY:GMII:0x1 - Link Up 1000 Mbps Full duplex
+IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+brlan0: port 1(eth0) entered forwarding state
+brlan0: port 1(eth0) entered forwarding state
+device wl0.1 entered promiscuous mode
+device wl1.1 entered promiscuous mode
+Board not populated with PMD
+LOGGER driver Init Done: 0
+port_init:L330 port object already initialized: port_0:0
+port_init:L330 port object already initialized: port_0:1
+port_init:L330 port object already initialized: port_0:2
+port_init:L330 port object already initialized: port_0:3
+port_init:L330 port object already initialized: port_0:4
+FPM group configuration set:  DS = 7397, US = 22191, WLAN_Tx = (low:19128, high:19128, excl:19128) for 2 radios
+[INF gponSerdes] wan_serdes_config: SERDES: Wan type: NGPON_10G_10G
+[INF gponSerdes] wan_serdes_config: SERDES: Configured with 50 Mhz PLL
+[INF gponSerdes] pon_drv_gpon_init: SERDES: 
+
+serdes initialization: NGPON Start
+
+[INF gponSerdes] sgb_rescal_init: SERDES: 
+ WAN_TOP_RESCAL_STATUS_0 =0x6c00013
+[INF gponSerdes] pll_ppm_adj_FracN_10G: SERDES: [!]Rx-PPM = -366 is outside the +/-100 MAX allowed ppm limits.  No adjustment performed.  Exit 'pll_ppm_adj' 
+
+[INF gponSerdes] pon_drv_gpon_init: SERDES: 
+serdes initialization: Done
+[INF gponSerdes] wan_serdes_config: SERDES: Load & verify microcode ...
+[INF gponSerdes] serdes_firmware_download: SERDES: ucode_len=28924
+[INF gponSerdes] serdes_firmware_download: SERDES: Firmware download succeeded
+Firmware verify ...
+[INF gponSerdes] serdes_firmware_download: SERDES: Firmware verify ok
+[INF gponSerdes] serdes_firmware_download: SERDES: Firmware is ready
+Reading from Tx CFG ONU Tx En
+[NTC pon_pwm] api_pwm_init: [1691726]api_pwm_init Done
+[NTC pon_pwm] api_pwm_set_sm_wsleep_mode: [1697173]sm_wsleep_mode
+Creating CPU ring for queue number 6 with 512 packets descriptor=0xffffffbffc6ce900, size_of_entry 16
+Done initializing Ring 6 Base=0xffffffc02c41c000 num of entries= 512 RDD Base=2c41c000 descriptor=0xffffffbffc6ce900
+[NTC ploamFsm] printSerialPasswd: SN=50:54:49:4e:c4:45:21:cf
+[NTC ploamFsm] printSerialPasswd: PW=20:20:20:20:20:20:20:20:20:20:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+dgasp: kerSysRegisterDyingGaspHandler: gpon0 registered 
+[NTC ploamFsm] bcm_ploamCreate: ploam driver created.
+Creating CPU ring for queue number 5 with 256 packets descriptor=0xffffffbffc6ce880, size_of_entry 16
+Done initializing Ring 5 Base=0xffffffc02bd74000 num of entries= 256 RDD Base=2bd74000 descriptor=0xffffffbffc6ce880
+[NTC ploamFsm] printSerialPasswd: SN=50:54:49:4e:c4:45:21:cf
+[NTC ploamFsm] printSerialPasswd: PW=20:20:20:20:20:20:20:20:20:20:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+BCMENET: Enabling Software GSO for gpondef
+cfg80211: Calling CRDA to update world regulatory domain
+cfg80211: Calling CRDA to update world regulatory domain
+cfg80211: Calling CRDA to update world regulatory domain
+cfg80211: Calling CRDA to update world regulatory domain
+cfg80211: Calling CRDA to update world regulatory domain
+cfg80211: Calling CRDA to update world regulatory domain
+cfg80211: Exceeded CRDA call max attempts. Not calling CRDA
+Button 2 Press --Press 1s to WPS , Hold for 5s to do Webgui Auth
+PTIN Botton implementation -- timeInMs:500 family: 0x1   func:0x1
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+PTIN Botton: WPS 
+(ptin_hotplug_state)  --state: 1 old_state : 0 cnt:0 
+(ptin_hotplug_state)  --state: 1 old_state : 0 cnt:0  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 0 cnt:1  --- ret :0 
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+wl0: dhd_prot_ioctl: status ret value is -4 cmd=263
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+wl1: dhd_prot_ioctl: status ret value is -4 cmd=263
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+bcm_i2c: bus 0: Failed to detect SFP: 100 retries exhausted
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+IOCTL ALB: PON ENPwr TIA: Active
+IOCTL ALB: CATV NOT-PRESENT
+brlan0: port 5(eth4) entered disabled state
+IOCTL ALB: CATV NOT-PRESENT
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  PTIN_DEBUG in board_ioctl 1466: HW_VERSION: 3NTRGW22162P02
+IOCTL ALB: CATV NOT-PRESENT
+Unknown transceiver type
+Unknown transceiver type
+IOCTL ALB: CATV NOT-PRESENT
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  PTIN_DEBUG in board_ioctl 1466: HW_VERSION: 3NTRGW22162P02
+IOCTL ALB: CATV NOT-PRESENT
+IOCTL ALB: CATV NOT-PRESENT
+IOCTL ALB: CATV NOT-PRESENT
+IPv6: ADDRCONF(NETDEV_UP): eth4: link is not ready
+Button 2 Press --Press 1s to WPS , Hold for 5s to do Webgui Auth
+PTIN Botton implementation -- timeInMs:400 family: 0x1   func:0x1
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+PTIN Botton: WPS 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:1 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:1  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:2  --- ret :0 
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+PTIN Debug crc:4dc8484c len:10
+PTIN Debug crc:4dc8484c  4C -48
+usbcore: registered new interface driver usbserial
+usbcore: registered new interface driver cdc_ether
+usbcore: registered new interface driver option
+usbserial: USB Serial support registered for GSM modem (1-port)
+usbcore: registered new interface driver rndis_host
+usbcore: registered new interface driver sprd_u2s
+usbserial: USB Serial support registered for sprd_generic_u2s_interface
+usbserial: USB Serial support registered for sprd_u2s
+ptinNvram:READ 3 , offset:0 ,size:1  ,length:1  
+pImgVerFileName = /tmp/sw1_image_version  pImgVerFileName = /tmp/sw2_image_version  
+eth0 EGPHY:GMII:0x1 - Link Down
+brlan0: port 1(eth0) entered disabled state
+eth1 EGPHY:GMII:0x2 - Link Down
+brlan0: port 2(eth1) entered disabled state
+eth1 EGPHY:GMII:0x2 - Link Up 1000 Mbps Full duplex
+brlan0: port 2(eth1) entered forwarding state
+brlan0: port 2(eth1) entered forwarding state
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:96138 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:2 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:2  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3  --- ret :0 
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:160568 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:3  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4  --- ret :0 
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:245685 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:100 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:4  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5  --- ret :0 
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:245755 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:5  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6  --- ret :0 
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:249560 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:6  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0 
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:250450 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:200 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0 
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:254574 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  PRESSED WLAN 
+PTIN Botton implementation -- timeInMs:2200 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN 
+PTIN Botton:  RELEASE WLAN 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0 
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:9  --- ret :0 
+root@gen8:/# 
