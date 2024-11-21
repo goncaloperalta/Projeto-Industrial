@@ -83,7 +83,7 @@
 										
 										<!-- Line plot with spacing applied via CSS above -->
 										<div class="ml-20 mr-20 mt-20">
-											<LinePlot />
+											<LinePlot X={[1, 2, 3, 4, 5]} Y={[1, 2, 3, 4, 5]}/>
 										</div>
 										
 										<!-- Pie chart component -->

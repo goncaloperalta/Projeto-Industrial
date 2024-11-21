@@ -109,7 +109,7 @@
             <h2 class="text-2xl mb-5">Results</h2>
             <div class="flex justify-around">
                 {#await readings}
-                        <p>Loading...</p>
+                    <p>Loading...</p>
                 {:then readings}
                     <div>
                         <LinePlot X={readings.time} Y={readings.val} />

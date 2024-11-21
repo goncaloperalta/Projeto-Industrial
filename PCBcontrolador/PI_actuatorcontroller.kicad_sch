@@ -2074,265 +2074,6 @@
 				)
 			)
 		)
-		(symbol "TLV9032QDGKRQ1:TLV9032QDGKRQ1"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "IC"
-				(at 24.13 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Value" "TLV9032QDGKRQ1"
-				(at 24.13 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "SOP65P490X110-8N"
-				(at 24.13 -94.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.arrow.com/en/products/tlv9032qdgkrq1/texas-instruments?region=nac"
-				(at 24.13 -194.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Description" "Analog Comparators Automotive, 1.65-V to 5.5-V, precision dual push-pull comparator"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Height" "1.1"
-				(at 24.13 -394.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Part Number" "595-TLV9032QDGKRQ1"
-				(at 24.13 -494.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TLV9032QDGKRQ1?qs=Li%252BoUPsLEnv405jiJAavyg%3D%3D"
-				(at 24.13 -594.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Name" "Texas Instruments"
-				(at 24.13 -694.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Part_Number" "TLV9032QDGKRQ1"
-				(at 24.13 -794.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(symbol "TLV9032QDGKRQ1_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 22.86 -10.16)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 0 0 0)
-					(length 5.08)
-					(name "OUT1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "IN1-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 0)
-					(length 5.08)
-					(name "IN1+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -7.62 0)
-					(length 5.08)
-					(name "V-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 27.94 -7.62 180)
-					(length 5.08)
-					(name "IN2+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 27.94 -5.08 180)
-					(length 5.08)
-					(name "IN2-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 27.94 -2.54 180)
-					(length 5.08)
-					(name "OUT2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 27.94 0 180)
-					(length 5.08)
-					(name "V+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "power:+12V"
 			(power)
 			(pin_numbers hide)
@@ -2713,6 +2454,18 @@
 		(uuid "5df19e48-b8d4-4ddc-8eaa-b534787cf921")
 	)
 	(junction
+		(at 130.81 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "629eedbb-d470-479b-8e7d-cc03e314c859")
+	)
+	(junction
+		(at 134.62 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6534adbc-d9a4-47af-ad70-2fc14bd84d10")
+	)
+	(junction
 		(at 205.74 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2723,12 +2476,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "75518588-dce7-454d-a09d-0a40538c3287")
-	)
-	(junction
-		(at 35.56 46.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8111f348-0fed-42d7-8370-2998d09d6b81")
 	)
 	(junction
 		(at 199.39 73.66)
@@ -2749,16 +2496,16 @@
 		(uuid "ac3d3ff9-b27e-4720-a97d-74c637a91bbd")
 	)
 	(junction
-		(at 68.58 66.04)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ad64ac19-51c3-47e6-beb7-a04d3d09dbc7")
-	)
-	(junction
 		(at 148.59 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b8399846-566f-4d6d-b634-0d7f47f4466e")
+	)
+	(junction
+		(at 240.03 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b8fc544c-a1bf-42c4-826a-4daa9572144b")
 	)
 	(junction
 		(at 58.42 102.87)
@@ -2771,12 +2518,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c41e3bdb-36d9-4d30-a82c-327b6e73ea1d")
-	)
-	(junction
-		(at 105.41 44.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cf38f464-fcb0-4606-8d73-0710ed368484")
 	)
 	(junction
 		(at 148.59 87.63)
@@ -2808,6 +2549,18 @@
 		(color 0 0 0 0)
 		(uuid "ec48ad09-a13e-4727-a2bf-110bd979bb91")
 	)
+	(junction
+		(at 231.14 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fc515fff-8926-4a5b-b6a0-45e135a598be")
+	)
+	(junction
+		(at 68.58 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fe7d8d5c-54ac-408c-9a56-1ac7656293d5")
+	)
 	(wire
 		(pts
 			(xy 199.39 85.09) (xy 199.39 73.66)
@@ -2817,6 +2570,16 @@
 			(type default)
 		)
 		(uuid "01cb2bfb-97d7-4807-959c-d81295fd814e")
+	)
+	(wire
+		(pts
+			(xy 220.98 73.66) (xy 220.98 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02368d4d-5b5c-4842-8233-afc1c510d3ea")
 	)
 	(wire
 		(pts
@@ -2860,23 +2623,13 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 92.71) (xy 130.81 81.28)
+			(xy 130.81 92.71) (xy 130.81 87.63)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "0fa5d299-2b43-456c-92d0-676fcde11bb2")
-	)
-	(wire
-		(pts
-			(xy 68.58 66.04) (xy 73.66 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "10416f95-3620-4932-b770-149127d11b41")
 	)
 	(wire
 		(pts
@@ -2887,6 +2640,16 @@
 			(type default)
 		)
 		(uuid "14cd17b0-c27c-47e2-92d1-c8283bed10b8")
+	)
+	(wire
+		(pts
+			(xy 220.98 60.96) (xy 231.14 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1512da49-0a3a-4a1b-ad92-a89a97e7a8d8")
 	)
 	(wire
 		(pts
@@ -2910,16 +2673,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 46.99) (xy 77.47 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1aae2fc2-4327-4083-b69b-8c71e404744a")
-	)
-	(wire
-		(pts
 			(xy 224.79 105.41) (xy 224.79 104.14)
 		)
 		(stroke
@@ -2930,7 +2683,7 @@
 	)
 	(wire
 		(pts
-			(xy 213.36 73.66) (xy 218.44 73.66)
+			(xy 213.36 73.66) (xy 220.98 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2940,13 +2693,33 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 66.04) (xy 68.58 76.2)
+			(xy 231.14 60.96) (xy 231.14 72.39)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "1fa29983-38fc-4d17-acef-7d280bd5bfe6")
+	)
+	(wire
+		(pts
+			(xy 68.58 138.43) (xy 69.85 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "231055f5-492b-46e6-98b0-582501a8cb97")
+	)
+	(wire
+		(pts
+			(xy 130.81 87.63) (xy 130.81 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23a9811e-1dbd-42cd-9c7d-812b4ea6aab0")
 	)
 	(wire
 		(pts
@@ -2960,6 +2733,16 @@
 	)
 	(wire
 		(pts
+			(xy 133.35 158.75) (xy 129.54 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "269b8565-1586-44f2-8193-1e33b2c577dc")
+	)
+	(wire
+		(pts
 			(xy 120.65 146.05) (xy 125.73 146.05)
 		)
 		(stroke
@@ -2970,13 +2753,13 @@
 	)
 	(wire
 		(pts
-			(xy 50.8 66.04) (xy 55.88 66.04)
+			(xy 143.51 158.75) (xy 140.97 158.75)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3254747b-dd6e-4fe7-8f5c-1bcd4bca2b3b")
+		(uuid "378b561e-4212-487e-9eb0-74f43ba00355")
 	)
 	(wire
 		(pts
@@ -3017,6 +2800,16 @@
 			(type default)
 		)
 		(uuid "419f9a33-0711-4178-8460-4f1a17526ac9")
+	)
+	(wire
+		(pts
+			(xy 240.03 55.88) (xy 240.03 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aac619b-a341-4f00-8ca9-7d34677b3f03")
 	)
 	(wire
 		(pts
@@ -3070,6 +2863,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 78.74) (xy 195.58 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5988f2b4-37b8-4107-8238-fc72c9a04e6b")
+	)
+	(wire
+		(pts
 			(xy 195.58 78.74) (xy 195.58 90.17)
 		)
 		(stroke
@@ -3090,7 +2893,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 78.74) (xy 195.58 78.74)
+			(xy 128.27 78.74) (xy 134.62 78.74)
 		)
 		(stroke
 			(width 0)
@@ -3107,6 +2910,16 @@
 			(type default)
 		)
 		(uuid "670d9f07-1283-4eb5-ae77-a51caddc500d")
+	)
+	(wire
+		(pts
+			(xy 66.04 138.43) (xy 68.58 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7aad4597-b001-4745-b70d-37fb602f7da5")
 	)
 	(wire
 		(pts
@@ -3140,13 +2953,13 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 44.45) (xy 109.22 44.45)
+			(xy 240.03 60.96) (xy 259.08 60.96)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8a300331-e865-4c5d-ab3a-685c99b05b3b")
+		(uuid "8d9f8dcd-775b-4a05-aab8-f443a52fec98")
 	)
 	(wire
 		(pts
@@ -3167,26 +2980,6 @@
 			(type default)
 		)
 		(uuid "8fb3f938-da68-4686-80f2-4b77909dac23")
-	)
-	(wire
-		(pts
-			(xy 63.5 66.04) (xy 68.58 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "908c511a-069a-413a-b3e0-ea056127b035")
-	)
-	(wire
-		(pts
-			(xy 81.28 66.04) (xy 96.52 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "92e0efb0-e8d6-4bf1-858a-e296d306e0fa")
 	)
 	(wire
 		(pts
@@ -3270,6 +3063,16 @@
 	)
 	(wire
 		(pts
+			(xy 68.58 139.7) (xy 68.58 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad452def-ef37-4aac-9c05-162b3847563a")
+	)
+	(wire
+		(pts
 			(xy 62.23 95.25) (xy 90.17 95.25)
 		)
 		(stroke
@@ -3277,6 +3080,26 @@
 			(type default)
 		)
 		(uuid "addbe12f-b8f1-4535-b8e5-d3a6928127f7")
+	)
+	(wire
+		(pts
+			(xy 105.41 158.75) (xy 109.22 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae5294bc-1421-48d1-934f-a35f69129887")
+	)
+	(wire
+		(pts
+			(xy 116.84 158.75) (xy 121.92 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b082ae07-4947-4712-b38c-e86a20096403")
 	)
 	(wire
 		(pts
@@ -3327,6 +3150,16 @@
 			(type default)
 		)
 		(uuid "b92176a4-f667-4b90-a588-61285dc5041f")
+	)
+	(wire
+		(pts
+			(xy 231.14 60.96) (xy 240.03 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bac654cd-f8ed-4dc4-be1a-c67022a3f876")
 	)
 	(wire
 		(pts
@@ -3400,16 +3233,6 @@
 	)
 	(wire
 		(pts
-			(xy 50.8 44.45) (xy 77.47 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cede8ed8-290d-4f78-9d8d-dd57680e362d")
-	)
-	(wire
-		(pts
 			(xy 194.31 100.33) (xy 205.74 100.33)
 		)
 		(stroke
@@ -3450,6 +3273,16 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 44.45) (xy 240.03 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3d9235a-6439-4a0f-b556-fc2963d1f00d")
+	)
+	(wire
+		(pts
 			(xy 63.5 140.97) (xy 63.5 146.05)
 		)
 		(stroke
@@ -3460,6 +3293,16 @@
 	)
 	(wire
 		(pts
+			(xy 60.96 139.7) (xy 68.58 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e43555b6-4494-420e-b98c-33c1d0e0bc39")
+	)
+	(wire
+		(pts
 			(xy 194.31 105.41) (xy 224.79 105.41)
 		)
 		(stroke
@@ -3467,16 +3310,6 @@
 			(type default)
 		)
 		(uuid "e71ad56f-0076-4acb-8503-d8abc6c93b0f")
-	)
-	(wire
-		(pts
-			(xy 50.8 66.04) (xy 50.8 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e884e1d0-4b3e-47b4-a76a-b38673e5fa0e")
 	)
 	(wire
 		(pts
@@ -3507,16 +3340,6 @@
 			(type default)
 		)
 		(uuid "efd5ba54-5cae-4e94-9364-b970f81daa25")
-	)
-	(wire
-		(pts
-			(xy 50.8 49.53) (xy 77.47 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f6ba0696-2004-4698-b378-dbc29fb7cb1e")
 	)
 	(wire
 		(pts
@@ -3591,7 +3414,7 @@
 		(uuid "3c84c298-ea88-41d3-b16b-71d9113e1811")
 	)
 	(label "calert"
-		(at 68.58 76.2 0)
+		(at 231.14 72.39 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3623,17 +3446,6 @@
 		)
 		(uuid "53ff4cbc-05b1-40aa-a166-ad8620f582f8")
 	)
-	(label "EnA_buf"
-		(at 50.8 44.45 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6936a4f1-6f20-4095-bcde-10dba75047ec")
-	)
 	(label "EnB_5"
 		(at 214.63 111.76 0)
 		(fields_autoplaced yes)
@@ -3645,19 +3457,8 @@
 		)
 		(uuid "81e100e7-af7c-4446-9493-392e0c7561af")
 	)
-	(label "EnA_soft"
-		(at 52.07 66.04 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "a1d15bdc-14b9-4299-99a3-f3b3bda1b7d4")
-	)
 	(label "GPIO enable"
-		(at 83.82 66.04 0)
+		(at 246.38 60.96 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3688,17 +3489,6 @@
 			(justify left bottom)
 		)
 		(uuid "e3029cb3-5215-4cfe-ae2b-81e202669192")
-	)
-	(label "EnA_buf"
-		(at 218.44 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fd509ccb-f170-46bf-aade-227fafef8ce1")
 	)
 	(symbol
 		(lib_id "RE-H022TD-1190_LF__SN_:RE-H022TD-1190_LF__SN_")
@@ -3821,8 +3611,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 113.03 158.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0a0d4f3f-ae27-4dec-a0c6-a53d5fad73f7")
+		(property "Reference" "R3"
+			(at 113.03 152.908 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 113.03 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 113.03 160.528 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 113.03 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 113.03 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f9cd2cce-fc7d-48e9-a149-50e52e167dea")
+		)
+		(pin "1"
+			(uuid "443f554d-2c51-4258-9c80-0cf58031ac19")
+		)
+		(instances
+			(project ""
+				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
-		(at 129.54 158.75 90)
+		(at 143.51 158.75 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3831,7 +3688,7 @@
 		(fields_autoplaced yes)
 		(uuid "0df2eb17-cd16-46b4-ae78-319180bc860e")
 		(property "Reference" "#PWR014"
-			(at 135.89 158.75 0)
+			(at 149.86 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3840,7 +3697,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 133.35 158.7499 90)
+			(at 147.32 158.7499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3849,7 +3706,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 129.54 158.75 0)
+			(at 143.51 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3858,7 +3715,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 129.54 158.75 0)
+			(at 143.51 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3867,7 +3724,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 129.54 158.75 0)
+			(at 143.51 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3982,7 +3839,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 148.59 95.25 0)
 			(effects
 				(font
@@ -4022,212 +3879,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 35.56 39.37 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "15eef2ea-e4db-4767-a826-cfba8af741bb")
-		(property "Reference" "#PWR012"
-			(at 35.56 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 35.306 35.814 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 35.56 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 35.56 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 35.56 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8f1a38c6-97d6-43d2-b957-6f082147508b")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TLV9032QDGKRQ1:TLV9032QDGKRQ1")
-		(at 77.47 44.45 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1a3a21c3-de23-47ba-903f-0e726324690d")
-		(property "Reference" "IC1"
-			(at 91.44 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TLV9032QDGKRQ1"
-			(at 91.44 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "SOP65P490X110-8N"
-			(at 101.6 139.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.arrow.com/en/products/tlv9032qdgkrq1/texas-instruments?region=nac"
-			(at 101.6 239.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "Analog Comparators Automotive, 1.65-V to 5.5-V, precision dual push-pull comparator"
-			(at 77.47 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "1.1"
-			(at 101.6 439.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "595-TLV9032QDGKRQ1"
-			(at 101.6 539.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TLV9032QDGKRQ1?qs=Li%252BoUPsLEnv405jiJAavyg%3D%3D"
-			(at 101.6 639.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Texas Instruments"
-			(at 101.6 739.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "TLV9032QDGKRQ1"
-			(at 101.6 839.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "ef284cd0-f287-4bdd-a193-6f69f813c599")
-		)
-		(pin "1"
-			(uuid "c3110c53-b2cc-45ba-b461-2f77590d2005")
-		)
-		(pin "4"
-			(uuid "e0a24de1-8c34-437b-a22d-1961648d9c59")
-		)
-		(pin "7"
-			(uuid "651d71cc-59da-4946-90a3-184888920e36")
-		)
-		(pin "6"
-			(uuid "33512992-1b6a-48c7-9089-6d703a3c19ef")
-		)
-		(pin "8"
-			(uuid "424efb3a-ec8f-4965-a099-3054d218637b")
-		)
-		(pin "5"
-			(uuid "09a1eaac-652e-4025-ab4e-03b4c8f55608")
-		)
-		(pin "3"
-			(uuid "7dc1af34-4e7c-4399-b676-6cff2827bda4")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "IC1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
-		(at 227.33 87.63 90)
+		(at 215.9 87.63 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4236,7 +3889,7 @@
 		(fields_autoplaced yes)
 		(uuid "1acba763-4c71-452d-8a00-01bc0a50272f")
 		(property "Reference" "Cp1"
-			(at 227.33 80.01 90)
+			(at 215.9 80.01 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4244,7 +3897,7 @@
 			)
 		)
 		(property "Value" "10n"
-			(at 227.33 82.55 90)
+			(at 215.9 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4252,7 +3905,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
-			(at 231.14 86.6648 0)
+			(at 219.71 86.6648 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4261,7 +3914,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 227.33 87.63 0)
+			(at 215.9 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4270,7 +3923,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 227.33 87.63 0)
+			(at 215.9 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4294,8 +3947,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 137.16 158.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2e64650b-2e09-46a1-8e37-bb5850f405e8")
+		(property "Reference" "R1"
+			(at 137.16 152.908 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 137.16 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 137.16 160.528 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 137.16 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "738111d4-6dca-4b32-b3d3-b524abb54f4a")
+		)
+		(pin "1"
+			(uuid "f17818d7-4283-4d23-aa0b-748d2b3185ec")
+		)
+		(instances
+			(project ""
+				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Diode:1N4148")
-		(at 243.84 91.44 270)
+		(at 243.84 91.44 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4309,7 +4029,7 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "1N4148"
@@ -4318,7 +4038,7 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
@@ -4382,35 +4102,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 35.56 50.8 180)
+		(lib_id "Connector:TestPoint")
+		(at 66.04 138.43 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "3ab33948-d983-4d1d-8d03-4e25df34f0fa")
-		(property "Reference" "R3"
-			(at 38.1 49.5299 0)
+		(uuid "33e22a01-b376-42b3-8c06-8f98b1b74552")
+		(property "Reference" "TP1"
+			(at 62.738 133.35 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
-		(property "Value" "2k"
-			(at 38.1 52.0699 0)
+		(property "Value" "TestPoint"
+			(at 62.738 135.89 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 37.338 50.8 90)
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 66.04 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4419,7 +4137,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 35.56 50.8 0)
+			(at 66.04 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4427,8 +4145,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 35.56 50.8 0)
+		(property "Description" "test point"
+			(at 66.04 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4437,15 +4155,79 @@
 			)
 		)
 		(pin "1"
-			(uuid "c6fce5fe-8e01-4bc8-b950-3730120940b3")
-		)
-		(pin "2"
-			(uuid "33fd0daf-a08b-461d-bbb2-90fe8be8470e")
+			(uuid "c5a73a98-9a52-423b-a4a7-c19a0217be7e")
 		)
 		(instances
-			(project "PI_actuatorcontroller"
+			(project ""
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "R3")
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 240.03 44.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "373580bf-ab6f-4087-98e5-cac87f094097")
+		(property "Reference" "TP3V3A1"
+			(at 242.57 39.8779 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 242.57 42.4179 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 245.11 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 240.03 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "437d77b6-afde-4ab6-9fdc-1de60d82870b")
+		)
+		(instances
+			(project ""
+				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
+					(reference "TP3V3A1")
 					(unit 1)
 				)
 			)
@@ -4583,74 +4365,6 @@
 			(project ""
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
 					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 59.69 66.04 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "44cee14e-98c9-4d38-a58c-3af4bbec2497")
-		(property "Reference" "R1"
-			(at 59.69 59.69 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2k"
-			(at 59.69 62.23 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 59.69 67.818 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 59.69 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 59.69 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "29b40daa-ee94-452f-a0dd-3c809e6fe989")
-		)
-		(pin "2"
-			(uuid "452f8afe-3787-4f99-acd3-362c8f5b0d9e")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -4925,36 +4639,17 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 63.5 146.05 0)
-		(mirror x)
+		(lib_id "power:+3V3")
+		(at 60.96 139.7 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "62db83aa-0b0b-4e23-85e4-4c05441bbf9a")
-		(property "Reference" "TPAA1"
-			(at 60.96 148.0819 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 60.96 150.6219 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
-			(at 68.58 146.05 0)
+		(fields_autoplaced yes)
+		(uuid "622d137f-0752-442a-967b-dc9c3b1e8dab")
+		(property "Reference" "#PWR03"
+			(at 64.77 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4962,8 +4657,17 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 68.58 146.05 0)
+		(property "Value" "+3V3"
+			(at 57.15 139.6999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4971,8 +4675,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
-			(at 63.5 146.05 0)
+		(property "Datasheet" ""
+			(at 60.96 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 60.96 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4981,12 +4694,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "779038ff-d1c1-4e68-9b99-f772860fec43")
+			(uuid "f391c10a-e6fe-4942-92e3-fc08271b2b45")
 		)
 		(instances
-			(project "PI_actuatorcontroller"
+			(project ""
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "TPAA1")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -5090,7 +4803,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 146.05 92.71 0)
 			(effects
 				(font
@@ -5124,73 +4837,6 @@
 			(project "PI_actuatorcontroller"
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
 					(reference "TPHI2A1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 77.47 52.07 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "663ee394-f402-465a-b817-95b105a65911")
-		(property "Reference" "#PWR018"
-			(at 71.12 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 73.66 52.0699 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 77.47 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 77.47 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 77.47 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4ce879cd-57d1-4d82-b41a-2ea50cff48af")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -5268,7 +4914,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 121.92 158.75 90)
+		(at 105.41 158.75 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5277,7 +4923,7 @@
 		(fields_autoplaced yes)
 		(uuid "6725b673-5fa6-4f89-b84c-7993ebbd6f35")
 		(property "Reference" "#PWR015"
-			(at 125.73 158.75 0)
+			(at 109.22 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5286,7 +4932,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 118.11 158.7499 90)
+			(at 101.6 158.7499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5295,7 +4941,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 121.92 158.75 0)
+			(at 105.41 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5304,7 +4950,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 158.75 0)
+			(at 105.41 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5313,7 +4959,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 121.92 158.75 0)
+			(at 105.41 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5334,25 +4980,17 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 105.41 44.45 0)
+		(lib_id "Connector:TestPoint")
+		(at 134.62 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "76601f0b-4524-480c-a38e-bcbbadcf3fb8")
-		(property "Reference" "#PWR03"
-			(at 105.41 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 102.108 40.894 0)
+		(fields_autoplaced yes)
+		(uuid "77052593-a919-4604-8e24-47ed8d29eaf1")
+		(property "Reference" "TP2"
+			(at 137.16 74.1679 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5360,73 +4998,17 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 105.41 44.45 0)
+		(property "Value" "TestPoint"
+			(at 137.16 76.7079 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
+				(justify left)
 			)
 		)
-		(property "Datasheet" ""
-			(at 105.41 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 105.41 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2da4b806-9886-45af-b8a5-253e6dc6ee75")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "#PWR03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 215.9 87.63 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "77d363ff-6760-4deb-bb73-081470f9b4b0")
-		(property "Reference" "Rp1"
-			(at 215.9 81.28 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "100"
-			(at 215.9 83.82 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder"
-			(at 215.9 85.852 90)
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 139.7 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5435,7 +5017,72 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 215.9 87.63 0)
+			(at 139.7 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 134.62 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6a9a231e-086e-4434-a606-2110bbcd7861")
+		)
+		(instances
+			(project ""
+				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 227.33 87.63 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77d363ff-6760-4deb-bb73-081470f9b4b0")
+		(property "Reference" "Rp1"
+			(at 227.33 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100"
+			(at 227.33 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder"
+			(at 227.33 85.852 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 227.33 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5444,7 +5091,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 215.9 87.63 0)
+			(at 227.33 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5566,7 +5213,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 60.96 153.67 0)
 			(effects
 				(font
@@ -5820,7 +5467,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 146.05 80.01 0)
 			(effects
 				(font
@@ -5887,7 +5534,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 194.31 107.95 0)
 			(effects
 				(font
@@ -5921,73 +5568,6 @@
 			(project "PI_actuatorcontroller"
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
 					(reference "TPHO2B1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 105.41 52.07 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "992fbb9b-966e-4721-982c-628f07182611")
-		(property "Reference" "TPCI2P1"
-			(at 110.49 52.07 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 110.49 53.3399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
-			(at 105.41 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 105.41 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 105.41 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f72469d6-b6e3-4421-8cca-1a7609dab3ee")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "TPCI2P1")
 					(unit 1)
 				)
 			)
@@ -6061,7 +5641,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 96.52 66.04 270)
+		(at 259.08 60.96 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6069,7 +5649,7 @@
 		(dnp no)
 		(uuid "9cad3d2b-a3fe-46c5-b924-3b9411c03450")
 		(property "Reference" "TPHE1"
-			(at 101.6 66.04 90)
+			(at 264.16 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6078,7 +5658,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 101.6 67.3099 90)
+			(at 264.16 62.2299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6087,8 +5667,8 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
-			(at 96.52 71.12 0)
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 259.08 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6097,7 +5677,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 96.52 71.12 0)
+			(at 259.08 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6106,7 +5686,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 96.52 66.04 0)
+			(at 259.08 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6121,73 +5701,6 @@
 			(project "PI_actuatorcontroller"
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
 					(reference "TPHE1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 109.22 44.45 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9dd4bab5-96e5-4578-8b39-6b15d751bd19")
-		(property "Reference" "TP3V3"
-			(at 114.3 44.45 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 111.2521 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
-			(at 109.22 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 109.22 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 109.22 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cb6c3fc0-b64d-4ad3-bf0e-3884e9a6ddd7")
-		)
-		(instances
-			(project ""
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "TP3V3")
 					(unit 1)
 				)
 			)
@@ -6323,140 +5836,6 @@
 			(project "PI_actuatorcontroller"
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
 					(reference "#PWR09")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 69.85 138.43 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b2e743b5-9d2c-4291-ad1d-3cbbf078d197")
-		(property "Reference" "#PWR013"
-			(at 73.66 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 66.04 138.4299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 69.85 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 69.85 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 69.85 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "49315db9-c67f-4098-8e83-044dce7aa463")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 105.41 49.53 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b382fab1-b115-493b-8fe0-6d08c005cddd")
-		(property "Reference" "TPCI2M1"
-			(at 110.49 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 110.49 50.7999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
-			(at 105.41 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 105.41 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 105.41 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "86885d89-5211-43d7-ac6a-081b0f68f013")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "TPCI2M1")
 					(unit 1)
 				)
 			)
@@ -6746,72 +6125,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 35.56 54.61 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "be8a15f1-61f1-4b78-8909-eae3c40d1d4e")
-		(property "Reference" "#PWR05"
-			(at 35.56 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 35.56 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 35.56 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 35.56 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 35.56 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a4502b5d-684d-4fae-b8cd-798906886364")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 209.55 73.66 90)
 		(unit 1)
@@ -6821,7 +6134,7 @@
 		(dnp no)
 		(uuid "c74f82d7-0305-4846-b11c-bd8c62b800ba")
 		(property "Reference" "RENA1"
-			(at 209.55 67.31 90)
+			(at 209.55 66.04 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6829,7 +6142,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 209.55 69.85 90)
+			(at 209.55 68.58 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6907,7 +6220,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 120.65 147.32 0)
 			(effects
 				(font
@@ -6974,7 +6287,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 148.59 100.33 0)
 			(effects
 				(font
@@ -7085,75 +6398,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 35.56 43.18 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d5b80562-d1c7-4f87-9a6b-482291d7647e")
-		(property "Reference" "R4"
-			(at 38.1 41.9099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "2k"
-			(at 38.1 44.4499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 37.338 43.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 35.56 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 35.56 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9c18cf4f-7682-42f7-8ba7-20a15d2f3eee")
-		)
-		(pin "2"
-			(uuid "943a4a60-b230-4e95-90b1-4cfbf9a51289")
-		)
-		(instances
-			(project "PI_actuatorcontroller"
-				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 199.39 69.85 0)
 		(mirror y)
@@ -7251,7 +6495,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
 			(at 148.59 102.87 0)
 			(effects
 				(font
@@ -7292,34 +6536,32 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 105.41 46.99 270)
+		(at 130.81 87.63 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ea3d37ba-46f4-4885-924d-f54c9a0a5ea0")
-		(property "Reference" "TPCO2"
-			(at 110.49 46.99 90)
+		(fields_autoplaced yes)
+		(uuid "ec355cb3-8bb1-425c-8d26-498ef44b2642")
+		(property "Reference" "TP3"
+			(at 127.508 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 110.49 48.2599 90)
+			(at 127.508 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
-				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
-			(at 105.41 52.07 0)
+		(property "Footprint" "TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 130.81 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7328,7 +6570,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 105.41 52.07 0)
+			(at 130.81 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7337,7 +6579,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 105.41 46.99 0)
+			(at 130.81 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7346,12 +6588,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "9a1b49c1-45df-4f9b-947b-0f2608789a64")
+			(uuid "fa81958b-f598-4cea-993f-2723696c80bc")
 		)
 		(instances
-			(project "PI_actuatorcontroller"
+			(project ""
 				(path "/dd9de7ce-977a-4a35-bfbd-b809c7a02fe2"
-					(reference "TPCO2")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -7653,7 +6895,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 77.47 66.04 90)
+		(at 240.03 52.07 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7662,23 +6904,25 @@
 		(fields_autoplaced yes)
 		(uuid "ffddd8ba-5485-4eed-84ca-2d9d6d7494ba")
 		(property "Reference" "R2"
-			(at 77.47 59.69 90)
+			(at 242.57 50.7999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Value" "2k"
-			(at 77.47 62.23 90)
+		(property "Value" "10k"
+			(at 242.57 53.3399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 77.47 67.818 90)
+			(at 241.808 52.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7687,7 +6931,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 77.47 66.04 0)
+			(at 240.03 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7696,7 +6940,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 77.47 66.04 0)
+			(at 240.03 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
