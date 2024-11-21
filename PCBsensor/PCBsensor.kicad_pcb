@@ -80,12 +80,471 @@
 		)
 	)
 	(net 0 "")
-	(net 1 "unconnected-(U1-VP-Pad1)")
-	(net 2 "unconnected-(U1-SCLK-Pad4)")
+	(net 1 "Net-(U1-VP)")
+	(net 2 "Net-(U1-SS)")
 	(net 3 "unconnected-(U1-NC-Pad6)")
-	(net 4 "unconnected-(U1-SS-Pad2)")
-	(net 5 "unconnected-(U1-MISO-Pad5)")
-	(net 6 "GND")
+	(net 4 "Net-(U1-GND)")
+	(net 5 "Net-(U1-SCLK)")
+	(net 6 "Net-(U1-MISO)")
+	(footprint "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+		(layer "F.Cu")
+		(uuid "3fd638a6-561e-46ec-848f-78bd47ebf1f8")
+		(at 143.9 99.1)
+		(descr "THT rectangular pad as test Point, square 2.0mm_Drill1.0mm  side length, hole diameter 1.0mm")
+		(tags "test point THT pad rectangle square")
+		(property "Reference" "TP3"
+			(at 0 -1.998 0)
+			(layer "F.SilkS")
+			(uuid "e84ac5e1-2cbb-416c-86b8-ec0b943b22f6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 2.05 0)
+			(layer "F.Fab")
+			(uuid "038194ca-63de-4d8a-863c-0ad1ff75d617")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7cd15079-9939-4776-9ad4-70c36521714e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "77820b67-c043-40df-ba7e-707a33bb2b7d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "254030a8-7952-4764-8ad8-38929e9e9f43")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Pin* Test*")
+		(path "/14cd3219-8bdb-465f-9c13-394d12339b7a")
+		(sheetname "Raiz")
+		(sheetfile "PCBsensor.kicad_sch")
+		(attr exclude_from_pos_files)
+		(fp_line
+			(start -1.2 -1.2)
+			(end 1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "c882238b-a583-4778-91f4-28cbb8a21e23")
+		)
+		(fp_line
+			(start -1.2 1.2)
+			(end -1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "caf84ba6-0a34-4c30-ba7d-bbb8da58c6bc")
+		)
+		(fp_line
+			(start 1.2 -1.2)
+			(end 1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "76d07e33-2e2a-4000-a442-114b43e1166b")
+		)
+		(fp_line
+			(start 1.2 1.2)
+			(end -1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "3d0df3e8-17bb-47df-bdb3-996ccf684d4c")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "15155e56-e5ba-41e6-ae17-62796fcf0984")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "44d1d304-7931-4765-87aa-d8d20653996e")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e2e9d75f-2e72-4296-8f1d-dcc803d0ea97")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e79a9ef9-41f5-4653-91d5-292c3264cd6c")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "5d6e0609-903f-4a22-b10f-af1be250b18e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 2 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "Net-(U1-GND)")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "407c9196-9a85-4183-8b44-5bd7a3b6211b")
+		)
+	)
+	(footprint "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+		(layer "F.Cu")
+		(uuid "42957199-0bb0-4d89-893e-fd81d7d378a3")
+		(at 148.4 99.1)
+		(descr "THT rectangular pad as test Point, square 2.0mm_Drill1.0mm  side length, hole diameter 1.0mm")
+		(tags "test point THT pad rectangle square")
+		(property "Reference" "TP5"
+			(at 0 -1.998 0)
+			(layer "F.SilkS")
+			(uuid "df7cf53d-82e6-43a7-9ef7-99df86fbcad4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 2.05 0)
+			(layer "F.Fab")
+			(uuid "c3f5dfd5-25a1-45ee-a4c9-6669485f672d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b6ad4b75-38c1-46bb-b39f-3ba8a264767a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "348bd14f-51bc-49e9-816b-b2f3e88d4870")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7668743c-783f-46e0-9bf0-e7007805cf7a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Pin* Test*")
+		(path "/1a8d526f-4f71-4c71-b9b7-c98a4cd8cbf9")
+		(sheetname "Raiz")
+		(sheetfile "PCBsensor.kicad_sch")
+		(attr exclude_from_pos_files)
+		(fp_line
+			(start -1.2 -1.2)
+			(end 1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "a560bd59-156c-4992-a0a5-c6180462ef8d")
+		)
+		(fp_line
+			(start -1.2 1.2)
+			(end -1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "046d7da0-a903-4c80-89d1-f45b67b6cd86")
+		)
+		(fp_line
+			(start 1.2 -1.2)
+			(end 1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "eabd3594-f4ab-4c02-85cf-05ae19432287")
+		)
+		(fp_line
+			(start 1.2 1.2)
+			(end -1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e45dff0a-6928-4131-add9-671f6ceb2ea4")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "34e6cdcd-7485-4ced-bb66-fc302ee35cb9")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "3ce341ab-3b02-4e84-b556-94c8a2c70259")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "75410d5b-1034-4793-aaaf-eb7c5a101cb0")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "596f44cc-6dd7-4fab-9d67-a5ba38bc2831")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "b4aa1d8b-9f18-45c5-b0d8-f51be9207247")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 2 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 6 "Net-(U1-MISO)")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "db49368c-989a-414b-a725-ee48bc7b5237")
+		)
+	)
+	(footprint "MountingHole:MountingHole_2.1mm"
+		(layer "F.Cu")
+		(uuid "5bf046ff-c694-4b0d-89d1-1dbcd5118509")
+		(at 152.9 105.2)
+		(descr "Mounting Hole 2.1mm, no annular")
+		(tags "mounting hole 2.1mm no annular")
+		(property "Reference" "REF**"
+			(at 0 -3.2 0)
+			(layer "F.SilkS")
+			(uuid "8cd25080-092e-4972-b82e-2cc71f1e051e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_2.1mm"
+			(at 0 3.2 0)
+			(layer "F.Fab")
+			(uuid "7b8810f4-0a6c-43dc-9bfe-815c8b99b2e2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.1mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3dfeee19-8e67-4c02-9ec9-57ab1435749f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "78918d79-d8f5-4ccc-b9a2-9eab0481e8a9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "259c7551-f13f-45ef-bc19-9936dfe7e826")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 2.1 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "52f0f194-0a0e-4bf0-b9ca-d7810784bfd7")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.35 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "8a9ee3ca-2ab5-493a-a28e-6d64f00a080f")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "ee7af18a-2c02-4d3b-af03-8bcdb105a744")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 2.1 2.1)
+			(drill 2.1)
+			(layers "*.Cu" "*.Mask")
+			(uuid "467945c5-09e3-47f3-86e3-2a254bae6579")
+		)
+	)
 	(footprint "clipboard:78c6366a-82d7-4b8d-9d17-05023ab5f85c"
 		(layer "F.Cu")
 		(uuid "78b36119-f23a-47f9-a658-ecbffcbad379")
@@ -156,6 +615,683 @@
 			(uuid "201d79da-8a4c-4b6f-916f-5485963d9ace")
 		)
 	)
+	(footprint "MountingHole:MountingHole_2.1mm"
+		(layer "F.Cu")
+		(uuid "7ec9b17d-a1c9-4c1c-9d36-814683f59456")
+		(at 135.9 105.2)
+		(descr "Mounting Hole 2.1mm, no annular")
+		(tags "mounting hole 2.1mm no annular")
+		(property "Reference" "REF**"
+			(at 0 -3.2 0)
+			(layer "F.SilkS")
+			(uuid "aeccbdaa-a1da-4937-bdfc-74b437bb39fe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_2.1mm"
+			(at 0 3.2 0)
+			(layer "F.Fab")
+			(uuid "d4e2c189-551e-4d96-b015-40fa259e40e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.1mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7ec683bd-1657-4382-a89d-19b0a6fbdae8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4f23d0f3-eb65-4bd2-bc30-c93c052b4f0d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7732ab40-a329-40dc-adf6-d0f757b89e51")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 2.1 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "c73d64b8-8f01-484f-8e1f-9ab69c54ea57")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.35 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "31513cc8-89f9-4470-962a-c29bc862bc30")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "b870637f-764d-4cb2-b953-cd66010792b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 2.1 2.1)
+			(drill 2.1)
+			(layers "*.Cu" "*.Mask")
+			(uuid "f2f724b4-9d2c-4fde-8491-cdee20a03b2d")
+		)
+	)
+	(footprint "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+		(layer "F.Cu")
+		(uuid "831f8f68-9043-4258-95c7-3087e3461672")
+		(at 140.1 99.1)
+		(descr "THT rectangular pad as test Point, square 2.0mm_Drill1.0mm  side length, hole diameter 1.0mm")
+		(tags "test point THT pad rectangle square")
+		(property "Reference" "TP4"
+			(at 0 -1.998 0)
+			(layer "F.SilkS")
+			(uuid "fe24a17f-4777-4d4f-b885-ad19d38d9319")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 2.05 0)
+			(layer "F.Fab")
+			(uuid "215772b2-279f-4021-9ad4-969e44689791")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e4ad0f7-b78c-4253-ac9b-fc750f1d6217")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b6aee5b2-223d-4d60-a784-96fd91bf30de")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9d8fed15-fbb4-4ce4-8821-c4a2816194a9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Pin* Test*")
+		(path "/b79deb2e-a779-4ea2-9495-27754d81e528")
+		(sheetname "Raiz")
+		(sheetfile "PCBsensor.kicad_sch")
+		(attr exclude_from_pos_files)
+		(fp_line
+			(start -1.2 -1.2)
+			(end 1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "f7ad4eab-e693-442c-a23a-4bacb6065a8b")
+		)
+		(fp_line
+			(start -1.2 1.2)
+			(end -1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "64297466-96a9-4b82-b188-e11f5cf617c9")
+		)
+		(fp_line
+			(start 1.2 -1.2)
+			(end 1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "0739d2ca-8e19-4494-ad3f-bb2eae6486a4")
+		)
+		(fp_line
+			(start 1.2 1.2)
+			(end -1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "9710c993-8ad5-407d-a986-237bea070d75")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ab3624c6-d899-4204-9c78-47c65b3e072b")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "67e7d04c-f414-4625-b11e-d7839dc32820")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "7ea58ee6-0acc-4454-9efa-c03962b8a411")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "368fa37c-7a3f-42ae-b838-527f83e48d30")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "26d1340d-d43e-4d8e-97f2-0010e76d9543")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 2 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 5 "Net-(U1-SCLK)")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "049b31ee-ead5-4c73-bed0-26ebc1a3df8b")
+		)
+	)
+	(footprint "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+		(layer "F.Cu")
+		(uuid "ab9624a2-b716-4528-a004-21ea0133aa8f")
+		(at 136.5 99.1)
+		(descr "THT rectangular pad as test Point, square 2.0mm_Drill1.0mm  side length, hole diameter 1.0mm")
+		(tags "test point THT pad rectangle square")
+		(property "Reference" "TP1"
+			(at 0 -1.998 0)
+			(layer "F.SilkS")
+			(uuid "4e7e35c8-5b3f-4ae7-991a-4c92d44143cf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 2.05 0)
+			(layer "F.Fab")
+			(uuid "50b34b42-7fd9-4875-ba44-f3148391c98c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "10fb99c2-249d-4fe9-9b4f-2ddd571fdcf8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a01589a9-da9e-4e1a-a9f4-be6d5da8a52b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8fc79ffa-9f14-486c-9388-2643310bb481")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "Pin* Test*")
+		(path "/c2d83f12-86c4-4257-a393-8a948b3afe85")
+		(sheetname "Raiz")
+		(sheetfile "PCBsensor.kicad_sch")
+		(attr exclude_from_pos_files)
+		(fp_line
+			(start -1.2 -1.2)
+			(end 1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b5d4c9b6-b931-49f5-baf7-74dba914e87f")
+		)
+		(fp_line
+			(start -1.2 1.2)
+			(end -1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "befc3d3b-866e-4592-b4a0-2d5abe581ce6")
+		)
+		(fp_line
+			(start 1.2 -1.2)
+			(end 1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "7cd57c9f-e8c3-4d8a-98e8-5788f55d6b7d")
+		)
+		(fp_line
+			(start 1.2 1.2)
+			(end -1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "0a557044-7b6d-424a-bd58-68a60f264600")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "4d5e90e5-df3a-44fb-9b91-18bd4c8a18f1")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e7407557-196c-4785-b029-508c1a6f19d4")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "0efff11b-53d9-4ab0-9365-7ed90dce0536")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "639d1759-c00a-40ea-981d-314f4092ef25")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "e03fccfb-65e1-4cef-81b7-588c651c9f5e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 2 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 1 "Net-(U1-VP)")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "16388d77-6bc8-4d30-91a5-7d57192bf543")
+		)
+	)
+	(footprint "MountingHole:MountingHole_2.1mm"
+		(layer "F.Cu")
+		(uuid "aebe29d2-268e-4e6d-97ed-62fbe30977c7")
+		(at 152.9 82.2)
+		(descr "Mounting Hole 2.1mm, no annular")
+		(tags "mounting hole 2.1mm no annular")
+		(property "Reference" "REF**"
+			(at 0 -3.2 0)
+			(layer "F.SilkS")
+			(uuid "bdfb07fa-a99f-4bf4-8984-3a20e1e136a4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_2.1mm"
+			(at 0 3.2 0)
+			(layer "F.Fab")
+			(uuid "1b21cbb3-8c67-425a-baa5-07578ed682a0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.1mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "46ed5788-7d7e-48ee-8648-17a83dc61f4a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "03e38688-ff8e-49dd-bf5a-e62b6bbf4bf9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "704cb543-98ff-4310-94f9-8fc30058cce2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 2.1 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "fa2eabc4-694a-479a-8143-540b4db09935")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.35 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "b23b3875-895b-4ae5-9e9c-1820ec6df973")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "2ad4b69f-4c14-49bc-bcec-991ac4ec9124")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 2.1 2.1)
+			(drill 2.1)
+			(layers "*.Cu" "*.Mask")
+			(uuid "bdc0b7cc-5c17-4a2f-824c-a4e7ae2e3068")
+		)
+	)
+	(footprint "MountingHole:MountingHole_2.1mm"
+		(layer "F.Cu")
+		(uuid "bed39f6d-90ea-4def-a106-624e833324ab")
+		(at 135.9 82.2)
+		(descr "Mounting Hole 2.1mm, no annular")
+		(tags "mounting hole 2.1mm no annular")
+		(property "Reference" "REF**"
+			(at 0 -3.2 0)
+			(layer "F.SilkS")
+			(uuid "82b727df-5d03-41a5-a96a-c9e9ff3220f3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MountingHole_2.1mm"
+			(at 0 3.2 0)
+			(layer "F.Fab")
+			(uuid "69c7c2e1-3cde-4c54-8dcd-8092dd6df7dd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.1mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd7b1b57-05b9-48ca-8555-138d64fba811")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d07303bb-fb88-4683-af49-c71a19e1fc06")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bad5c8c6-9a13-4174-852f-15ade3318be4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom)
+		(fp_circle
+			(center 0 0)
+			(end 2.1 0)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(fill none)
+			(layer "Cmts.User")
+			(uuid "d211a06a-4a85-4799-bfa5-9fa3a3c53803")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 2.35 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.CrtYd")
+			(uuid "6504caf6-595b-4155-9684-f74731156099")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "5f572c6b-4f26-4451-8793-b1e025c2d3bb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 2.1 2.1)
+			(drill 2.1)
+			(layers "*.Cu" "*.Mask")
+			(uuid "02bb24e1-01f5-434f-a272-2045b37d890d")
+		)
+	)
 	(footprint "FMAMSDXX025WCSC3:FMAMSDXX025WCSC3_HNW"
 		(layer "F.Cu")
 		(uuid "c7f4f914-f347-4f23-8d17-1babb71b411e")
@@ -223,7 +1359,7 @@
 		)
 		(property ki_fp_filters "FMAMSDXX025WCSC3_HNW")
 		(path "/763db70b-6adb-473f-835f-65a341e10c22")
-		(sheetname "Root")
+		(sheetname "Raiz")
 		(sheetfile "PCBsensor.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -504,7 +1640,7 @@
 			(at -1.27 -1.7018)
 			(size 1.4986 1.1938)
 			(layers "F.Cu" "F.Paste" "F.Mask")
-			(net 1 "unconnected-(U1-VP-Pad1)")
+			(net 1 "Net-(U1-VP)")
 			(pinfunction "VP")
 			(pintype "unspecified")
 			(uuid "d9c47550-f8af-4b7b-8c11-2729e6eb6da1")
@@ -513,7 +1649,7 @@
 			(at 1.27 -1.7018)
 			(size 1.4986 1.1938)
 			(layers "F.Cu" "F.Paste" "F.Mask")
-			(net 4 "unconnected-(U1-SS-Pad2)")
+			(net 2 "Net-(U1-SS)")
 			(pinfunction "SS")
 			(pintype "unspecified")
 			(uuid "450e2938-8e15-4bae-a707-ea145ebfbedf")
@@ -522,7 +1658,7 @@
 			(at 1.27 1.7018)
 			(size 1.4986 1.1938)
 			(layers "F.Cu" "F.Paste" "F.Mask")
-			(net 6 "GND")
+			(net 4 "Net-(U1-GND)")
 			(pinfunction "GND")
 			(pintype "power_out")
 			(uuid "9941ff4f-a40a-495e-b575-915ae9776e3e")
@@ -531,7 +1667,7 @@
 			(at -1.27 1.7018)
 			(size 1.4986 1.1938)
 			(layers "F.Cu" "F.Paste" "F.Mask")
-			(net 2 "unconnected-(U1-SCLK-Pad4)")
+			(net 5 "Net-(U1-SCLK)")
 			(pinfunction "SCLK")
 			(pintype "unspecified")
 			(uuid "5d4e12cf-8e24-439b-982b-1bf552f13ff0")
@@ -540,7 +1676,7 @@
 			(at 1.7018 0)
 			(size 1.1938 1.4986)
 			(layers "F.Cu" "F.Mask")
-			(net 5 "unconnected-(U1-MISO-Pad5)")
+			(net 6 "Net-(U1-MISO)")
 			(pinfunction "MISO")
 			(pintype "unspecified")
 			(uuid "8f1c3343-8261-4f75-a32f-db7d7fa90dc2")
@@ -555,57 +1691,184 @@
 			(uuid "0b0bebb9-1718-4698-a200-ddfd37800f23")
 		)
 	)
-	(gr_poly
-		(pts
-			(xy 143 91.5) (xy 144 91.5) (xy 144 112.5) (xy 143 112.5)
+	(footprint "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+		(layer "F.Cu")
+		(uuid "d4f06086-c160-4038-93a9-d0e21b9a0e29")
+		(at 152.2 99.1)
+		(descr "THT rectangular pad as test Point, square 2.0mm_Drill1.0mm  side length, hole diameter 1.0mm")
+		(tags "test point THT pad rectangle square")
+		(property "Reference" "TP2"
+			(at 0 -1.998 0)
+			(layer "F.SilkS")
+			(uuid "47700cdc-2e61-4473-8880-8327cda8bc7a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
 		)
-		(stroke
-			(width 0.1)
-			(type solid)
+		(property "Value" "TestPoint"
+			(at 0 2.05 0)
+			(layer "F.Fab")
+			(uuid "d8909bc3-1ced-492b-828a-844d5e86cbbc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
 		)
-		(fill solid)
-		(layer "F.Mask")
-		(uuid "1dfed4bd-946a-4009-b1a5-8bcc4c7dea64")
-	)
-	(gr_poly
-		(pts
-			(xy 149.1 91.5) (xy 150.1 91.5) (xy 150.1 112.5) (xy 149.1 112.5)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_2.0x2.0mm_Drill1.0mm"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85f8ae94-6fbf-4698-8881-5b0428e6d747")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
 		)
-		(stroke
-			(width 0.1)
-			(type solid)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b86265e1-80fc-4335-b1f3-d974aed659f7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
 		)
-		(fill solid)
-		(layer "F.Mask")
-		(uuid "259576ea-5bdc-42ac-8f68-b76c9d1e3297")
-	)
-	(gr_poly
-		(pts
-			(xy 139.5 91.5) (xy 140.5 91.5) (xy 140.5 112.5) (xy 139.5 112.5)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eac1a916-0bee-4180-ae17-d063c53bb9ea")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
 		)
-		(stroke
-			(width 0.1)
-			(type solid)
+		(property ki_fp_filters "Pin* Test*")
+		(path "/96eb4090-df6a-4b88-af5e-2a32f22eba7e")
+		(sheetname "Raiz")
+		(sheetfile "PCBsensor.kicad_sch")
+		(attr exclude_from_pos_files)
+		(fp_line
+			(start -1.2 -1.2)
+			(end 1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "6e56bce5-1cf8-4499-a13d-49a8df6d5e5a")
 		)
-		(fill solid)
-		(layer "F.Mask")
-		(uuid "931634ed-d198-4ca5-8281-e22f3a9043c4")
-	)
-	(gr_poly
-		(pts
-			(xy 145.5 91.5) (xy 146.5 91.5) (xy 146.5 112.5) (xy 145.5 112.5)
+		(fp_line
+			(start -1.2 1.2)
+			(end -1.2 -1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "c31d754c-b22b-42a9-b4db-830d2414148d")
 		)
-		(stroke
-			(width 0.1)
-			(type solid)
+		(fp_line
+			(start 1.2 -1.2)
+			(end 1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "d2eac57e-6344-44bd-8a38-fbe3c985c731")
 		)
-		(fill solid)
-		(layer "F.Mask")
-		(uuid "f98a0c42-f6d0-4dac-92cf-889e616cefc5")
+		(fp_line
+			(start 1.2 1.2)
+			(end -1.2 1.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e9d398ae-8058-464b-bdef-9e8cd69d8130")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "48093c55-965f-4d5a-8352-4a31c95dee76")
+		)
+		(fp_line
+			(start -1.5 -1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "85d183a3-9786-4cba-9f58-3031e59431ee")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end -1.5 1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "9bb57f3e-401e-43aa-b492-9574e529bdcc")
+		)
+		(fp_line
+			(start 1.5 1.5)
+			(end 1.5 -1.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "1513fed2-b686-4add-a331-fa42db8a2172")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "09937f9c-c320-4f2a-bcc5-55fce8b90534")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0)
+			(size 2 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 2 "Net-(U1-SS)")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "141d8900-8071-4ec9-b637-277b05e5554a")
+		)
 	)
 	(gr_rect
-		(start 117 63)
-		(end 171.5 120.5)
+		(start 132.9 78.9)
+		(end 155.9 108.9)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -616,58 +1879,130 @@
 	)
 	(segment
 		(start 139.96 85.0964)
-		(end 143.46 85.0964)
+		(end 136.5 88.5564)
 		(width 1)
 		(layer "F.Cu")
 		(net 1)
-		(uuid "19706082-dae7-4f89-aafb-b6ae71fa1ca5")
+		(uuid "301fab2a-80d2-4a57-a0d0-5eda26353d74")
 	)
 	(segment
-		(start 139.96 85.0964)
-		(end 139.96 112.0964)
+		(start 136.5 88.5564)
+		(end 136.5 99.1)
 		(width 1)
 		(layer "F.Cu")
 		(net 1)
-		(uuid "cc0cb6ab-7b79-43bd-839d-d1cfd8d465ce")
+		(uuid "3831c612-0bf0-4516-871b-4b105bf9f583")
 	)
 	(segment
-		(start 143.46 88.5)
-		(end 143.46 112.0964)
+		(start 143.46 85.0964)
+		(end 139.96 85.0964)
+		(width 1)
+		(layer "F.Cu")
+		(net 1)
+		(uuid "868b6a57-ce57-44d3-a075-31346544aed0")
+	)
+	(segment
+		(start 149.8964 85.0964)
+		(end 152.2 87.4)
 		(width 1)
 		(layer "F.Cu")
 		(net 2)
-		(uuid "4b4832fd-6329-4617-a8ea-f9e153bffa16")
+		(uuid "bab5fcbf-377a-4d7e-8c46-c85f89b6dc29")
 	)
 	(segment
-		(start 149.56 86.7982)
-		(end 149.56 112.0964)
+		(start 146 85.0964)
+		(end 149.8964 85.0964)
 		(width 1)
 		(layer "F.Cu")
-		(net 5)
-		(uuid "26e358a1-9a19-4b08-aeeb-664821a637e3")
+		(net 2)
+		(uuid "d19d1518-57fc-49b8-a497-20e498c76093")
 	)
 	(segment
-		(start 146.4318 86.7982)
-		(end 149.56 86.7982)
+		(start 152.2 87.4)
+		(end 152.2 99.1)
 		(width 1)
 		(layer "F.Cu")
-		(net 5)
-		(uuid "ed3e4fd5-f189-41df-ae57-ce11b0f04118")
+		(net 2)
+		(uuid "d46009b8-8554-4d00-bf1e-45f511a53b9b")
+	)
+	(segment
+		(start 142.7018 86.7982)
+		(end 142.5 87)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 3)
+		(uuid "95742de9-f162-48e7-9cd0-1b931fe8d071")
+	)
+	(segment
+		(start 143.9 90.6)
+		(end 143.9 99.1)
+		(width 1)
+		(layer "F.Cu")
+		(net 4)
+		(uuid "356c0361-7957-4a7d-9291-994f73a8697d")
 	)
 	(segment
 		(start 146 88.5)
-		(end 146 112.0564)
+		(end 143.9 90.6)
+		(width 1)
+		(layer "F.Cu")
+		(net 4)
+		(uuid "839984da-1f86-421f-ace4-02c31be4ff18")
+	)
+	(segment
+		(start 143.6 98.7564)
+		(end 143.56 98.7964)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 4)
+		(uuid "86b9667f-867f-4a50-8abe-77840a4bd823")
+	)
+	(segment
+		(start 140.8 88.5)
+		(end 140.1 89.2)
+		(width 1)
+		(layer "F.Cu")
+		(net 5)
+		(uuid "74de5dae-d11c-4592-9b6c-7afe3908fdca")
+	)
+	(segment
+		(start 140.1 89.2)
+		(end 140.1 99.1)
+		(width 1)
+		(layer "F.Cu")
+		(net 5)
+		(uuid "ca3c63d8-1fdb-46de-9aa5-bc3f5debee0e")
+	)
+	(segment
+		(start 143.46 88.5)
+		(end 140.8 88.5)
+		(width 1)
+		(layer "F.Cu")
+		(net 5)
+		(uuid "f2bee622-e432-4c8a-a472-ef8aeabe41dd")
+	)
+	(segment
+		(start 148.4 87.1)
+		(end 148.4 99.1)
 		(width 1)
 		(layer "F.Cu")
 		(net 6)
-		(uuid "8679dc2a-3cb6-42ab-85aa-6842c4f9c971")
+		(uuid "09328f21-24ac-4e8b-aaeb-4cf955b9dc12")
 	)
 	(segment
-		(start 146 112.0564)
-		(end 145.96 112.0964)
-		(width 0.2)
+		(start 148.0982 86.7982)
+		(end 148.4 87.1)
+		(width 1)
 		(layer "F.Cu")
 		(net 6)
-		(uuid "86b9667f-867f-4a50-8abe-77840a4bd823")
+		(uuid "1d7bee87-6971-4430-9822-c70f9a7007c1")
+	)
+	(segment
+		(start 146.4318 86.7982)
+		(end 148.0982 86.7982)
+		(width 1)
+		(layer "F.Cu")
+		(net 6)
+		(uuid "d854fc63-1fc0-455e-b15e-e5f64a946f6a")
 	)
 )
