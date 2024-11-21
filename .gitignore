@@ -1,5 +1,6 @@
 node_modules
 __pycache__
+credentials.py
 
 # Kicad faz backups que não interesa partilhar
 /PCBcontrolador/PI_actuatorcontroller-backups/

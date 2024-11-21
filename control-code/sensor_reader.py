@@ -8,7 +8,7 @@ from time import sleep
 
 def SensorReader():
     while True:
-        sh.sem_api.acquire()            # Wait for the API to start
+        sh.sem_SSH_ready.acquire()      # Wait for the a SSH connection
         
         sh.readings = {}                # Reset the old readings
 

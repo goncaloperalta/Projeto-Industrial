@@ -1,0 +1,75 @@
+----------------------------- INFO 1s with Wifi ON
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:64104 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  PRESSED WLAN
+PTIN Botton implementation -- timeInMs:500 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:7  --- ret :0
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:8  --- ret :0
+
+
+----------------------------- INFO 5s with Wifi ON
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:69771 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  PRESSED WLAN
+PTIN Botton implementation -- timeInMs:5000 family: 0x1   func:0x5
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+(ptin_hotplug_state)  --state: 0 old_state : 1 cnt:8
+(ptin_hotplug_state)  --state: 0 old_state : 1 cnt:8  --- ret :0
+(ptin_hotplug_state)  --state: 0 old_state : 1 cnt:9  --- ret :0
+PTIN Botton implementation -- timeInMs:8700 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+
+
+----------------------------- INFO 1s with Wifi OFF
+Button 3 Press --Hold 1s to Turn ON and  Hold for 5s to do Turn OFF wlan
+PTIN Botton implementation -- timeInMs:75786 family: 0x1   func:0x0
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  PRESSED WLAN
+PTIN Botton implementation -- timeInMs:2000 family: 0x1   func:0x4
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+(ptin_hotplug_state)  --state: 1 old_state : 0 cnt:9
+(ptin_hotplug_state)  --state: 1 old_state : 0 cnt:9  --- ret :0
+(ptin_hotplug_state)  --state: 1 old_state : 0 cnt:10  --- ret :0
+
+
+----------------------------- WPS 1s with Wifi ON
+Button 2 Press --Press 1s to WPS , Hold for 5s to do Webgui Auth
+PTIN Botton implementation -- timeInMs:400 family: 0x1   func:0x1
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+PTIN Botton: WPS
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:10
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:10  --- ret :0
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:11  --- ret :0
+
+
+----------------------------- WPS 5s with Wifi ON
+PTIN Botton implementation -- timeInMs:5000 family: 0x4   func:0x1
+PTIN Botton: PTIN_BP_BTN_FAMILY_AUTH
+PTIN Botton: PTIN_BP_BTN_FAMILY_AUTH
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:11
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:11  --- ret :0
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:12  --- ret :0
+PTIN Botton implementation -- timeInMs:7400 family: 0x1   func:0x1
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+
+
+----------------------------- WPS 1s with Wifi OFF
+Button 2 Press --Press 1s to WPS , Hold for 5s to do Webgui Auth
+PTIN Botton implementation -- timeInMs:500 family: 0x1   func:0x1
+PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
+PTIN Botton:  RELEASE WLAN
+PTIN Botton: WPS
+PTIN Botton: WPS press  but WIFI is disable
+(ptin_hotplug_state)  --state: 0 old_state : 0 cnt:15
+(ptin_hotplug_state)  --state: 0 old_state : 0 cnt:15  --- ret :0
+(ptin_hotplug_state)  --state: 0 old_state : 0 cnt:16  --- ret :0
