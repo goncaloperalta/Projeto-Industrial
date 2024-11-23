@@ -1,9 +1,6 @@
-import json
-from numpy import random
-from numpy import linspace
-from requests import post
-from threading import Semaphore
 import shared_memory as sh
+from numpy import (random, linspace)
+from threading import Semaphore
 from time import sleep
 
 def SensorReader():

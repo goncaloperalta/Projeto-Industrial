@@ -10,13 +10,13 @@ def SSHConnect():
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect('192.168.1.1', username=credentials.host, password=credentials.passw)
+        client.connect("fe80::6aaa:c4ff:fe45:21cf%eth0", username=credentials.host, password=credentials.passw)
 
         sh.sem_SSH_ready.release()
-
+        
         # Exec
-        # dmesg | grep "Button \|PTIN\|ptin_hotplug_state"
-        stdin, stdout, stderr = client.exec_command("dmesg | grep \"Button\|PTIN\|ptin_hotplug_state\"")
+        # dmesg -c | grep "Button \|PTIN\|ptin_hotplug_state"
+        stdin, stdout, stderr = client.exec_command("dmesg -c | grep \"Button\|PTIN\|ptin_hotplug_state\"")
 
         # Proccess
         for line in stdout:
