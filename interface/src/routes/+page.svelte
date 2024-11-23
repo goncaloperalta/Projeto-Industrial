@@ -37,7 +37,7 @@
     }
 
     async function getReadings(){
-        const res = await fetch('http://192.168.1.16:5173/api/start_test', { signal: AbortSignal.timeout(5000) });
+        const res = await fetch('http://192.168.1.61:5173/api/start_test', { signal: AbortSignal.timeout(5000) });
         const data = await res.json()
         return data.data
     }
