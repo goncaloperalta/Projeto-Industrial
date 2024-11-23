@@ -11,7 +11,7 @@ def SSHConnect():
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect("fe80::6aaa:c4ff:fe45:21cf", username=credentials.host, password=credentials.passw)
+        client.connect("fe80::6aaa:c4ff:fe45:21cf%eth0", username=credentials.host, password=credentials.passw)
         print("[SSH] Connected to gateway")
 
         sh.sem_SSH_ready.release()
