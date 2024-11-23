@@ -18,9 +18,11 @@ app.add_middleware(
 
 @app.get("/start")
 async def root():
+    print("[API] Got request")
     sh.sem_api.release()            # Signal to start reading the sensor
 
     sh.sem_readings_ready.acquire() # Wait until readings are ready...
 
     # Send values to the interface
+    print("[API] Sending data back")
     return {"data": sh.readings}
