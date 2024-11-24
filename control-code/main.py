@@ -6,7 +6,7 @@ from control_signal import ControlCode
 from sensor_reader import SensorReader
 
 def StartAPI():
-    uvicorn.run(app, host='0.0.0.0', port=8000, timeout_keep_alive=5000)
+    uvicorn.run(app, host='0.0.0.0', port=8000, timeout_keep_alive=10000)
 
 def main():
     APIth = threading.Thread(target=StartAPI)

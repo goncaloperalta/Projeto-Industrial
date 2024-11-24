@@ -1,6 +1,4 @@
 import shared_memory as sh
-from requests import post
-from threading import Semaphore
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -18,11 +16,13 @@ app.add_middleware(
 
 @app.get("/start")
 async def root():
-    print("[API] Got request")
-    sh.sem_api.release()            # Signal to start reading the sensor
+    print("\033[92m[API] Got request\033[00m")
+    sh.sem_api.release()            # Signal to start the SSH server
 
     sh.sem_readings_ready.acquire() # Wait until readings are ready...
+    sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
 
     # Send values to the interface
-    print("[API] Sending data back")
-    return {"data": sh.readings}
+    print("\033[92m[API] Sending data back\033[00m")
+    return {"sensor": sh.readings,
+            "but_feedback": sh.feedback}

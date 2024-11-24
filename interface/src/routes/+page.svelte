@@ -37,8 +37,9 @@
     }
 
     async function getReadings(){
-        const res = await fetch('http://192.168.1.61:5173/api/start_test', { signal: AbortSignal.timeout(5000) });
+        const res = await fetch('api/start_test', { signal: AbortSignal.timeout(10000) });
         const data = await res.json()
+
         return data.data
     }
     let successRate = 90;
@@ -109,13 +110,13 @@
             <h2 class="text-2xl mb-5">Results</h2>
             <div class="flex justify-around">
                 {#await readings}
-                    <p>Loading...</p>
+                    <p class="m-auto text-2xl">Pressing the button...</p>
                 {:then readings}
                     <div>
-                        <LinePlot X={readings.time} Y={readings.val} />
+                        <LinePlot X={readings.sensor.time} Y={readings.sensor.val} />
                     </div>
-                    <div>          
-                        <PieChart2 successRate={successRate} />
+                    <div class="w-1/2 block">
+                        {readings.but_feedback}
                     </div>
                 {/await}
             </div>
