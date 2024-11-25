@@ -107,16 +107,29 @@
 {#if results}
     <div id="results-section" class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col dark:bg-slate-800 dark:text-white">
         <div class="text-center p-10 bg-white shadow-lg rounded-lg w-3/4 dark:bg-slate-700">
-            <h2 class="text-2xl mb-5">Results</h2>
+            <h2 class="text-3xl mb-5">Results</h2>
             <div class="flex justify-around">
                 {#await readings}
                     <p class="m-auto text-2xl">Pressing the button...</p>
                 {:then readings}
+                    <div class="w-1/2 align-middle text-xl m-auto ml-10">
+                        <ul class="text-left">
+                            <li><b><i>Button name:</i></b>
+                                {#if readings.but_feedback.number == 3}
+                                    INFO/WIFI
+                                {:else}
+                                    WPS 
+                                {/if}
+                            </li>
+                            <li><b><i>Button number:</i></b> {readings.but_feedback.number} </li>
+                            <li><b><i>Function:</i></b> {readings.but_feedback.func} </li>
+                            <li><b><i>Time pressed:</i></b> {readings.but_feedback.timePressed} ms </li>
+                            <li><b><i>Family:</i></b> {readings.but_feedback.family} </li>
+                            <li><b><i>Times pressed since boot:</i></b> {readings.but_feedback.counter} </li>
+                        </ul>
+                    </div>
                     <div>
                         <LinePlot X={readings.sensor.time} Y={readings.sensor.val} />
-                    </div>
-                    <div class="w-1/2 block">
-                        {readings.but_feedback}
                     </div>
                 {/await}
             </div>

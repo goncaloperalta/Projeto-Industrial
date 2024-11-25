@@ -6,5 +6,5 @@ sem_readings_ready = Semaphore(0)   # Semaphore to wait while the readings are n
 sem_feedback_ready = Semaphore(0)   # Semaphore to wait while the feedback has not happened
 
 readings = {}   # Holds the sensor readings
-feedback = ""   # Holds the button feedback
+feedback = {}   # Holds the button feedback
 timeout = 0     # Flag for timeout

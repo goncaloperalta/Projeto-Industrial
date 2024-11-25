@@ -52,13 +52,14 @@ PTIN Botton: WPS
 
 
 ----------------------------- WPS 5s with Wifi ON
+Button 2 Press --Press 1s to WPS , Hold for 5s to do Webgui Auth
 PTIN Botton implementation -- timeInMs:5000 family: 0x4   func:0x1
 PTIN Botton: PTIN_BP_BTN_FAMILY_AUTH
 PTIN Botton: PTIN_BP_BTN_FAMILY_AUTH
-(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:11
-(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:11  --- ret :0
-(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:12  --- ret :0
-PTIN Botton implementation -- timeInMs:7400 family: 0x1   func:0x1
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:17
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:17  --- ret :0
+(ptin_hotplug_state)  --state: 1 old_state : 1 cnt:18  --- ret :0
+PTIN Botton implementation -- timeInMs:7600 family: 0x1   func:0x1
 PTIN Botton: PTIN_BP_BTN_FAMILY_WLAN
 PTIN Botton:  RELEASE WLAN
 

@@ -22,6 +22,7 @@ async def root():
     sh.sem_readings_ready.acquire() # Wait until readings are ready...
     sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
 
+
     # Send values to the interface
     print("\033[92m[API] Sending data back\033[00m")
     return {"sensor": sh.readings,
