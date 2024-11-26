@@ -7,12 +7,17 @@ from time import sleep
 def processCommand(cmd: str):
     regex = re.search(r"Button (\d+) Press --(.*?)\n", cmd)
     if regex:
-        number = regex.group(1)
+        button = regex.group(1)
         func = regex.group(2).strip()
     else:
-        number = None
+        button = None
         func = None
-    
+
+    if button == '2':
+        button = 'WPS'
+    else:
+        button = 'INFO/WIFI'
+
     regex = re.search(r"timeInMs:(\d+)", cmd)
     if regex:
         timePressed = regex.group(1)
@@ -32,7 +37,7 @@ def processCommand(cmd: str):
         counter = None
     
     return {
-        'number': number,
+        'button': button,
         'func': func,
         'timePressed': timePressed,
         'family': family,

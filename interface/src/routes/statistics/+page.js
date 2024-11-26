@@ -1,13 +1,15 @@
 
 export const load = async ({fetch}) => {
-    const fetchDevices = async () => {
-        const res = await fetch('/api')
+    const fetchTests = async () => {
+        const res = await fetch('/api/get-success')
         const data = await res.json()
-        return data.devices
+        
+        return data.tests
     }
-
-    const devices = await fetchDevices();
+    
+    const tests = await fetchTests();
+    console.log(tests)
     return {
-        devices
+        tests
     }
 }

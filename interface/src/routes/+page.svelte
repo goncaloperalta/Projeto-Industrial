@@ -114,22 +114,16 @@
                 {:then readings}
                     <div class="w-1/2 align-middle text-xl m-auto ml-10">
                         <ul class="text-left">
-                            <li><b><i>Button name:</i></b>
-                                {#if readings.but_feedback.number == 3}
-                                    INFO/WIFI
-                                {:else}
-                                    WPS 
-                                {/if}
-                            </li>
-                            <li><b><i>Button number:</i></b> {readings.but_feedback.number} </li>
-                            <li><b><i>Function:</i></b> {readings.but_feedback.func} </li>
-                            <li><b><i>Time pressed:</i></b> {readings.but_feedback.timePressed} ms </li>
-                            <li><b><i>Family:</i></b> {readings.but_feedback.family} </li>
-                            <li><b><i>Times pressed since boot:</i></b> {readings.but_feedback.counter} </li>
+                            <li><b><i>Button name:</i></b> {readings.feedback.button}</li>
+                            <li><b><i>Success:</i></b> {readings.success}</li>
+                            <li><b><i>Function:</i></b> {readings.feedback.func} </li>
+                            <li><b><i>Time pressed:</i></b> {readings.feedback.timePressed} ms </li>
+                            <li><b><i>Family:</i></b> {readings.feedback.family} </li>
+                            <li><b><i>Times pressed since boot:</i></b> {readings.feedback.counter} </li>
                         </ul>
                     </div>
                     <div>
-                        <LinePlot X={readings.sensor.time} Y={readings.sensor.val} />
+                        <LinePlot X={readings.time_val} Y={readings.force_val} />
                     </div>
                 {/await}
             </div>

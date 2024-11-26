@@ -1,3 +1,4 @@
+from datetime import datetime
 import shared_memory as sh
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -22,8 +23,17 @@ async def root():
     sh.sem_readings_ready.acquire() # Wait until readings are ready...
     sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
 
+    now = datetime.now()
+    date = now.strftime("%Y-%m-%d")
+    time = now.strftime("%H:%M:%S")
 
     # Send values to the interface
     print("\033[92m[API] Sending data back\033[00m")
-    return {"sensor": sh.readings,
-            "but_feedback": sh.feedback}
+    return {
+        "feedback": sh.feedback,
+        "success": 1,
+        "force_val": sh.readings['val'],
+        "time_val": sh.readings['time'],
+        "date": date,
+        "time": time
+    }

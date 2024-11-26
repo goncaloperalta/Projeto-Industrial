@@ -5,11 +5,13 @@
 	export let data;
 
 	let successRate = 0;
-	let posts = data.devices;
+	let length = 0;
+	let posts = data.tests;
 	posts.forEach(post => {
 		successRate += post.success
+		length += 1
 	});
-	successRate = successRate / posts.length * 100;
+	successRate = successRate / length * 100;
 </script>
 
 <main class="bg-slate-800 h-screen text-white">
@@ -23,8 +25,8 @@
 					<PieChart2 successRate={successRate} />
 				{/key}
 			</div>
-			<div class="p-40">
-				<LinePlot />
+			<div class="p-40 text-2xl">
+				Total number of tests: {length}
 			</div>
 		</div>
 	</div>

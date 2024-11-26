@@ -65,7 +65,7 @@
             .attr("y", innerHeight + margin.bottom - 10) // Move it below the X axis with padding
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
-            .style("fill", "black") // Set label text color
+            .style("fill", "white") // Set label text color
             .text("Time (sec)");
 
         // Add Y-axis label
@@ -78,7 +78,7 @@
             .attr("transform", "rotate(-90)") // Rotate for vertical alignment
             .style("text-anchor", "middle")
             .style("font-weight", "bold")
-            .style("fill", "black") // Set label text color
+            .style("fill", "white") // Set label text color
             .text("Applied Force (N)");
     });
 </script>
