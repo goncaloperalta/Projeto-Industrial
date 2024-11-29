@@ -2,47 +2,26 @@ import re
 import paramiko
 import shared_memory as sh
 import credentials
+import threading
 from time import sleep
 
-def processCommand(cmd: str):
-    regex = re.search(r"Button (\d+) Press --(.*?)\n", cmd)
-    if regex:
-        button = regex.group(1)
-        func = regex.group(2).strip()
-    else:
-        button = None
-        func = None
+def processCommand(cmd):
+    counters = []
+    for button in cmd[1:]:
+        regex = re.search(r":(\d+)", button)
+        counters.append(int(regex.group(1)))
 
-    if button == '2':
-        button = 'WPS'
-    else:
-        button = 'INFO/WIFI'
+    return counters
 
-    regex = re.search(r"timeInMs:(\d+)", cmd)
-    if regex:
-        timePressed = regex.group(1)
-    else:
-        timePressed = None
-    
-    regex = re.search(r"PTIN Botton: (PTIN_BP_BTN_FAMILY_\S+)", cmd)
-    if regex:
-        family = regex.group(1)
-    else:
-        family = None
-    
-    regex = re.search(r"cnt:(\d+)", cmd)
-    if regex:
-        counter = regex.group(1)
-    else:
-        counter = None
-    
-    return {
-        'button': button,
-        'func': func,
-        'timePressed': timePressed,
-        'family': family,
-        'counter': counter
-    }
+def getButtonPressed(initial, changed):
+    for i in range(len(initial)):
+        if initial[i] != changed[i]:
+            return i
+
+    return -1
+
+def breakLoop():
+    sh.timeout = 1
 
 def SSHConnect():
     while True:
@@ -57,39 +36,51 @@ def SSHConnect():
         print("\033[96m[SSH] Connected to gateway\033[00m")
         client.exec_command("dmesg -c") # Clear the ring
 
+        # Get initial counters
+        stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
+        output = stdout.readlines()
+        initialCounters = processCommand(output)
+
         # Alert the sensor_reader and the control_signal that the SSH connection has been established
         sh.sem_SSH_ready.release(n=2)
 
         # Exec
-        stdout = ""
-        string = ""
-        print("\033[96m[SSH] Polling command: dmesg | grep \"Button\|PTIN\|ptin_hotplug_state\"\033[00m")
-        while not sh.timeout:
-            string = ""  # Reset string
-            stdin, stdout, stderr = client.exec_command("dmesg | grep \"Button\|PTIN\|ptin_hotplug_state\"")
-            sleep(1)  # Wait between iterations
-            for line in stdout:
-                string += line
+        success = 0
+        buttonPressed = -1
+        threading.Timer(5, breakLoop).start()
+        print("\033[96m[SSH] Polling command: /3party/ptinBoardDiagXSR150DX 0\033[00m")
+        while True:
+            stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
+            output = stdout.readlines()
+            counters = processCommand(output)
 
-            stdin, stdout, stderr = client.exec_command("dmesg | grep \"Button\|PTIN\|ptin_hotplug_state\"")
-            for line in stdout:
-                string += line
-
-            # If valid break
-            if "Button" in string:
+            buttonPressed = getButtonPressed(initialCounters, counters)
+            if buttonPressed != -1:
+                success = 1
+                break
+            
+            if sh.timeout == 1:
+                sh.timeout = 0
                 break
 
-        print("\033[96m[SSH] Got a feedback from a button\033[00m")
-
+        arr = ['RESET', 'WPS', 'INFO/WIFI']
+        if success:
+            print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
+            sh.feedback = {
+                'button': arr[buttonPressed],
+                'success': success
+            }
+        else:
+            print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
+            sh.feedback = {
+                'button': 'None',
+                'success': success
+            }
+        
         # Close Connection
-        print("\033[96m[SSH] Closing connection to gateway...\033[00m")
         client.close()
         print("\033[96m[SSH] Connection closed\033[00m")
 
-        # Process command
-        print("\033[96m[SSH] Processing command...\033[00m")
-        print(string)
-        sh.feedback = processCommand(string)
-
         # Alert the API that the feedback is ready
+        print(sh.feedback)
         sh.sem_feedback_ready.release()

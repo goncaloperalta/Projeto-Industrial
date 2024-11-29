@@ -7,5 +7,6 @@ def ControlCode():
         sh.sem_SSH_ready.acquire()
         print("\033[93m[CONTROL]\033[00m")
 
-        sleep(5)
-        sh.timeout = 1;
+        # sleep(5)
+        # sh.timeout = 1;
+        # print(sh.timeout)

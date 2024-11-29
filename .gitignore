@@ -1,6 +1,9 @@
 node_modules
 __pycache__
 credentials.py
+/inteface/app.db-shm
+/inteface/app.db-wal
+
 
 # Kicad faz backups que não interesa partilhar
 /PCBcontrolador/PI_actuatorcontroller-backups/
