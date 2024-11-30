@@ -1,33 +1,59 @@
 <script>
     import LinePlot from "./LinePlot.svelte";
-    import PieChart2 from "./statistics/PieChart2.svelte";
 
-    let presets = {
-        rb: { pressTime: 1, ntimes: 10, maxForce: 1, interval: 5 },
-        fr: { pressTime: 2, ntimes: 5, maxForce: 1, interval: 6 },
-        wps_info: { pressTime: 3, ntimes: 15, maxForce: 4, interval: 3 },
-        on: { pressTime: 1, ntimes: 15, maxForce: 5, interval: 3 }
-    };
-    let profiles = [];
-    let profilesCounter = 0;
+    let {data} = $props();
 
-    let val = ''; // Set to empty so "Select..." appears initially
-    let results = 0;
-    let readings = {};
+    let profiles = $state(data.profiles);
+    let selected = $state(0);
+    let currentProfile = $state(profiles[0]);
+    let showProfileInputName = $state(0);
+    let profileName = $state('');
+    function changeToCustom(){
+        if(selected != 0){
+            selected = 0;
+        }
+    }
+    function selectChanges(){
+        currentProfile = profiles[selected];
+    }
+    async function saveProfile(){
+        if(selected == 0){
+            showProfileInputName = !showProfileInputName;
+            
+            if(profileName && showProfileInputName == 0){
+                await fetch("api/add-profile", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        pName: profileName,
+                        pressTime: currentProfile.pressTime,
+                        nTimes: currentProfile.nTimes,
+                        interval: currentProfile.interval
+                        })
+                });
 
-    // Computed values based on selection - in Select... shows an empty string ' '
-    $: presetValues = val === 'rb' || val === 'fr' || val === 'wps_info' || val === 'on' 
-        ? { ...presets[val] }
-        : val.includes('profile') ? {...profiles[Number(val.charAt(val.length-1))-1]}
-        : { pressTime: '', ntimes: '', maxForce: '', interval: '' };
+                const response = await fetch("api/get-profiles");
+                const json = await response.json();
+                profiles = json.profiles;
+            }
+        }
+    }
+    async function deleteProfile(){
+        if(selected != 0){
+            await fetch("api/delete-profile", {
+                method: "DELETE",
+                body: JSON.stringify({
+                    pName: currentProfile.pName
+                })
+            });
 
-    function saveProfile(){
-        if(!val.includes('profile')){
-            profiles.push(presetValues)
-            profilesCounter += 1;
+            const response = await fetch("api/get-profiles");
+            const json = await response.json();
+            profiles = json.profiles;
         }
     }
 
+    let results = $state(0);
+    let readings = $state(0);
     function showResults(){
         results = 1;
         readings = getReadings();
@@ -42,7 +68,6 @@
 
         return data.data
     }
-    let successRate = 90;
 </script>
 
 <!-- Title Container -->
@@ -58,15 +83,10 @@
         <!-- Test Type Selection -->
         <div class="mt-5 flex flex-col items-center">
             <label for="testType" class="mb-2 text-sm font-medium text-center">Default Configurations: </label>
-            <select id="testType" bind:value={val} class="bg-gray-50 border border-gray-300 dark:bg-slate-600 dark:border-slate-600 rounded-lg p-2.5 text-center">
-                <option value="">Select...</option>
-                <option value="rb">Reset (Reboot)</option>
-                <option value="fr">Factory Reset</option>
-                <option value="wps_info">WPS/Info</option>
-                <option value="on">On</option>
-                {#key profilesCounter}
+            <select id="testType" bind:value={selected} onchange={selectChanges} class="bg-gray-50 border border-gray-300 dark:bg-slate-600 dark:border-slate-600 rounded-lg p-2.5 text-center">
+                {#key profiles}
                     {#each profiles as profile, index}
-                        <option value="profile{index+1}">Profile {index+1}</option>
+                        <option value="{index}">{profile.pName}</option>
                     {/each}
                 {/key}
             </select>
@@ -75,31 +95,39 @@
         <!-- Input Fields for Test Parameters -->
         <div class="mt-2">
             <label for="pressTime" class="text-sm font-medium">Button press time (sec): </label>
-            <input type="number" id="pressTime" bind:value={presetValues.pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            <!-- svelte-ignore binding_property_non_reactive -->
+            <input type="number" id="pressTime" onchange={changeToCustom} bind:value={currentProfile.pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
         <div class="mt-2">
             <label for="ntimes" class="text-sm font-medium">Number of times to be pressed: </label>
-            <input type="number" id="ntimes" bind:value={presetValues.ntimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
-        </div>
-        <div class="mt-2">
-            <label for="maxForce" class="text-sm font-medium">Maximum force to apply (N): </label>
-            <input type="number" id="maxForce" bind:value={presetValues.maxForce} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            <!-- svelte-ignore binding_property_non_reactive -->
+            <input type="number" id="ntimes" onchange={changeToCustom} bind:value={currentProfile.nTimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
         <div class="mt-2">
             <label for="interval" class="text-sm font-medium">Interval between actuations (sec): </label>
-            <input type="number" id="interval" bind:value={presetValues.interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            <!-- svelte-ignore binding_property_non_reactive -->
+            <input type="number" id="interval" onchange={changeToCustom} bind:value={currentProfile.interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
         </div>
 
         <!-- Start Button -->
-        <div class="flex justify-center">
-            <div class="mt-10">
-                <button on:click={showResults} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Start</button>
-            </div>
-            <div class="mt-10 ml-auto">
-                <button on:click={saveProfile} class="bg-[#DA8359] px-10 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Save </button>
-            </div>        
+        <div class="mt-5 text-center">
+            <span>
+                <button onclick={showResults} class="bg-[#DA8359] w-32 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Start</button>
+            </span>
+            <span>
+                <button onclick={saveProfile} class="bg-[#DA8359] w-32 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Save</button>
+            </span>
+            <span>
+                <button onclick={deleteProfile} class="bg-[#DA8359] w-32 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Delete</button>
+            </span>
         </div>
-        
+
+        {#if showProfileInputName}
+            <div class="mt-10">
+                <div>Enter a Name for the profile and press save again:</div>
+                <input bind:value={profileName} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            </div>
+        {/if}
     </div>
 </div>
 
