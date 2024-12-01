@@ -9,7 +9,7 @@ export const GET = async () => {
     
     console.log(data)
     const insertData = db.prepare("INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (?, ?, ?, ?, ?, ?)");
-    insertData.run(data.feedback.button, data.success, JSON.stringify(data.force_val), JSON.stringify(data.time_val), data.date, data.time);
+    insertData.run(data.feedback.button, data.feedback.success, JSON.stringify(data.force_val), JSON.stringify(data.time_val), data.date, data.time);
 
     return new Response(JSON.stringify({data: data}), {status: 201})
 }

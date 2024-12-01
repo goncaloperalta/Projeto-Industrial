@@ -31,7 +31,6 @@ async def root():
     print("\033[92m[API] Sending data back\033[00m")
     return {
         "feedback": sh.feedback,
-        "success": 1,
         "force_val": sh.readings['val'],
         "time_val": sh.readings['time'],
         "date": date,
