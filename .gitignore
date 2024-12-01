@@ -3,8 +3,5 @@ __pycache__
 credentials.py
 /interface/app.db-shm
 /interface/app.db-wal
-
-
-# Kicad faz backups que não interesa partilhar
 /PCBcontrolador/PI_actuatorcontroller-backups/
 /PCBsensor/PCBsensor-backups/

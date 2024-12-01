@@ -28,7 +28,7 @@
                         pressTime: currentProfile.pressTime,
                         nTimes: currentProfile.nTimes,
                         interval: currentProfile.interval
-                        })
+                    })
                 });
 
                 const response = await fetch("api/get-profiles");
