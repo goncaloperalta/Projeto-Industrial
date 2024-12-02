@@ -62,7 +62,7 @@ def SSHConnect():
             if sh.timeout == 1:
                 sh.timeout = 0
                 break
-
+        
         arr = ['RESET', 'WPS', 'INFO/WIFI']
         if success:
             print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
@@ -83,4 +83,4 @@ def SSHConnect():
 
         # Alert the API that the feedback is ready
         print(sh.feedback)
-        sh.sem_feedback_ready.release()
+        sh.sem_feedback_ready.release(2)
