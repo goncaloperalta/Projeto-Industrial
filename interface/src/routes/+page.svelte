@@ -5,7 +5,7 @@
 
     let profiles = $state(data.profiles);
     let selected = $state(0);
-    let currentProfile = $state(profiles[0]);
+    let currentProfile = $state(data.profiles[0]);
     let showProfileInputName = $state(0);
     let profileName = $state('');
     function changeToCustom(){
@@ -14,14 +14,13 @@
         }
     }
     function selectChanges(){
-        currentProfile = profiles[selected];
+        currentProfile = data.profiles[selected];
     }
     async function saveProfile(){
         if(selected == 0){
             showProfileInputName = !showProfileInputName;
-            
             if(profileName && showProfileInputName == 0){
-                await fetch("api/add-profile", {
+                const response = await fetch("api/add-profile", {
                     method: "POST",
                     body: JSON.stringify({
                         pName: profileName,
@@ -30,25 +29,24 @@
                         interval: currentProfile.interval
                     })
                 });
-
-                const response = await fetch("api/get-profiles");
                 const json = await response.json();
                 profiles = json.profiles;
+                data = json;
             }
         }
     }
     async function deleteProfile(){
         if(selected != 0){
-            await fetch("api/delete-profile", {
+            const response = await fetch("api/delete-profile", {
                 method: "DELETE",
                 body: JSON.stringify({
                     pName: currentProfile.pName
                 })
             });
-
-            const response = await fetch("api/get-profiles");
             const json = await response.json();
             profiles = json.profiles;
+            data = json;
+            selected = 0;
         }
     }
 
@@ -63,10 +61,9 @@
     }
 
     async function getReadings(){
-        const res = await fetch('api/start_test', { signal: AbortSignal.timeout(10000) });
-        const data = await res.json()
-
-        return data.data
+        const res = await fetch('api/start_test', {signal: AbortSignal.timeout(10000)});
+        const data = await res.json();
+        return data.data;
     }
 </script>
 
@@ -76,14 +73,14 @@
 </div>
 
 <!-- Centered Test Prompt -->
-<div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-col dark:bg-slate-800 dark:text-white">
-    <div class="text-center p-10 bg-white dark:bg-slate-700 shadow-lg rounded-lg">
+<div class="bg-[#ECDFCC] text-[#111827] min-h-screen flex items-center justify-center flex-co dark:bg-slate-800 dark:text-white">
+    <div class="text-center p-10 bg-white dark:bg-slate-600 shadow-lg rounded-lg">
         <h2 class="text-2xl mb-5">Define the test</h2>
         
         <!-- Test Type Selection -->
         <div class="mt-5 flex flex-col items-center">
-            <label for="testType" class="mb-2 text-sm font-medium text-center">Default Configurations: </label>
-            <select id="testType" bind:value={selected} onchange={selectChanges} class="bg-gray-50 border border-gray-300 dark:bg-slate-600 dark:border-slate-600 rounded-lg p-2.5 text-center">
+            <label for="testType" class="text-gray-300">Profiles </label>
+            <select id="testType" bind:value={selected} onchange={selectChanges} class="bg-gray-50 border border-gray-300 dark:bg-slate-500 dark:border-slate-500 rounded-lg p-2.5 text-center">
                 {#key profiles}
                     {#each profiles as profile, index}
                         <option value="{index}">{profile.pName}</option>
@@ -94,31 +91,32 @@
 
         <!-- Input Fields for Test Parameters -->
         <div class="mt-2">
-            <label for="pressTime" class="text-sm font-medium">Button press time (sec): </label>
-            <!-- svelte-ignore binding_property_non_reactive -->
-            <input type="number" id="pressTime" onchange={changeToCustom} bind:value={currentProfile.pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            <label for="pressTime" class="text-gray-300">Button press time (sec) </label>
+            <input type="number" id="pressTime" onchange={changeToCustom} bind:value={currentProfile.pressTime} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-500 dark:border-slate-500 dark:outline-none">
         </div>
         <div class="mt-2">
-            <label for="ntimes" class="text-sm font-medium">Number of times to be pressed: </label>
-            <!-- svelte-ignore binding_property_non_reactive -->
-            <input type="number" id="ntimes" onchange={changeToCustom} bind:value={currentProfile.nTimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            <label for="ntimes" class="text-gray-300">Number of times to be pressed </label>
+            <input type="number" id="ntimes" onchange={changeToCustom} bind:value={currentProfile.nTimes} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-500 dark:border-slate-500 dark:outline-none">
         </div>
         <div class="mt-2">
-            <label for="interval" class="text-sm font-medium">Interval between actuations (sec): </label>
-            <!-- svelte-ignore binding_property_non_reactive -->
-            <input type="number" id="interval" onchange={changeToCustom} bind:value={currentProfile.interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-600 dark:border-slate-600 dark:outline-none">
+            <label for="interval" class="text-gray-300">Interval between actuations (sec) </label>
+            <input type="number" id="interval" onchange={changeToCustom} bind:value={currentProfile.interval} class="bg-gray-50 text-center border border-gray-300 text-sm rounded-lg p-2.5 w-full dark:bg-slate-500 dark:border-slate-500 dark:outline-none">
+        </div>
+        
+        <div class="w-full my-3">
+            <hr class="bg-gray-900">
         </div>
 
         <!-- Start Button -->
-        <div class="mt-5 text-center">
+        <div class="text-center">
             <span>
-                <button onclick={showResults} class="bg-[#DA8359] w-32 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Start</button>
+                <button onclick={showResults} class="bg-[#DA8359] w-[8.5rem] py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500  dark:hover:bg-slate-400 dark:text-white">Start</button>
             </span>
             <span>
-                <button onclick={saveProfile} class="bg-[#DA8359] w-32 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Save</button>
+                <button onclick={saveProfile} class="bg-[#DA8359] w-[8.5rem] py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500  dark:hover:bg-slate-400 dark:text-white">Save</button>
             </span>
             <span>
-                <button onclick={deleteProfile} class="bg-[#DA8359] w-32 py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500 dark:hover:bg-slate-400 dark:text-white">Delete</button>
+                <button onclick={deleteProfile} class="bg-[#DA8359] w-[8.5rem] py-2 text-gray-700 font-bold rounded-lg hover:bg-[#b86d48] transition-all dark:bg-slate-500  dark:hover:bg-slate-400 dark:text-white">Delete</button>
             </span>
         </div>
 
