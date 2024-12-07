@@ -1,15 +1,14 @@
 
 export const load = async ({fetch}) => {
     const fetchTests = async () => {
-        const res = await fetch('/api/get-tests')
-        const data = await res.json()
+        const res = await fetch('/api/get-tests');
+        const data = await res.json();
         
-        return data.tests
+        return data.tests;
     }
     
     const tests = await fetchTests();
-    console.log(tests)
     return {
         tests
-    }
+    };
 }
