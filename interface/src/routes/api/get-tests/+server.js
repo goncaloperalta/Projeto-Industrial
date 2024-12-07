@@ -1,7 +1,7 @@
 import Database from "better-sqlite3"
 
 const db = new Database('app.db');
-db.pragma('journal_mode = WAL');
+// db.pragma('journal_mode = WAL');
 
 export const GET = () => {
     const query = "SELECT * FROM tests";
