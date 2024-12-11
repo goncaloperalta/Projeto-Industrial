@@ -14,11 +14,11 @@ Force = 0
 
 i = 0
 with SMBus(1) as bus:
-        while i < 10:
+        while i < 100:
                 bytes = bus.read_i2c_block_data(0x28, 0, 2)
                 Output = (bytes[0] << 8) + bytes[1];
                 Force = (Output-OutputMIN)*ForceRated/(OutputMAX-OutputMIN)
                 print(f"Force: {round(Force*100)/100} N | Weight: {round(Force/10*1000)/1000} Kg")
                 print("----")
                 i = i + 1
-                sleep(1)
+                sleep(0.2)
