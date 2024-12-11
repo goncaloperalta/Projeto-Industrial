@@ -4,7 +4,7 @@ const db = new Database('app.db');
 // db.pragma('journal_mode = WAL');
 
 export const GET = async () => {
-    const res = await fetch("http://localhost:8000/start", { signal: AbortSignal.timeout(10000) });
+    const res = await fetch("http://192.168.43.97:8000/start", { signal: AbortSignal.timeout(10000) });
     const data = await res.json();
     
     // console.log(data)
