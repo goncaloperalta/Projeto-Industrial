@@ -24,41 +24,19 @@ GPIO.output(RESET, GPIO.HIGH)	# Activates the current sensor circuit
 
 # PWM Forward Pin 
 GPIO.setup(FORWARD, GPIO.OUT)		# Controls the Actuator in one direction
-pFORWARD = GPIO.PWM(FORWARD, 1000)	# 1 kHz
+pFORWARD = GPIO.PWM(FORWARD, 8000)	# 1 kHz
 pFORWARD.start(0)
 
 # PWM Reverse Pin
 GPIO.setup(REVERSE, GPIO.OUT)		# Controls the Actuator in the oposite direction
 #GPIO.output(REVERSE, GPIO.LOW)
-pREVERSE = GPIO.PWM(REVERSE, 1000)	# 1 kHz
+pREVERSE = GPIO.PWM(REVERSE, 8000)	# 1 kHz
 pREVERSE.start(0)
 
 
 for i in range(5):
 	# Forward
 	pFORWARD.ChangeDutyCycle(50)
-
-	#GPIO.output(RESET, GPIO.HIGH) # D
-	#sleep(1)
-	#GPIO.output(RESET, GPIO.LOW) # A
-	#sleep(1)
-	#GPIO.output(RESET, GPIO.HIGH) # D
-	#sleep(1)
-	#GPIO.output(RESET, GPIO.LOW) # A
-	#sleep(1)
-
-	#GPIO.setup(ENABLE, GPIO.IN)
-	#sleep(1)
-	#print(GPIO.input(ENABLE))
-	#GPIO.setup(ENABLE, GPIO.OUT)
-	#sleep(1)
-	#GPIO.setup(ENABLE, GPIO.IN)
-	#sleep(1)
-	#print(GPIO.input(ENABLE))
-	#GPIO.setup(ENABLE, GPIO.OUT)
-	#sleep(1)
-	#GPIO.setup(ENABLE, GPIO.IN)
-	#print(GPIO.input(ENABLE))
 
 	sleep(5)
 
