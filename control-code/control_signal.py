@@ -3,9 +3,16 @@ import shared_memory as sh
 from time import sleep
 
 def ControlCode():
+    sh.sem_SSH_ready.acquire()
+
+    print("\033[93m[CONTROL]\033[00m")
+
+#    sh.profile['val'] = {}
+
+
+
     #while True:
         #sh.sem_SSH_ready.acquire()
-    print("\033[93m[CONTROL]\033[00m")
 
         # GPIO.setmode(GPIO.BOARD)
         # GPIO.setup(12, GPIO.OUT)
@@ -22,3 +29,19 @@ def ControlCode():
         # GPIO.output(13, GPIO.HIGH)
         # sleep(3)
         # GPIO.cleanup()
+
+
+
+
+
+
+
+# wait signal
+# read profile
+#
+# for profile.npress
+#   press(profile.ptime)
+#   sleep(profile.pint)
+#
+# recoil
+# send(data)
