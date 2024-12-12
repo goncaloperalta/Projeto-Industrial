@@ -42,7 +42,7 @@ def SSHConnect():
         initialCounters = processCommand(output)
 
         # Alert the sensor_reader and the control_signal that the SSH connection has been established
-        sh.sem_SSH_ready.release(n=2)
+        sh.sem_SSH_ready.release()
 
         # Exec
         success = 0
