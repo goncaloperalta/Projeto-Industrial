@@ -1,25 +1,22 @@
 import logging
-from datetime import datetime
 import shared_memory as sh
 from fastapi import FastAPI
+from datetime import datetime
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 logger = logging.getLogger(__name__)
 
+class Profile(BaseModel):
+    pressTime: int
+    interval: int
+    maxForce: int
+
 app = FastAPI()
-
-origins = ["*"] # Allow to receive from the Interface
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 @app.get("/start")
-async def root():
+async def root(profile: Profile):
     logger.info("Got request")
     print("\033[92m[API] Got request\033[00m")
     sh.sem_api.release()            # Signal to start the SSH server
@@ -31,7 +28,7 @@ async def root():
     date = now.strftime("%Y-%m-%d")
     time = now.strftime("%H:%M:%S")
 
-    # Send values to the interface
+    # Send values back to the interface
     print("\033[92m[API] Sending data back\033[00m")
     logger.info("Sending data back")
     return {

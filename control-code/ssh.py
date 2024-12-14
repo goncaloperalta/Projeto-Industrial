@@ -1,13 +1,11 @@
 import re
 import logging
 import paramiko
-import shared_memory as sh
-import credentials
 import threading
-from time import sleep
+import credentials
+import shared_memory as sh
 
 paramiko.util.log_to_file("app.log", level="WARN")
-
 logger = logging.getLogger(__name__)
 
 def processCommand(cmd):
@@ -49,7 +47,7 @@ def SSHConnect():
         initialCounters = processCommand(output)
 
         # Alert the sensor_reader and the control_signal that the SSH connection has been established
-        sh.sem_SSH_ready.release()
+        sh.sem_SSH_ready.release(2)
 
         # Exec
         success = 0
@@ -82,7 +80,7 @@ def SSHConnect():
             }
         else:
             print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
-            logger.info("Could not get a feedback from any button")
+            logger.info("Timed out: Could not get a feedback from any button")
             sh.feedback = {
                 'button': 'None',
                 'success': success
