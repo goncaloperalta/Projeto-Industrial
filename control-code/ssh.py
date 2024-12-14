@@ -1,9 +1,14 @@
 import re
+import logging
 import paramiko
 import shared_memory as sh
 import credentials
 import threading
 from time import sleep
+
+paramiko.util.log_to_file("app.log", level="WARN")
+
+logger = logging.getLogger(__name__)
 
 def processCommand(cmd):
     counters = []
@@ -29,11 +34,13 @@ def SSHConnect():
 
         # Connect
         print("\033[96m[SSH] Connecting to gateway...\033[00m")
+        logger.info("Connecting to gateway...")
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
         print("\033[96m[SSH] Connected to gateway\033[00m")
+        logger.info("Connected to gateway")
         client.exec_command("dmesg -c") # Clear the ring
 
         # Get initial counters
@@ -50,6 +57,7 @@ def SSHConnect():
         sh.timeout = 0
         threading.Timer(5, breakLoop).start()
         print("\033[96m[SSH] Polling command: /3party/ptinBoardDiagXSR150DX 0\033[00m")
+        logger.info("Polling command: /3party/ptinBoardDiagXSR150DX 0")
         while True:
             stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
             output = stdout.readlines()
@@ -67,12 +75,14 @@ def SSHConnect():
         arr = ['RESET', 'WPS', 'INFO/WIFI']
         if success:
             print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
+            logger.info("Got a feedback from a button: " + arr[buttonPressed])
             sh.feedback = {
                 'button': arr[buttonPressed],
                 'success': success
             }
         else:
             print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
+            logger.info("Could not get a feedback from any button")
             sh.feedback = {
                 'button': 'None',
                 'success': success
@@ -81,6 +91,7 @@ def SSHConnect():
         # Close Connection
         client.close()
         print("\033[96m[SSH] Connection closed\033[00m")
+        logger.info("Connection closed")
 
         # Alert the API that the feedback is ready
         sh.sem_feedback_ready.release(2)

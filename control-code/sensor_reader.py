@@ -3,6 +3,9 @@ from time import (sleep, perf_counter)
 import shared_memory as sh
 from numpy import (random, linspace)
 import threading
+import logging
+
+logger = logging.getLogger(__name__)
 
 OutputMAX = 0.8 * 2**14
 OutputMIN = 0.2 * 2**14
@@ -11,14 +14,17 @@ Force = 0
 
 def breakSensorLoop():
     print("\033[95m[SENSOR] Waiting for a button feedback...\033[00m")
+    logger.info("Waiting for a button feedback...")
     sh.sem_feedback_ready.acquire()     # Wait for feedback ready
     sh.stopSensor = 1
     print("\033[95m[SENSOR] Got a button feedback\033[00m")
+    logger.info("Got a button feedback")
 
 def SensorReader():
     while True:
         sh.sem_SSH_ready.acquire()      # Wait for the a SSH connection
         print("\033[95m[SENSOR] Starting to read from sensor...\033[00m")
+        logger.info("Starting to read from sensor...")
 
         sh.readings = {}                # Reset old readings
         ForceArr = []                   # Reset old force values
@@ -46,4 +52,5 @@ def SensorReader():
         sh.readings['time'] = [round(el*100)/100 for el in time]
 
         print("\033[95m[SENSOR] Readings ready\033[00m")
+        logging.info("Readings ready")
         sh.sem_readings_ready.release() # Signal the API that the Readings are ready to send

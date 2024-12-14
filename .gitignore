@@ -8,3 +8,5 @@ credentials.py
 /PCBsensor/PCBsensor-backups/
 /PCBcontrolador/fp-info-cache
 /PCBsensor/fp-info-cache
+
+/control-code/app.log
