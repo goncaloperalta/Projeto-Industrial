@@ -8,3 +8,5 @@ sem_feedback_ready = Semaphore(0)   # Semaphore to wait while the feedback has n
 readings = {}   # Holds the sensor readings
 feedback = {}   # Holds the button feedback
 profile  = {}   # Holds the profile to run
+timeout = 0
+stopSensor = 0

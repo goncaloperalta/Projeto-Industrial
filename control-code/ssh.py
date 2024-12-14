@@ -47,6 +47,7 @@ def SSHConnect():
         # Exec
         success = 0
         buttonPressed = -1
+        sh.timeout = 0
         threading.Timer(5, breakLoop).start()
         print("\033[96m[SSH] Polling command: /3party/ptinBoardDiagXSR150DX 0\033[00m")
         while True:
@@ -62,7 +63,7 @@ def SSHConnect():
             if sh.timeout == 1:
                 sh.timeout = 0
                 break
-        
+
         arr = ['RESET', 'WPS', 'INFO/WIFI']
         if success:
             print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
@@ -82,5 +83,4 @@ def SSHConnect():
         print("\033[96m[SSH] Connection closed\033[00m")
 
         # Alert the API that the feedback is ready
-        print(sh.feedback)
         sh.sem_feedback_ready.release(2)
