@@ -3,5 +3,8 @@ __pycache__
 credentials.py
 /interface/app.db-shm
 /interface/app.db-wal
+
 /PCBcontrolador/PI_actuatorcontroller-backups/
 /PCBsensor/PCBsensor-backups/
+/PCBcontrolador/fp-info-cache
+/PCBsensor/fp-info-cache

@@ -13,11 +13,11 @@ def SensorReader():
         sh.sem_SSH_ready.acquire()      # Wait for the a SSH connection
 
         print("\033[95m[SENSOR] Generating random values...\033[00m")
-        sh.readings = {}                # Reset the old readings
+        sh.readings["val"]  = []        # Reset the old readings
+        sh.readings["time"] = []
         tic = perf_counter()
         print("\033[95m[SENSOR]" + str(tic) + "\033[00m")
         i = 0
-        ForceArr = []
         with SMBus(1) as bus:
             while i < 75:
                 bytes = bus.read_i2c_block_data(0x28, 0, 2)
@@ -27,13 +27,12 @@ def SensorReader():
                 print("----")
                 i = i + 1
                 sleep(0.05)
-                ForceArr.append(Force)
+                sh.readings["val"].append(Force)
 
         toc = perf_counter()
         time = toc-tic
-        time = linspace(0, time, len(ForceArr))
-        sh.readings['val'] = ForceArr
-        sh.readings['time'] = time.tolist()
+        time = linspace(0, time, len(sh.readings["val"]))
+        sh.readings["time"] = time.tolist()
 
         print(sh.readings)
         print("\033[95m[SENSOR] Readings ready\033[00m")
