@@ -46,9 +46,6 @@ def SSHConnect():
         output = stdout.readlines()
         initialCounters = processCommand(output)
 
-        # Alert the sensor_reader and the control_signal that the SSH connection has been established
-        sh.sem_SSH_ready.release(2)
-
         # Exec
         success = 0
         buttonPressed = -1
@@ -56,6 +53,10 @@ def SSHConnect():
         threading.Timer(5, breakLoop).start()
         print("\033[96m[SSH] Polling command: /3party/ptinBoardDiagXSR150DX 0\033[00m")
         logger.info("Polling command: /3party/ptinBoardDiagXSR150DX 0")
+        
+        # Alert the sensor_reader and the control_signal that the SSH connection has been established
+        sh.sem_SSH_ready.release(2)
+
         while True:
             stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
             output = stdout.readlines()
@@ -91,5 +92,5 @@ def SSHConnect():
         print("\033[96m[SSH] Connection closed\033[00m")
         logger.info("Connection closed")
 
-        # Alert the API that the feedback is ready
-        sh.sem_feedback_ready.release(2)
+        # Alert the API, control and sensor that the feedback is ready
+        sh.sem_feedback_ready.release(3)

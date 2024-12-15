@@ -53,7 +53,7 @@ def ControlCode():
         logging.info("Waiting for a call")
         sh.sem_SSH_ready.acquire()
         print("\033[93m[CONTROL] Starting\033[00m")
-        logging.info("Starting")
+        logging.info("Enabling controller")
 
         # enable controller
         GPIO.setup(ENABLE, GPIO.IN)
@@ -90,6 +90,7 @@ def ControlCode():
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
 
+        logger.info("Disabling controller")
         # disable controller
         GPIO.setup(ENABLE, GPIO.IN);
 

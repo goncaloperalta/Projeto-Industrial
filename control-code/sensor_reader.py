@@ -51,4 +51,4 @@ def SensorReader():
 
         print("\033[95m[SENSOR] Readings ready\033[00m")
         logging.info("Readings ready")
-        sh.sem_readings_ready.release(2) # Signal the API that the Readings are ready to send
+        sh.sem_readings_ready.release() # Signal the API that the Readings are ready to send

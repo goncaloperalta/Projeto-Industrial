@@ -8,9 +8,9 @@ from fastapi.middleware.cors import CORSMiddleware
 logger = logging.getLogger(__name__)
 
 class Profile(BaseModel):
-    pressTime: int
-    interval: int
-    maxForce: int
+    pressTime: int | None = None
+    interval: int | None = None
+    maxForce: int | None = None
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
