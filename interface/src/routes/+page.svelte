@@ -54,14 +54,19 @@
     let readings = $state(0);
     function showResults(){
         results = 1;
-        readings = getReadings();
+        readings = startTest(currentProfile.pressTime);
         setTimeout(() => {
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
         }, 0);
     }
 
-    async function getReadings(){
-        const res = await fetch('api/start_test', {signal: AbortSignal.timeout(10000)});
+    async function startTest(pTime){
+        const res = await fetch('api/start_test', {
+            body: JSON.stringify({
+                pressTime: pTime
+            }),
+            signal: AbortSignal.timeout(10000)
+        });
         const data = await res.json();
         return data.data;
     }

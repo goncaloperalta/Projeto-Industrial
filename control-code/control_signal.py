@@ -75,7 +75,7 @@ def ControlCode():
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
         logger.info("Holding position")
-        sleep(1)
+        sleep(sh.pressTime)
 
         # retract
         logger.info("Retracting")

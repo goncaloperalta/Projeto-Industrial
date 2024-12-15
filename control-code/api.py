@@ -8,17 +8,16 @@ from fastapi.middleware.cors import CORSMiddleware
 logger = logging.getLogger(__name__)
 
 class Profile(BaseModel):
-    pressTime: int | None = None
-    interval: int | None = None
-    maxForce: int | None = None
+    pressTime: int | None = 0
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 @app.get("/start")
 async def root(profile: Profile):
-    logger.info("Got request")
+    logger.info(f"Got request with parameter {profile.pressTime}")
     print("\033[92m[API] Got request\033[00m")
+    sh.pressTime = profile.pressTime
     sh.sem_api.release()            # Signal to start the SSH server
 
     sh.sem_readings_ready.acquire() # Wait until readings are ready...
@@ -28,6 +27,7 @@ async def root(profile: Profile):
     date = now.strftime("%Y-%m-%d")
     time = now.strftime("%H:%M:%S")
 
+    sh.pressTime = 0
     # Send values back to the interface
     print("\033[92m[API] Sending data back\033[00m")
     logger.info("Sending data back")

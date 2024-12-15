@@ -9,3 +9,4 @@ readings = {}   # Holds the sensor readings
 feedback = {}   # Holds the button feedback
 timeout = 0
 stopSensor = 0
+pressTime = 0
