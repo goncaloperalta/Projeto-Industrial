@@ -26,6 +26,7 @@ def SensorReader():
         print("\033[95m[SENSOR] Starting to read from sensor...\033[00m")
         logger.info("Starting to read from sensor...")
 
+        flag = 0
         sh.readings = {}                # Reset old readings
         sh.readings['val'] = []         # Reset old force values
         sh.readings['time'] = []        # Reset old force values
@@ -37,9 +38,12 @@ def SensorReader():
                 bytes = bus.read_i2c_block_data(0x28, 0, 2)
                 Output = (bytes[0] << 8) + bytes[1];
                 Force = (Output-OutputMIN)*ForceRated/(OutputMAX-OutputMIN)
-                sleep(0.05)
+                sleep(0.01)
                 if Force < 0:
                     Force = 0
+                if flag == 0 and Force > 2:
+                    flag = 1
+                    sh.sem_force_read.release()
                 sh.readings['val'].append(round(Force*10)/10)
                 if sh.stopSensor == 1:
                     sh.stopSensor = 0
@@ -51,4 +55,5 @@ def SensorReader():
 
         print("\033[95m[SENSOR] Readings ready\033[00m")
         logging.info("Readings ready")
+        sh.sem_actuator_end.acquire()
         sh.sem_readings_ready.release() # Signal the API that the Readings are ready to send

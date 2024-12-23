@@ -3,8 +3,15 @@ import Database from "better-sqlite3"
 const db = new Database('app.db');
 // db.pragma('journal_mode = WAL');
 
-export const GET = async () => {
-    const res = await fetch("http://192.168.43.97:8000/start", { signal: AbortSignal.timeout(10000) });
+export const POST = async ({request}) => {
+    const body = await request.json();
+    const res = await fetch("http://192.168.43.97:8000/start", {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({pressTime: body.pressTime})
+    });
     const data = await res.json();
     
     // console.log(data)

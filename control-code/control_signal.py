@@ -39,13 +39,13 @@ def ControlCode():
     GPIO.setup(ENABLE, GPIO.IN)     # Defaulting Enabled
     # Reset Pin
     GPIO.setup(RESET, GPIO.OUT)
-    GPIO.output(RESET, GPIO.HIGH)
+    GPIO.output(RESET, GPIO.LOW)
     # Setup the two driving signals
     GPIO.setup(INA, GPIO.OUT)
-    pINA = GPIO.PWM(INA, 1000)
+    pINA = GPIO.PWM(INA, 8000)
     pINA.start(0)
     GPIO.setup(INB, GPIO.OUT)
-    pINB = GPIO.PWM(INB, 1000)
+    pINB = GPIO.PWM(INB, 8000)
     pINB.start(0)
 
     while True:
@@ -59,34 +59,36 @@ def ControlCode():
         GPIO.setup(ENABLE, GPIO.IN)
 
         # clear up possible stray state on current limiter
-        GPIO.output(RESET, GPIO.LOW)
-        sleep(0.001)
-        GPIO.output(RESET, GPIO.HIGH)
+        #GPIO.output(RESET, GPIO.LOW)
+        #sleep(0.001)
+        #GPIO.output(RESET, GPIO.HIGH)
 
         # start extending
-        pINA.ChangeDutyCycle(50)
+        pINA.ChangeDutyCycle(25)
         pINB.ChangeDutyCycle(0)
 
         # wait for press
         # threading.Thread(target=checkForce).start()
-        sh.sem_feedback_ready.acquire()
+        sh.sem_force_read.acquire(blocking=True, timeout=10)
 
         # brake and hold
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
         logger.info("Holding position")
         sleep(sh.pressTime)
-
+        
+        sh.sem_actuator_end.release()
+        
         # retract
         logger.info("Retracting")
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(75)
 
-        GPIO.output(RESET, GPIO.LOW)    # limiter still on in case it's going the wrong way
-        sleep(0.001)
-        GPIO.output(RESET, GPIO.HIGH)
+        #GPIO.output(RESET, GPIO.LOW)    # limiter still on in case it's going the wrong way
+        #sleep(0.001)
+        #GPIO.output(RESET, GPIO.HIGH)
 
-        sleep(3)
+        sleep(1)
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
 

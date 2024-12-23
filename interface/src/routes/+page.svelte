@@ -62,6 +62,7 @@
 
     async function startTest(pTime){
         const res = await fetch('api/start_test', {
+            method: "POST",
             body: JSON.stringify({
                 pressTime: pTime
             }),

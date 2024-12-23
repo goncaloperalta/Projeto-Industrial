@@ -21,7 +21,7 @@ frated = 15
 
 i = 0
 with SMBus(1) as bus:
-    while i < 120:
+    while i < 240:
         bytes = bus.read_i2c_block_data(0x28, 0, 4)
         word = bytes[3] + (bytes[2] << 8) + (bytes[1] << 16) + (bytes[0] << 24)
 
@@ -29,9 +29,10 @@ with SMBus(1) as bus:
         temp = (tempdata * 200/2047) - 50
         
         forcedata = (word & 0x3FFF0000) >> 16
-        force = frated*(forcedata-fmin)/(fmax-fmin)
+        force = frated*(forcedata-fmin)/(fmax-fmin) + 0.17
 
-        print(f"force: {force:2.2f} N  {force/0.00981:4.0f} g | temperature: {temp:2.2f} C")
+#        print(f"force: {force:2.2f} N  {force/0.00981:4.0f} g | temperature: {temp:2.2f} C")
+        print(f"force: {force:2.2f} N  {force/0.00981:4.0f} g")
 
         i = i + 1
         sleep(0.5)
