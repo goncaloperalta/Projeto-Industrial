@@ -19,9 +19,8 @@
 # HIGH  HIGH  Braking
 
 import logging
-import threading
 from time import sleep
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO # type: ignore
 import shared_memory as sh
 
 logger = logging.getLogger(__name__)
@@ -49,11 +48,10 @@ def ControlCode():
     pINB.start(0)
 
     while True:
-        # wait for signal to start
-        logging.info("Waiting for a call")
+        # wait for start signal 
         sh.sem_SSH_ready.acquire()
         print("\033[93m[CONTROL] Starting\033[00m")
-        logging.info("Enabling controller")
+        logging.info("Enabling controller circuit")
 
         # enable controller
         GPIO.setup(ENABLE, GPIO.IN)
@@ -64,23 +62,21 @@ def ControlCode():
         #GPIO.output(RESET, GPIO.HIGH)
 
         # start extending
+        logger.info("Extending Actuator")
         pINA.ChangeDutyCycle(25)
         pINB.ChangeDutyCycle(0)
 
         # wait for press
-        # threading.Thread(target=checkForce).start()
         sh.sem_force_read.acquire(blocking=True, timeout=10)
 
         # brake and hold
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
-        logger.info("Holding position")
+        logger.info(f"Holding Actuator position for {sh.pressTime} seconds")
         sleep(sh.pressTime)
-        
-        sh.sem_actuator_end.release()
-        
+                
         # retract
-        logger.info("Retracting")
+        logger.info("Retracting Actuator")
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(75)
 
@@ -92,7 +88,7 @@ def ControlCode():
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
 
-        logger.info("Disabling controller")
+        logger.info("Disabling controller circuit")
         # disable controller
         GPIO.setup(ENABLE, GPIO.IN);
 

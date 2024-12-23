@@ -32,13 +32,13 @@ def SSHConnect():
 
         # Connect
         print("\033[96m[SSH] Connecting to gateway...\033[00m")
-        logger.info("Connecting to gateway...")
+        logger.info("Atempting connection to SSH server")
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
         print("\033[96m[SSH] Connected to gateway\033[00m")
-        logger.info("Connected to gateway")
+        logger.info("Connection to DUT established")
         client.exec_command("dmesg -c") # Clear the ring
 
         # Get initial counters
@@ -74,14 +74,14 @@ def SSHConnect():
         arr = ['RESET', 'WPS', 'INFO/WIFI']
         if success:
             print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
-            logger.info("Got a feedback from a button: " + arr[buttonPressed])
+            logger.info(f"Got a feedback from button: {arr[buttonPressed]}")
             sh.feedback = {
                 'button': arr[buttonPressed],
                 'success': success
             }
         else:
             print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
-            logger.info("Timed out: Could not get a feedback from any button")
+            logger.info("Could not get a feedback from any button: timed out")
             sh.feedback = {
                 'button': 'None',
                 'success': success
@@ -90,7 +90,7 @@ def SSHConnect():
         # Close Connection
         client.close()
         print("\033[96m[SSH] Connection closed\033[00m")
-        logger.info("Connection closed")
+        logger.info("Connection to the DUT closed")
 
         # Alert the API, control and sensor that the feedback is ready
         sh.sem_feedback_ready.release(3)

@@ -15,10 +15,10 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, 
 
 @app.post("/start")
 async def root(profile: Profile):
-    logger.info(f"Got request with parameter {profile.pressTime}")
+    logger.info(f"Got request with a press time of: {profile.pressTime} seconds")
     print("\033[92m[API] Got request\033[00m")
     sh.pressTime = int(profile.pressTime)
-    sh.sem_api.release()            # Signal to start the SSH server
+    sh.sem_api.release()            # Signal to start the SSH client
 
     sh.sem_readings_ready.acquire() # Wait until readings are ready...
     sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
@@ -27,7 +27,8 @@ async def root(profile: Profile):
     date = now.strftime("%Y-%m-%d")
     time = now.strftime("%H:%M:%S")
 
-    sh.pressTime = 0
+    sh.pressTime = 0    # Reset input argument
+
     # Send values back to the interface
     print("\033[92m[API] Sending data back\033[00m")
     logger.info("Sending data back")
