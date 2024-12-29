@@ -12,7 +12,7 @@ app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 class Params(BaseModel):
-    pressTime: str | None = '0'
+    pressTime: int | None = 0
     nTimes: int | None = 0
     interval: int | None = 0
 @app.post("/start")
@@ -41,6 +41,7 @@ async def root(profile: Params):
     # Send values back to the interface
     print("\033[92m[API] Sending data back\033[00m")
     logger.info("Sending data back")
+    
     return {"message": "Test has finished"}
 
 class Profile(BaseModel):
@@ -149,6 +150,23 @@ async def addTest(test: Test):
     db.close()
 
     return {"message": "Test added to database"}
+
+@app.get("/get-last-test")
+async def getLastTest():
+    db = sql.connect("app.db")
+    cur = db.cursor()
+    row = cur.execute("SELECT * FROM tests ORDER BY id DESC LIMIT 1").fetchone()
+    cur.close()
+    db.close()
+
+    return {
+        "button": row[0],
+        "success": row[1],
+        "force_val": row[2],
+        "time_val": row[3],
+        "date": row[4],
+        "time": row[5],
+    }
 
 @app.get("/get-success")
 async def getSuccess():

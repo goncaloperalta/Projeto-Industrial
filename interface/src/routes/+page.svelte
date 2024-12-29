@@ -3,9 +3,9 @@
 
     let {data} = $props();
 
-    let profiles = $state(data.profiles);
+    let profiles = $state(data.profile);
     let selected = $state(0);
-    let currentProfile = $state(data.profiles[0]);
+    let currentProfile = $state(data.profile[0]);
     let showProfileInputName = $state(0);
     let profileName = $state('');
     function changeToCustom(){
@@ -14,38 +14,44 @@
         }
     }
     function selectChanges(){
-        currentProfile = data.profiles[selected];
+        currentProfile = data.profile[selected];
     }
     async function saveProfile(){
         if(selected == 0){
             showProfileInputName = !showProfileInputName;
             if(profileName && showProfileInputName == 0){
-                const response = await fetch("api/add-profile", {
+                await fetch("http://localhost:8000/add-profile", {
                     method: "POST",
+                    headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
                         pName: profileName,
-                        pressTime: currentProfile.pressTime,
-                        nTimes: currentProfile.nTimes,
-                        interval: currentProfile.interval
+                        pressTime: Number(currentProfile.pressTime),
+                        nTimes: Number(currentProfile.nTimes),
+                        interval: Number(currentProfile.interval)
                     })
                 });
-                const json = await response.json();
-                profiles = json.profiles;
-                data = json;
+                
+                const res = await fetch("http://localhost:8000/get-profiles");
+                const json = await res.json();
+                profiles = json.profiles.profile;
+                data = json.profiles;
             }
         }
     }
     async function deleteProfile(){
         if(selected != 0){
-            const response = await fetch("api/delete-profile", {
+            await fetch("http://localhost:8000/delete-profile", {
                 method: "DELETE",
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
                     pName: currentProfile.pName
                 })
             });
-            const json = await response.json();
-            profiles = json.profiles;
-            data = json;
+
+            const res = await fetch("http://localhost:8000/get-profiles");
+            const json = await res.json();
+            profiles = json.profiles.profile;
+            data = json.profiles;
             selected = 0;
         }
     }
@@ -68,25 +74,29 @@
 
         results = 1;
         let params = currentProfile;
-        for(let i = 0; i < params.nTimes; i++){
-            readings = startTest(params.pressTime);
-            await new Promise(resolve => setTimeout(resolve, params.interval));
-        }
+        readings = startTest(params);
+        
         setTimeout(() => {
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
         }, 0);
     }
 
-    async function startTest(pTime){
-        const res = await fetch('api/start_test', {
+    async function startTest(params){
+        await fetch('http://localhost:8000/start', {
             method: "POST",
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                pressTime: pTime
+                pressTime: Number(params.pressTime),
+                nTimes: Number(params.nTimes),
+                interval: Number(params.interval)
             }),
             signal: AbortSignal.timeout(10000)
         });
-        const data = await res.json();
-        return data.data;
+
+        const res = await fetch('http://localhost:8000/get-last-test');
+        const json = response.json();
+
+        return json;
     }
 
     function isNumber(n){
