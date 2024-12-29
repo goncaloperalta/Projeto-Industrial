@@ -52,9 +52,26 @@
 
     let results = $state(0);
     let readings = $state(0);
-    function showResults(){
+    async function showResults(){
+        if(!isNumber(currentProfile.pressTime) || currentProfile.pressTime < 0){
+            alert("Button press time must be a positive number");
+            return;
+        }
+        if(!isNumber(currentProfile.nTimes) || currentProfile.nTimes < 0){
+            alert("Number of times to be pressed must be a positive number");
+            return;
+        }
+        if(!isNumber(currentProfile.interval) || currentProfile.interval < 0){
+            alert("Interval between actions must be a positive number");
+            return;
+        }
+
         results = 1;
-        readings = startTest(currentProfile.pressTime);
+        let params = currentProfile;
+        for(let i = 0; i < params.nTimes; i++){
+            readings = startTest(params.pressTime);
+            await new Promise(resolve => setTimeout(resolve, params.interval));
+        }
         setTimeout(() => {
             document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
         }, 0);
@@ -70,6 +87,13 @@
         });
         const data = await res.json();
         return data.data;
+    }
+
+    function isNumber(n){
+        if(typeof n == 'number'){
+            return true;
+        }
+        return false;
     }
 </script>
 
