@@ -34,6 +34,7 @@ async def root(profile: Params):
     cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{sh.feedback['button']}\", {sh.feedback['success']}, \"{sh.readings['val']}\", \"{sh.readings['time']}\", \"{date}\", \"{time}\")")
     db.commit()
     cur.close()
+    db.close()
 
     sh.pressTime = 0    # Reset input argument
 
@@ -54,6 +55,7 @@ async def addProfile(profile: Profile):
     cur.execute(f"INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (\"{profile.pName}\", {profile.pressTime}, {profile.nTimes}, {profile.interval})")
     db.commit()
     cur.close()
+    db.close()
 
     return {"message": "Profile added to database"}
 
@@ -66,6 +68,7 @@ async def deleteProfile(profileName: ProfileName):
     cur.execute(f"DELETE FROM profiles WHERE pName = \"{profileName.pName}\"")
     db.commit()
     cur.close()
+    db.close()
 
     return {"message": "Profile deleted from database"}
 
@@ -73,8 +76,7 @@ async def deleteProfile(profileName: ProfileName):
 async def getProfiles():
     db = sql.connect("app.db")
     cur = db.cursor()
-    res = cur.execute(f"SELECT * FROM profiles").fetchall()
-    cur.close()
+    res = cur.execute(f"SELECT * FROM profiles")
     
     profiles = {
         "profiles": {
@@ -82,25 +84,28 @@ async def getProfiles():
         }
     }
 
-    for row in res:
+    while True:
+        row = res.fetchone()
+        if row is None: break
         profile = {
             "id": row[0],
             "pName": row[1],
             "pressTime": row[2],
             "nTimes": row[3],
-            "interval": row[4],
+            "interval": row[4]
         }
         profiles["profiles"]["profile"].append(profile)
+
+    cur.close()
+    db.close()
 
     return profiles
 
 @app.get("/get-tests")
 async def getTest():
     db = sql.connect("app.db")
-    
     cur = db.cursor()
-    res = cur.execute(f"SELECT * FROM tests").fetchall()
-    cur.close()
+    res = cur.execute(f"SELECT * FROM tests")
 
     tests = {
         "tests": {
@@ -108,7 +113,9 @@ async def getTest():
         }
     }
 
-    for row in res:
+    while True:
+        row = res.fetchone()
+        if row is None: break
         test = {
             "id": row[0],
             "button": row[1],
@@ -119,6 +126,9 @@ async def getTest():
             "time": row[6]
         }
         tests["tests"]["test"].append(test)
+
+    cur.close()
+    db.close()
 
     return tests
 
@@ -136,6 +146,7 @@ async def addTest(test: Test):
     cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{test.button}\", {test.success}, \"{test.force_val}\", \"{test.time_val}\", \"{test.date}\", \"{test.time}\")")
     db.commit()
     cur.close()
+    db.close()
 
     return {"message": "Test added to database"}
 
@@ -146,10 +157,11 @@ async def getSuccess():
     res = cur.execute(f"SELECT success FROM tests")
     val = []
     while True:
-        success = res.fetchone()
-        if success is None: break
-        val.append(success[0])
+        row = res.fetchone()
+        if row is None: break
+        val.append(row[0])
     db.commit()
     cur.close()
+    db.close()
 
     return val
