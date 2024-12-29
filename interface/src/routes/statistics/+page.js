@@ -1,14 +1,13 @@
 
 export const load = async ({fetch}) => {
     const fetchTests = async () => {
-        const res = await fetch('/api/get-success')
+        const res = await fetch('http://localhost:8000/get-success')
         const data = await res.json()
         
-        return data.tests
+        return data
     }
     
     const tests = await fetchTests();
-    console.log(tests)
     return {
         tests
     }

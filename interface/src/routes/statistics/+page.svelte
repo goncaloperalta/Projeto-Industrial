@@ -7,8 +7,9 @@
 	let successRate = 0;
 	let length = 0;
 	let posts = data.tests;
+	console.log(posts)
 	posts.forEach(post => {
-		successRate += post.success
+		successRate += post
 		length += 1
 	});
 	successRate = successRate / length * 100;
