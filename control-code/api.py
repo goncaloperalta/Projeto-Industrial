@@ -1,7 +1,8 @@
 import logging
 import sqlite3 as sql
+from time import sleep
 import shared_memory as sh
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from datetime import datetime
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,34 +12,46 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
-class Params(BaseModel):
-    pressTime: int | None = 0
-    nTimes: int | None = 0
-    interval: int | None = 0
+class Params(BaseModel):        # Parameters of the test
+    pName: str | None = 'None'  # Profile to use
+    pressTime: int | None = 0   # Button press time in seconds
+    nTimes: int | None = 0      # Number of times to press the button
+    interval: int | None = 0    # Interval in seconds between presses
 @app.post("/start")
-async def root(profile: Params):
-    logger.info(f"Got request with a press time of: {profile.pressTime} seconds")
+async def start(params: Params, response: Response):
+    if params.pName != 'None':
+        profile = cur.execute(f"SELECT * FROM profiles WHERE pName = \"{params.pName}\"").fetchone()
+        if profile == None:
+            response.status_code = 404
+            return {"message": "Profile not found"}
+        params.pressTime = profile[2]
+        params.nTimes = profile[3]
+        params.interval = profile[4]
+
+    logger.info(f"Got request with parameters Press time: {params.pressTime} s, Number of times: {params.nTimes} and Interval: {params.interval}")
     print("\033[92m[API] Got request\033[00m")
-    sh.pressTime = int(profile.pressTime)
-    sh.sem_api.release()            # Signal to start the SSH client
+    sh.pressTime = params.pressTime
 
-    sh.sem_readings_ready.acquire() # Wait until readings are ready...
-    sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
+    for i in range(params.nTimes):
+        sh.sem_api.release()            # Signal to start the SSH client
 
-    now = datetime.now()
-    date = now.strftime("%Y-%m-%d")
-    time = now.strftime("%H:%M:%S")
+        sh.sem_readings_ready.acquire() # Wait until readings are ready...
+        sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
 
-    db = sql.connect("app.db")
-    cur = db.cursor()
-    cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{sh.feedback['button']}\", {sh.feedback['success']}, \"{sh.readings['val']}\", \"{sh.readings['time']}\", \"{date}\", \"{time}\")")
-    db.commit()
-    cur.close()
-    db.close()
+        now = datetime.now()
+        date = now.strftime("%Y-%m-%d")
+        time = now.strftime("%H:%M:%S")
 
-    sh.pressTime = 0    # Reset input argument
+        db = sql.connect("app.db")
+        cur = db.cursor()
+        cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{sh.feedback['button']}\", {sh.feedback['success']}, \"{sh.readings['val']}\", \"{sh.readings['time']}\", \"{date}\", \"{time}\")")
+        db.commit()
+        cur.close()
+        db.close()
 
-    # Send values back to the interface
+        sleep(params.interval)
+    
+    sh.pressTime = 0
     print("\033[92m[API] Sending data back\033[00m")
     logger.info("Sending data back")
     
