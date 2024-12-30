@@ -72,9 +72,11 @@
 							<tr>
 								<td colspan="3">
 									<div class="flex h-[400px] pl-20">
-										<div class="ml-20 mr-20">
-											<LinePlot X={JSON.parse(post.time_val)} Y={JSON.parse(post.force_val)}/>
-										</div>
+										{#each post.time_val as e, ind}
+											<div class="ml-20 mr-20">
+												<LinePlot X={post.time_val[ind]} Y={post.force_val[ind]}/>
+											</div>
+										{/each}
 									</div>
 								</td>
 							</tr>

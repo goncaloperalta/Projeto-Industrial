@@ -8,6 +8,16 @@ export const load = async ({fetch}) => {
     }
     
     const tests = await fetchTests();
+    for(let i = 0; i < tests.length; i++){
+        let timeVal = JSON.parse(tests[i].time_val);
+        let forceVal = JSON.parse(tests[i].force_val);
+
+        for(let j = 0; j < timeVal.length; j++){
+            tests[i].time_val = timeVal;
+            tests[i].force_val = forceVal;
+        }
+    }
+    console.log(tests)
     return {
         tests
     };
