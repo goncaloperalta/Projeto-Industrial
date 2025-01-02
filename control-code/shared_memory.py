@@ -1,39 +1,67 @@
-from threading import Semaphore
+from enum import Enum
+from threading import Semaphore, Lock
 
-sem_api = Semaphore(0)
+access = Lock()
 """
-#### Semaphore to start the SSH module:
-    * aquired by SSH module
+Mutex to limit the access to the shared variables:
+"""
+
+startTest = Semaphore(0)
+"""
+#### Semaphore to start the test:
+    * aquired by State module
     * released by the API module once a request to start the test is received 
 """
 
-sem_SSH_ready = Semaphore(0)
+startSSH = Semaphore(0)
+"""
+#### Semaphore to start the SSH module:
+    * aquired by SSH module
+    * released by the State module 
+"""
+
+startSensorAndControl = Semaphore(0)
 """
 #### Semaphore to start the Sensor-Reader and the Control-Signal modules:
     * aquired by Sensor-Reader and the Control-Signal modules
     * released by the SSH module once a connection has been established with the DUT 
 """
 
-sem_readings_ready = Semaphore(0)
+sensorReadingsReady = Semaphore(0)
 """
 #### Semaphore for the API module send a response back:
     * aquired by API module
     * released by the Sensor-Reader module once the readings shared variable has the force and time values 
 """
 
-sem_feedback_ready = Semaphore(0)
+feedbackReady = Semaphore(0)
 """
 #### Semaphore to alert the modules other than the SSH that the feedback is done:
     * aquired by the API, Control-Signal and Sensor-Reader modules
     * released (n=3) by the SSH module once the connection is closed 
 """
 
-sem_force_read = Semaphore(0)
+buttonPressed = Semaphore(0)
 """
 #### Semaphore for the actuator to stop extending and hold it's position:
     * aquired by the Control-Signal module
     * released by the Sensor-Reader module once a force above 2 newtons is read
 """
+
+class state(Enum):
+    """Enum with types of state"""
+    READY = 1
+    RUNNING = 2
+    ABORT = 3
+
+STATE = state.READY
+"""Shared variable to store the current state of the system"""
+
+class Parameters():
+    pressTime : int
+    nTimes : int
+    interval : int
+parameters : Parameters
 
 readings = {}
 """

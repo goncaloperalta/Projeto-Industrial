@@ -1,13 +1,11 @@
 import logging
 import sqlite3 as sql
-from time import sleep
 import shared_memory as sh
 from fastapi import FastAPI, Response
-from datetime import datetime
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("API")
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
@@ -19,8 +17,17 @@ class Params(BaseModel):        # Parameters of the test
     interval: int | None = 0    # Interval in seconds between presses
 @app.post("/start")
 async def start(params: Params, response: Response):
+    with sh.access:
+        if sh.STATE != sh.state.READY:
+            response.status_code = 400
+            return {"message": "A test is already running"}
+
     if params.pName != 'None':
+        db = sql.connect("app.db")
+        cur = db.cursor()
         profile = cur.execute(f"SELECT * FROM profiles WHERE pName = \"{params.pName}\"").fetchone()
+        cur.close()
+        db.close()
         if profile == None:
             response.status_code = 404
             return {"message": "Profile not found"}
@@ -28,49 +35,45 @@ async def start(params: Params, response: Response):
         params.nTimes = profile[3]
         params.interval = profile[4]
 
-    logger.info(f"Got request with parameters Press time: {params.pressTime} s, Number of times: {params.nTimes} and Interval: {params.interval}")
-    print("\033[92m[API] Got request\033[00m")
-    sh.pressTime = params.pressTime
-
-    for i in range(params.nTimes):
-        sh.sem_api.release()            # Signal to start the SSH client
-
-        sh.sem_readings_ready.acquire() # Wait until readings are ready...
-        sh.sem_feedback_ready.acquire() # Wait until feedback is ready...
-
-        now = datetime.now()
-        date = now.strftime("%Y-%m-%d")
-        time = now.strftime("%H:%M:%S")
-
-        db = sql.connect("app.db")
-        cur = db.cursor()
-        cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{sh.feedback['button']}\", {sh.feedback['success']}, \"{sh.readings['val']}\", \"{sh.readings['time']}\", \"{date}\", \"{time}\")")
-        db.commit()
-        cur.close()
-        db.close()
-
-        sleep(params.interval)
+    with sh.access:
+        sh.parameters.pressTime = params.pressTime
+        sh.parameters.nTimes = params.nTimes
+        sh.parameters.interval = params.interval
     
-    sh.pressTime = 0
-    print("\033[92m[API] Sending data back\033[00m")
-    logger.info("Sending data back")
+    logger.info(f"Got request")
+    sh.startTest.release()    
     
-    return {"message": "Test has finished"}
+    return {"message": "Test started"}
+
+@app.get("/abort-test")
+async def abortTest():
+    with sh.access:
+        if sh.STATE == sh.state.READY:
+            return {"message": "No test to abort"}
+        
+        sh.STATE = sh.state.ABORT
+
+    return {"message": "Aborted test"}
 
 class Profile(BaseModel):
     pName: str
     pressTime: int
     nTimes: int
     interval: int
-@app.post("/add-profile", status_code=201)
-async def addProfile(profile: Profile):
+@app.post("/add-profile")
+async def addProfile(profile: Profile, response: Response):
     db = sql.connect("app.db")
     cur = db.cursor()
-    cur.execute(f"INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (\"{profile.pName}\", {profile.pressTime}, {profile.nTimes}, {profile.interval})")
+    try:
+        cur.execute(f"INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (\"{profile.pName}\", {profile.pressTime}, {profile.nTimes}, {profile.interval})")
+    except sql.OperationalError:
+        response.status_code = 400
+        return {"message": "A profile with that name already exists"}
     db.commit()
     cur.close()
     db.close()
 
+    response.status_code = 201
     return {"message": "Profile added to database"}
 
 class ProfileName(BaseModel):

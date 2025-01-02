@@ -28,7 +28,7 @@ def breakLoop():
 
 def SSHConnect():
     while True:
-        sh.sem_api.acquire()        # Wait for a request
+        sh.startSSH.acquire()
 
         # Connect
         print("\033[96m[SSH] Connecting to gateway...\033[00m")
@@ -55,7 +55,7 @@ def SSHConnect():
         logger.info("Polling command: /3party/ptinBoardDiagXSR150DX 0")
         
         # Alert the sensor_reader and the control_signal that the SSH connection has been established
-        sh.sem_SSH_ready.release(2)
+        sh.startSensorAndControl.release(2)
 
         while True:
             stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
@@ -70,6 +70,14 @@ def SSHConnect():
             if sh.timeout == 1:
                 sh.timeout = 0
                 break
+
+        # Close Connection
+        stdin.close()
+        stdout.close()
+        stderr.close()
+        client.close()
+        print("\033[96m[SSH] Connection closed\033[00m")
+        logger.info("Connection to the DUT closed")
 
         arr = ['RESET', 'WPS', 'INFO/WIFI']
         if success:
@@ -87,10 +95,5 @@ def SSHConnect():
                 'success': success
             }
         
-        # Close Connection
-        client.close()
-        print("\033[96m[SSH] Connection closed\033[00m")
-        logger.info("Connection to the DUT closed")
-
         # Alert the API, control and sensor that the feedback is ready
-        sh.sem_feedback_ready.release(3)
+        sh.feedbackReady.release(3)

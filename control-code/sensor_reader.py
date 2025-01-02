@@ -5,7 +5,7 @@ from numpy import linspace
 import shared_memory as sh
 from time import (sleep, perf_counter)
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("SENSOR")
 
 OutputMAX = 0.8 * 2**14
 OutputMIN = 0.2 * 2**14
@@ -13,7 +13,7 @@ ForceRated = 15
 Force = 0
 
 def breakSensorLoop():
-    sh.sem_feedback_ready.acquire()     # Wait for feedback ready
+    sh.feedbackReady.acquire()     # Wait for feedback ready
     sh.stopSensor = 1
 
 def SensorReader():
@@ -42,7 +42,7 @@ def SensorReader():
                 
                 if flag == 0 and Force > 2: # If more than 2 newtons are read stop the actuator
                     flag = 1
-                    sh.sem_force_read.release()
+                    sh.buttonPressed.release()
                 sh.readings['val'].append(round(Force, 4))
 
                 if sh.stopSensor == 1:
@@ -55,4 +55,4 @@ def SensorReader():
 
         print("\033[95m[SENSOR] Readings ready\033[00m")
         logging.info("Force readings ready")
-        sh.sem_readings_ready.release() # Signal the API that the Force readings are ready to be sent
+        sh.sensorReadingsReady.release() # Signal the API that the Force readings are ready to be sent

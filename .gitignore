@@ -3,8 +3,7 @@ __pycache__
 credentials.py
 app.db-shm
 app.db-wal
-db_code.py
-testapi.js
+
 pcbs/controller/PI_actuatorcontroller-backups/
 pcbs/sensor/PCBsensor-backups/
 pcbs/controller/fp-info-cache

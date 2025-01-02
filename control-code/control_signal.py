@@ -23,7 +23,7 @@ from time import sleep
 import RPi.GPIO as GPIO # type: ignore
 import shared_memory as sh
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("CONTROL CODE")
 
 ENABLE = 11
 RESET = 13
@@ -67,13 +67,13 @@ def ControlCode():
         pINB.ChangeDutyCycle(0)
 
         # wait for press
-        sh.sem_force_read.acquire(blocking=True, timeout=10)
+        sh.buttonPressed.acquire()
 
         # brake and hold
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
-        logger.info(f"Holding Actuator position for {sh.pressTime} seconds")
-        sleep(sh.pressTime)
+        logger.info(f"Holding Actuator position for {sh.parameters.pressTime} seconds")
+        sleep(sh.parameters.pressTime)
                 
         # retract
         logger.info("Retracting Actuator")
