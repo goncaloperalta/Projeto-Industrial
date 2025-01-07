@@ -7,17 +7,17 @@ now = datetime.now()
 date = now.strftime("%Y-%m-%d")
 time = now.strftime("%H:%M:%S")
 
-db = sql.connect("app.db")
+db = sql.connect("../control-code/app.db")
 cur = db.cursor()
 
-# data = {
-#     "button": "INFO",
-#     "success": 1,
-#     "force_val": [1, 2, 3, 4, 5],
-#     "time_val": [1, 2, 3, 4, 5],
-#     "date": date,
-#     "time": time
-# }
+data = {
+    "button": "INFO",
+    "success": 1,
+    "force_val": [[1, 2, 3, 4, 5], [1, 2, 3, 4]],
+    "time_val": [1, 2, 3, 4, 5],
+    "date": date,
+    "time": time
+}
 
 # profile = {
 #     "pName": "Reset",
@@ -31,7 +31,7 @@ cur = db.cursor()
 # except sql.OperationalError as e:
 #     print(e)
 
-# cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{data['button']}\", {data['success']}, \"{[data['force_val']]}\", \"{[data['time_val']]}\", \"{data['date']}\", \"{data['time']}\")")
+cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{data['button']}\", {data['success']}, \"{data['force_val']}\", \"{data['time_val']}\", \"{data['date']}\", \"{data['time']}\")")
 # x = cur.execute(f"SELECT * FROM profiles WHERE pName = \"123\"").fetchone()
 # print(x)
 

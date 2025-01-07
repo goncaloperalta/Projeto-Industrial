@@ -17,6 +17,9 @@ class Params(BaseModel):        # Parameters of the test
     interval: int | None = 0    # Interval in seconds between presses
 @app.post("/start")
 async def start(params: Params, response: Response):
+    with open('app.log', 'w'):
+        pass
+
     with sh.access:
         if sh.STATE != sh.state.READY:
             response.status_code = 400

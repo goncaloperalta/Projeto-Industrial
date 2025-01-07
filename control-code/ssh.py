@@ -6,7 +6,9 @@ import credentials
 import shared_memory as sh
 
 paramiko.util.log_to_file("app.log", level="WARN")
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("SSH")
+
+arr = ['RESET', 'WPS', 'INFO/WIFI']
 
 def processCommand(cmd):
     counters = []
@@ -22,9 +24,6 @@ def getButtonPressed(initial, changed):
             return i
 
     return -1
-
-def breakLoop():
-    sh.timeout = 1
 
 def SSHConnect():
     while True:
@@ -47,53 +46,51 @@ def SSHConnect():
         initialCounters = processCommand(output)
 
         # Exec
-        success = 0
         buttonPressed = -1
-        sh.timeout = 0
-        threading.Timer(5, breakLoop).start()
-        print("\033[96m[SSH] Polling command: /3party/ptinBoardDiagXSR150DX 0\033[00m")
-        logger.info("Polling command: /3party/ptinBoardDiagXSR150DX 0")
         
         # Alert the sensor_reader and the control_signal that the SSH connection has been established
         sh.startSensorAndControl.release(2)
 
-        while True:
-            stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
-            output = stdout.readlines()
-            counters = processCommand(output)
+        # Wait for a press
+        sh.buttonPressed.acquire()
 
-            buttonPressed = getButtonPressed(initialCounters, counters)
-            if buttonPressed != -1:
-                success = 1
-                break
-            
-            if sh.timeout == 1:
-                sh.timeout = 0
-                break
+        with sh.access:
+            if sh.PRESSED:
+                sleep(0.01)
+                stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
+                output = stdout.readlines()
+                counters = processCommand(output)
+                buttonPressed = getButtonPressed(initialCounters, counters)
+                if buttonPressed != 1:
+                    print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
+                    logger.info(f"Got a feedback from button: {arr[buttonPressed]}")
+                    sh.feedback = {
+                        'button': arr[buttonPressed],
+                        'success': 1
+                    }
+                else:
+                    print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
+                    logger.info("Could not get a feedback from any button")
+                    sh.feedback = {
+                        'button': 'No Feedback',
+                        'success': 0
+                    }
+                stdin.close()
+                stdout.close()
+                stderr.close()
+                client.close()
+                print("\033[96m[SSH] Connection closed\033[00m")
+                logger.info("Connection to the DUT closed")
+            else:
+                print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
+                logger.info("Could not get a feedback from any button")
+                sh.feedback = {
+                    'button': 'Not Pressed',
+                    'success': 0
+                }
 
-        # Close Connection
-        stdin.close()
-        stdout.close()
-        stderr.close()
-        client.close()
         print("\033[96m[SSH] Connection closed\033[00m")
         logger.info("Connection to the DUT closed")
-
-        arr = ['RESET', 'WPS', 'INFO/WIFI']
-        if success:
-            print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
-            logger.info(f"Got a feedback from button: {arr[buttonPressed]}")
-            sh.feedback = {
-                'button': arr[buttonPressed],
-                'success': success
-            }
-        else:
-            print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
-            logger.info("Could not get a feedback from any button: timed out")
-            sh.feedback = {
-                'button': 'None',
-                'success': success
-            }
         
-        # Alert the API, control and sensor that the feedback is ready
-        sh.feedbackReady.release(3)
+        # Alert the feedback is ready
+        sh.feedbackReady.release()

@@ -49,7 +49,7 @@ def ControlCode():
 
     while True:
         # wait for start signal 
-        sh.sem_SSH_ready.acquire()
+        sh.startSensorAndControl.acquire()
         print("\033[93m[CONTROL] Starting\033[00m")
         logging.info("Enabling controller circuit")
 
@@ -72,8 +72,12 @@ def ControlCode():
         # brake and hold
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
-        logger.info(f"Holding Actuator position for {sh.parameters.pressTime} seconds")
-        sleep(sh.parameters.pressTime)
+        holdTime = 0
+        with sh.access:
+            if sh.PRESSED:
+                holdTime = sh.parameters.pressTime
+        logger.info(f"Holding Actuator position for {holdTime} seconds")
+        sleep(holdTime)
                 
         # retract
         logger.info("Retracting Actuator")

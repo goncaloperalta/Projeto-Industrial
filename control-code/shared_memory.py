@@ -3,7 +3,7 @@ from threading import Semaphore, Lock
 
 access = Lock()
 """
-Mutex to limit the access to the shared variables:
+Mutex to limit the access to the shared variables
 """
 
 startTest = Semaphore(0)
@@ -57,6 +57,9 @@ class state(Enum):
 STATE = state.READY
 """Shared variable to store the current state of the system"""
 
+CURRENT_RUN = 0
+"""Shared variable to get the current run"""
+
 class Parameters():
     pressTime : int
     nTimes : int
@@ -82,17 +85,8 @@ Shared variable to store the button feedback:
 }
 """
 
-timeout = 0
+PRESSED = False
 """
-Timeout flag in case no feedback is sent by the button press
-"""
-
-stopSensor = 0
-"""
-Shared variable to stop the force reading loop
+Flag to indicate if a press was done or not
 """
 
-pressTime = 0
-"""
-Shared variable to hold the argument from the /start endpoint
-"""
