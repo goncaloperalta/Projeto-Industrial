@@ -20,7 +20,7 @@
         if(selected == 0){
             showProfileInputName = !showProfileInputName;
             if(profileName && showProfileInputName == 0){
-                await fetch("http://localhost:8000/add-profile", {
+                await fetch("http://192.168.43.97:8000/add-profile", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -31,7 +31,7 @@
                     })
                 });
                 
-                const res = await fetch("http://localhost:8000/get-profiles");
+                const res = await fetch("http://192.168.43.97:8000/get-profiles");
                 const json = await res.json();
                 profiles = json.profiles.profile;
                 data = json.profiles;
@@ -40,7 +40,7 @@
     }
     async function deleteProfile(){
         if(selected != 0){
-            await fetch("http://localhost:8000/delete-profile", {
+            await fetch("http://192.168.43.97:8000/delete-profile", {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -48,7 +48,7 @@
                 })
             });
 
-            const res = await fetch("http://localhost:8000/get-profiles");
+            const res = await fetch("http://192.168.43.97:8000/get-profiles");
             const json = await res.json();
             profiles = json.profiles.profile;
             data = json.profiles;
@@ -82,7 +82,7 @@
     }
 
     async function startTest(params){
-        await fetch('http://localhost:8000/start', {
+        await fetch('http://192.168.43.97:8000/start', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -93,7 +93,7 @@
             signal: AbortSignal.timeout(10000)
         });
 
-        const res = await fetch('http://localhost:8000/get-last-test');
+        const res = await fetch('http://192.168.43.97:8000/get-last-test');
         const json = response.json();
 
         return json;

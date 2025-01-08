@@ -1,5 +1,5 @@
 
-fetch("http://localhost:8000/add-profile", {
+fetch("http://192.168.43.97:8000/add-profile", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
