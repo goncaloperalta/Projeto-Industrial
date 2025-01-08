@@ -60,11 +60,17 @@ STATE = state.READY
 CURRENT_RUN = 0
 """Shared variable to get the current run"""
 
-class Parameters():
+class Parameters:
     pressTime : int
     nTimes : int
     interval : int
-parameters : Parameters
+
+    def __init__(self):
+        self.pressTime = 0
+        self.nTimes = 1
+        self.interval = 0
+
+parameters = Parameters()
 
 readings = {}
 """

@@ -3,6 +3,8 @@ import logging
 import paramiko
 import threading
 import credentials
+from os import system
+from time import sleep
 import shared_memory as sh
 
 paramiko.util.log_to_file("app.log", level="WARN")
@@ -35,7 +37,11 @@ def SSHConnect():
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
+        try:
+            client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
+        except paramiko.BadHostKeyException:
+            system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
+            client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
         print("\033[96m[SSH] Connected to gateway\033[00m")
         logger.info("Connection to DUT established")
         client.exec_command("dmesg -c") # Clear the ring
@@ -43,7 +49,9 @@ def SSHConnect():
         # Get initial counters
         stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
         output = stdout.readlines()
+        print(output)
         initialCounters = processCommand(output)
+        print(initialCounters)
 
         # Exec
         buttonPressed = -1
@@ -59,9 +67,12 @@ def SSHConnect():
                 sleep(0.01)
                 stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
                 output = stdout.readlines()
+                print(output)
                 counters = processCommand(output)
+                print(counters)
                 buttonPressed = getButtonPressed(initialCounters, counters)
-                if buttonPressed != 1:
+                print(buttonPressed)
+                if buttonPressed != -1:
                     print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
                     logger.info(f"Got a feedback from button: {arr[buttonPressed]}")
                     sh.feedback = {
@@ -79,8 +90,6 @@ def SSHConnect():
                 stdout.close()
                 stderr.close()
                 client.close()
-                print("\033[96m[SSH] Connection closed\033[00m")
-                logger.info("Connection to the DUT closed")
             else:
                 print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
                 logger.info("Could not get a feedback from any button")
@@ -88,6 +97,7 @@ def SSHConnect():
                     'button': 'Not Pressed',
                     'success': 0
                 }
+                client.close()
 
         print("\033[96m[SSH] Connection closed\033[00m")
         logger.info("Connection to the DUT closed")

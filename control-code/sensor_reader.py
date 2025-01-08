@@ -15,6 +15,7 @@ Force = 0
 def SensorReader():
     while True:
         sh.startSensorAndControl.acquire()      # Wait for the SSH connection
+        logger.info("Sensor module started")
 
         flag = 0
         holdTime = 0
@@ -37,7 +38,8 @@ def SensorReader():
                 sh.readings['val'].append(round(Force, 4))    
 
                 if flag == 0:
-                    if Force > 5: # If more than 5 newtons are read stop the actuator
+                    if Force > 2: # If more than 5 newtons are read stop the actuator
+                        logger.info("Force greater than 5 Newtons read")
                         with sh.access:
                             sh.PRESSED = True
                             holdTime = sh.parameters.pressTime
@@ -46,13 +48,14 @@ def SensorReader():
                         sh.buttonPressed.release(2)
                     
                     if (perf_counter() - tic) > 5:  # Timeout 5 sec
+                        logger.info("Timed out")
                         sh.buttonPressed.release(2)
                         break
 
-                elif perf_counter() - tic2 > tic2 + holdTime:
-                    break;
-                        
-                sleep(0.01)
+                elif perf_counter() > (tic2 + holdTime):
+                    logger.info("Stoped reading")
+                    break
+                sleep(0.1)
         
         if flag:
             time = linspace(0, perf_counter()-tic, len(sh.readings['val'])).tolist()

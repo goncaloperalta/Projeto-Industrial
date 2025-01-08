@@ -13,17 +13,17 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, 
 class Params(BaseModel):        # Parameters of the test
     pName: str | None = 'None'  # Profile to use
     pressTime: int | None = 0   # Button press time in seconds
-    nTimes: int | None = 0      # Number of times to press the button
+    nTimes: int | None = 1      # Number of times to press the button
     interval: int | None = 0    # Interval in seconds between presses
 @app.post("/start")
 async def start(params: Params, response: Response):
-    with open('app.log', 'w'):
-        pass
-
     with sh.access:
         if sh.STATE != sh.state.READY:
             response.status_code = 400
             return {"message": "A test is already running"}
+
+    with open('app.log', 'w'):
+        pass
 
     if params.pName != 'None':
         db = sql.connect("app.db")
@@ -42,10 +42,10 @@ async def start(params: Params, response: Response):
         sh.parameters.pressTime = params.pressTime
         sh.parameters.nTimes = params.nTimes
         sh.parameters.interval = params.interval
-    
-    logger.info(f"Got request")
-    sh.startTest.release()    
-    
+
+    logger.info(f"Got request with: PressTime: {sh.parameters.pressTime}s, nTimes: {sh.parameters.nTimes}, Interval: {sh.parameters.interval}s")
+    sh.startTest.release()
+
     return {"message": "Test started"}
 
 @app.get("/abort-test")
@@ -179,12 +179,13 @@ async def getLastTest():
     db.close()
 
     return {
-        "button": row[0],
-        "success": row[1],
-        "force_val": row[2],
-        "time_val": row[3],
-        "date": row[4],
-        "time": row[5],
+        "id": row[0],
+        "button": row[1],
+        "success": row[2],
+        "force_val": row[3],
+        "time_val": row[4],
+        "date": row[5],
+        "time": row[6],
     }
 
 @app.get("/get-success")
