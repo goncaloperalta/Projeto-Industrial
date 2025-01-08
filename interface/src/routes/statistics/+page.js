@@ -8,6 +8,10 @@ export const load = async ({fetch}) => {
     }
     
     const tests = await fetchTests();
+    for(let i = 0; i < tests.length; i++){
+        tests[i] = JSON.parse(tests[i]);
+    }
+    
     return {
         tests
     }

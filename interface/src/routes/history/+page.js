@@ -17,7 +17,7 @@ export const load = async ({fetch}) => {
             tests[i].force_val = forceVal;
         }
     }
-    console.log(tests)
+    
     return {
         tests
     };

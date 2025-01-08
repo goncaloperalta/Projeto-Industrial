@@ -8,7 +8,7 @@
             <strong class="text-3xl">API Reference</strong>
             <div class="my-4">
                 This web interface runs on port <code class="px-1 bg-slate-900 rounded-sm">:5173</code>, however the system also provides a RESTful API on port <code class="px-1 bg-slate-900 rounded-sm">:8000</code>. Anything done in this web interface is based on this API.<br>
-                The API accepts and returns <u>only</u> <code class="px-1 bg-slate-900 rounded-sm">JSON</code> encoded objects with no need for authentication. There are diferent ways to use the it, one is with <code class="px-1 bg-slate-900 rounded-sm">Python</code>:
+                The API accepts and returns <u>only</u> <code class="px-1 bg-slate-900 rounded-sm">JSON</code> encoded objects with no need for authentication. There are diferent ways to use it, one is with <code class="px-1 bg-slate-900 rounded-sm">Python</code>:
                 <div class="bg-slate-900 my-3 rounded-md py-5 px-4">            
                     <pre><code>import requests
 url = 'http://&lt;ip&gt;:8000/&lt;Endpoint&gt;'
