@@ -63,7 +63,7 @@ def ControlCode():
 
         # start extending
         logger.info("Extending Actuator")
-        pINA.ChangeDutyCycle(25)
+        pINA.ChangeDutyCycle(50)
         pINB.ChangeDutyCycle(0)
 
         # wait for press
@@ -82,13 +82,13 @@ def ControlCode():
         # retract
         logger.info("Retracting Actuator")
         pINA.ChangeDutyCycle(0)
-        pINB.ChangeDutyCycle(75)
+        pINB.ChangeDutyCycle(50)
 
         #GPIO.output(RESET, GPIO.LOW)    # limiter still on in case it's going the wrong way
         #sleep(0.001)
         #GPIO.output(RESET, GPIO.HIGH)
 
-        sleep(3)
+        sleep(1)
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
 
