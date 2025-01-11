@@ -12,9 +12,9 @@
         position: fixed;
         top: 0;
         left: -250px; /* Hidden initially */
-        width: 250px;
+        width: 200px;
         height: 100%;
-        background-color: #A5B68D;
+        background-color: #14b8a6;
         color: white;
         overflow-x: hidden;
         transition: 0.3s;

@@ -7,7 +7,7 @@
 
 <slot />
 
-<footer class="dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 flex justify-center gap-20 border-t-black">
+<footer class="bg-slate-900 flex justify-center gap-20 border-t-black">
     <a class="pt-3" href="https://www.ua.pt/">
         <img alt="ua-logo" src="ua-logo.png" class="h-14">
     </a>

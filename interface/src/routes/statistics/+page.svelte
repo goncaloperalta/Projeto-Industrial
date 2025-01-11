@@ -7,7 +7,6 @@
 	let successRate = 0;
 	let length = 0;
 	let posts = data.tests;
-	console.log(posts)
 	posts.forEach(post => {
 		post.forEach(el => {
 			successRate += el

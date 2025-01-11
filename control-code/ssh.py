@@ -41,7 +41,11 @@ def SSHConnect():
             client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
         except paramiko.BadHostKeyException:
             system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
-            client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
+            try:
+                client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
+            except:
+                pass
+        
         print("\033[96m[SSH] Connected to gateway\033[00m")
         logger.info("Connection to DUT established")
         client.exec_command("dmesg -c") # Clear the ring

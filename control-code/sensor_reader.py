@@ -52,10 +52,10 @@ def SensorReader():
                         sh.buttonPressed.release(2)
                         break
 
-                elif perf_counter() > (tic2 + holdTime):
+                elif perf_counter() > (tic2 + holdTime + 1):
                     logger.info("Stoped reading")
                     break
-                sleep(0.1)
+                sleep(0.01)
         
         if flag:
             time = linspace(0, perf_counter()-tic, len(sh.readings['val'])).tolist()

@@ -12,9 +12,9 @@ cur = db.cursor()
 
 data = {
     "button": "INFO",
-    "success": 1,
-    "force_val": [[1, 2, 3, 4, 5], [1, 2, 3, 4]],
-    "time_val": [1, 2, 3, 4, 5],
+    "success": [1],
+    "force_val": [[1, 2, 3, 4, 5]],
+    "time_val": [[1, 2, 3, 4, 5]],
     "date": date,
     "time": time
 }

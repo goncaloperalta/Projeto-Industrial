@@ -11,3 +11,15 @@
       -moz-appearance: textfield !important;
     }
  }
+
+[data-tooltip]:hover::after {
+  display: block;
+  position: absolute;
+  content: attr(data-tooltip);
+  border-radius: 0.125rem;
+  background: #0f172a;
+  padding: .25em;
+  font-size: medium;
+  font-weight: normal;
+  color: white;
+}

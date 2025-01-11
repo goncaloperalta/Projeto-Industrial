@@ -125,7 +125,7 @@ async def getProfiles():
 async def getTest():
     db = sql.connect("app.db")
     cur = db.cursor()
-    res = cur.execute(f"SELECT * FROM tests")
+    res = cur.execute(f"SELECT * FROM tests ORDER BY date DESC, time DESC")
 
     tests = {
         "tests": {
