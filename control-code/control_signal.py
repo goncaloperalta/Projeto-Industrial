@@ -88,7 +88,7 @@ def ControlCode():
         #sleep(0.001)
         #GPIO.output(RESET, GPIO.HIGH)
 
-        sleep(1)
+        sleep(1.5)
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
 
