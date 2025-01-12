@@ -19,9 +19,10 @@ def SensorReader():
 
         flag = 0
         holdTime = 0
-        sh.readings = {}                # Reset old readings
-        sh.readings['val'] = []         # Reset old force values
-        sh.readings['time'] = []        # Reset old time values
+        with sh.access:
+            sh.readings = {}                # Reset old readings
+            sh.readings['val'] = []         # Reset old force values
+            sh.readings['time'] = []        # Reset old time values
         print("\033[95m[SENSOR] Starting to read from force sensor\033[00m")
         logger.info("Starting to read from force sensor")
 
@@ -35,7 +36,8 @@ def SensorReader():
                 Force = (Output-OutputMIN)*ForceRated/(OutputMAX-OutputMIN)
                 if Force < 0:   # Sensor gives -0.15 as the lowest value
                     Force = 0
-                sh.readings['val'].append(round(Force, 4))    
+                with sh.access:
+                    sh.readings['val'].append(round(Force, 4))    
 
                 if flag == 0:
                     if Force > 2: # If more than 5 newtons are read stop the actuator

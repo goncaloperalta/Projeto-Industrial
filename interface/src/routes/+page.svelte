@@ -109,7 +109,7 @@
     }    
 </script>
 
-<main class="min-h-screen bg-slate-800 text-white">
+<main class="min-h-screen bg-slate-800 text-white pb-20">
     <div class="text-center block">
         <div class="p-20 pb-10 text-3xl">
 			Button testing web interface and platform

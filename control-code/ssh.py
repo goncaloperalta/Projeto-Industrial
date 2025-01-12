@@ -43,9 +43,25 @@ def SSHConnect():
             try:
                 client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
             except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException):
+                sh.feedback = {
+                    'button': 'Error while connecting via SSH',
+                    'success': 0
+                }
+                sh.readings['val'] = [0, 0, 0] 
+                sh.readings['time'] = [0, 0, 0]
+                sh.feedbackReady.release()
+                sh.sensorReadingsReady.release()
                 continue
         except (paramiko.AuthenticationException, paramiko.SSHException):
-                continue
+            sh.feedback = {
+                'button': 'Error while connecting via SSH',
+                'success': 0
+            }
+            sh.readings['val'] = [0, 0, 0] 
+            sh.readings['time'] = [0, 0, 0]
+            sh.feedbackReady.release()
+            sh.sensorReadingsReady.release()
+            continue
         
         print("\033[96m[SSH] Connected to gateway\033[00m")
         logger.info("Connection to DUT established")
