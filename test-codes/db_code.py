@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 now = datetime.now()
-date = now.strftime("%Y-%m-%d")
+date = now.strftime("%d-%m-%y")
 time = now.strftime("%H:%M:%S")
 
 db = sql.connect("../control-code/app.db")
@@ -13,8 +13,8 @@ cur = db.cursor()
 data = {
     "button": "INFO",
     "success": [1],
-    "force_val": [[1, 2, 3, 4, 5]],
-    "time_val": [[1, 2, 3, 4, 5]],
+    "force_val": [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5]],
+    "time_val": [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5]],
     "date": date,
     "time": time
 }

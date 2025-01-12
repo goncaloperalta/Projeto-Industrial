@@ -3,14 +3,14 @@
     import * as d3 from 'd3';
 
     // Data points
-    let { X, Y } = $props()
+    let { X, Y, W, H } = $props()
 
     // Combine X and Y into a single array of objects for D3 to work with
     const data = X.map((x, i) => ({ x, y: Y[i] }));
 
     // Dimensions for the SVG container
-    const width = 500;
-    const height = 400;
+    const width = W;
+    const height = H;
     const margin = { top: 20, right: 30, bottom: 50, left: 50 };
     
     const innerWidth = width - margin.left - margin.right;

@@ -1,6 +1,5 @@
 <script>
-    import PieChart2 from "./PieChart2.svelte";
-    import LinePlot from "../LinePlot.svelte";
+    import PieChart2 from "../../lib/PieChart2.svelte";
 
 	export let data;
 
@@ -21,13 +20,13 @@
 		<div class="p-20 text-3xl">
 			Statistics
 		</div>
-		<div class="m-auto flex justify-center bg-slate-600 w-3/4 rounded-sm shadow-lg">
-			<div class="p-40">
+		<div class="m-auto min-[1340px]:flex bg-slate-600 w-fit md:rounded-sm shadow-lg py-10">
+			<div class="mx-10 md:mx-20 lg:mx-40 my-10 min-[1340px]:my-0">
 				{#key successRate}
 					<PieChart2 successRate={successRate} />
 				{/key}
 			</div>
-			<div class="p-40 text-2xl">
+			<div class="mx-10 md:mx-20 lg:mx-40 my-auto text-2xl">
 				Total number of tests: {length}
 			</div>
 		</div>

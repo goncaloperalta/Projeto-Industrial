@@ -63,7 +63,7 @@ def ControlCode():
 
         # start extending
         logger.info("Extending Actuator")
-        pINA.ChangeDutyCycle(50)
+        pINA.ChangeDutyCycle(25)
         pINB.ChangeDutyCycle(0)
 
         # wait for press

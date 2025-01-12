@@ -1,13 +1,11 @@
 <script>
     import { onMount } from "svelte";
-    import LinePlot from "./LinePlot.svelte";
+    import LinePlot from "../lib/LinePlot.svelte";
 
     let {data} = $props();
 
     onMount(() => {
-        let setIntervalVar;
-        clearInterval(setIntervalVar)
-        setIntervalVar = setInterval(refreshLastTest, 5000);
+        // setInterval(refreshLastTest, 5000);
     })
 
     let profiles = $state(data.profile);
@@ -111,88 +109,87 @@
     }    
 </script>
 
-<!-- Title Container -->
-<div class="fixed top-0 left-50 w-full text-center p-4 z-10 text-white">
-    <h1 class="text-3xl font-normal">Button testing web interface and platform</h1>
-</div>
+<main class="min-h-screen bg-slate-800 text-white">
+    <div class="text-center block">
+        <div class="p-20 pb-10 text-3xl">
+			Button testing web interface and platform
+		</div>
 
-<!-- Centered Test Prompt -->
-<div class="min-h-screen flex items-center justify-center bg-slate-800 text-white">
-    <div class="flex items-center bg-slate-600 rounded-lg shadow-lg">
-        <div class="text-center p-10 bg-slate-600 rounded-lg">
-            <h2 class="text-2xl mb-5">Define the test</h2>
-            
-            <!-- Test Type Selection -->
-            <div class="mt-5 flex flex-col items-center ">
-                <label for="testType" class="text-gray-300">Profiles </label>
-                <select id="testType" bind:value={selected} onchange={selectChanges} class="border bg-slate-500 border-slate-500 rounded-lg p-2.5 text-center">
-                    {#key profiles}
-                        {#each profiles as profile, index}
-                            <option value="{index}">{profile.pName}</option>
-                        {/each}
-                    {/key}
-                </select>
-            </div>
-
-            <!-- Input Fields for Test Parameters -->
-            <div class="mt-2">
-                <label data-tooltip="Time in seconds to keep the button pressed" for="pressTime" class="text-gray-300">Button press time (sec) </label>
-                <input type="number" id="pressTime" onchange={changeToCustom} bind:value={currentProfile.pressTime} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-500 outline-none">
-            </div>
-            <div class="mt-2">
-                <label data-tooltip="Number of times to press the button" for="ntimes" class="text-gray-300">Number of times to be pressed </label>
-                <input type="number" id="ntimes" onchange={changeToCustom} bind:value={currentProfile.nTimes} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-500 outline-none">
-            </div>
-            <div class="mt-2">
-                <label data-tooltip="Time in seconds wait after pressing a button (only makes sense for more than one press time)" for="interval" class="text-gray-300">Interval between actuations (sec) </label>
-                <input type="number" id="interval" onchange={changeToCustom} bind:value={currentProfile.interval} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-500 outline-none">
-            </div>
-            
-            <div class="w-full my-3">
-                <hr class="bg-gray-900">
-            </div>
-
-            <!-- Start Button -->
-            <div class="text-center">
-                <span>
-                    <button data-tooltip="Start the test with the above parameters" onclick={showResults} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Start</button>
-                </span>
-                <span>
-                    <button data-tooltip="Save the current profile. A text box will pop-up to insert it's name" onclick={saveProfile} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Save</button>
-                </span>
-                <span>
-                    <button data-tooltip="Delete the currently selected profile" onclick={deleteProfile} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Delete</button>
-                </span>
-            </div>
-
-            {#if showProfileInputName}
-                <div class="mt-10">
-                    <div>Enter a Name for the profile and press save again:</div>
-                    <input bind:value={profileName} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-600 border-slate-600 outline-none">
+        <div class="block lg:flex lg:items-center lg:justify-center bg-slate-800 text-white">
+            <div class="lg:flex lg:items-center lg:bg-slate-600 rounded-lg shadow-lg h-fit w-fit mx-auto">
+                <div class="text-center p-5 sm:p-10 bg-slate-600 rounded-lg">
+                    <h2 class="text-2xl mb-5">Define the test</h2>
+                    
+                    <div class="mt-5 flex flex-col items-center ">
+                        <label for="testType" class="text-gray-300">Profiles </label>
+                        <select id="testType" bind:value={selected} onchange={selectChanges} class="border bg-slate-500 border-slate-500 rounded-lg p-2.5 text-center">
+                            {#key profiles}
+                                {#each profiles as profile, index}
+                                    <option value="{index}">{profile.pName}</option>
+                                {/each}
+                            {/key}
+                        </select>
+                    </div>
+        
+                    <div class="mt-2">
+                        <label data-tooltip="Time in seconds to keep the button pressed" for="pressTime" class="text-gray-300">Button press time (sec) </label>
+                        <input type="number" id="pressTime" onchange={changeToCustom} bind:value={currentProfile.pressTime} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-500 outline-none">
+                    </div>
+                    <div class="mt-2">
+                        <label data-tooltip="Number of times to press the button" for="ntimes" class="text-gray-300">Number of times to be pressed </label>
+                        <input type="number" id="ntimes" onchange={changeToCustom} bind:value={currentProfile.nTimes} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-500 outline-none">
+                    </div>
+                    <div class="mt-2">
+                        <label data-tooltip="Time in seconds wait after pressing a button (only makes sense for more than one press time)" for="interval" class="text-gray-300">Interval between actuations (sec) </label>
+                        <input type="number" id="interval" onchange={changeToCustom} bind:value={currentProfile.interval} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-500 outline-none">
+                    </div>
+                    
+                    <div class="w-full my-3">
+                        <hr class="bg-gray-900">
+                    </div>
+        
+                    <div class="text-center">
+                        <span>
+                            <button data-tooltip="Start the test with the above parameters" onclick={showResults} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Start</button>
+                        </span>
+                        <span>
+                            <button data-tooltip="Save the current profile. A text box will pop-up to insert it's name" onclick={saveProfile} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Save</button>
+                        </span>
+                        <span>
+                            <button data-tooltip="Delete the currently selected profile" onclick={deleteProfile} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Delete</button>
+                        </span>
+                    </div>
+        
+                    {#if showProfileInputName}
+                        <div class="mt-10">
+                            <div>Enter a Name for the profile and press save again:</div>
+                            <input bind:value={profileName} class="text-center border text-sm rounded-lg p-2.5 w-full bg-slate-500 border-slate-600 outline-none">
+                        </div>
+                    {/if}
                 </div>
-            {/if}
-        </div>
-        <div class=" border border-slate-800 h-96 rounded-lg"></div>
-        <div class=" bg-slate-600 ml-10 text-center rounded-lg">
-            <div class="mt-10">
-                <span class="text-2xl m-auto">Last Test<button data-tooltip="Refresh" onclick={refreshLastTest} class="hover:bg-slate-900 transition-all ml-1 w-10 h-10 rounded-lg">&#8634;</button></span>
-                <select name="graph-number" bind:value={ind} class="bg-slate-500 border-slate-500 rounded-lg p-2 text-center">
-                    {#key lastTest}
-                        {#each lastTest.time_val as e, index}
-                            <option value="{index}">{index+1}</option>
-                        {/each}
+                
+                <div class=" bg-slate-600 mt-10 lg:mt-0 p-5 sm:p-10 text-center rounded-lg">
+                    <div>
+                        <span class="text-2xl m-auto">Last Test<button data-tooltip="Refresh" onclick={refreshLastTest} class="hover:bg-slate-900 transition-all ml-1 w-10 h-10 rounded-lg">&#8634;</button></span>
+                        <select name="graph-number" bind:value={ind} class="bg-slate-500 border-slate-500 rounded-lg p-2 text-center">
+                            {#key lastTest}
+                                {#each lastTest.time_val as _, index}
+                                    <option value="{index}">{index+1}</option>
+                                {/each}
+                            {/key}
+                        </select>
+                    </div>
+                    <div>
+                        <span>Button: {lastTest.button}</span>, <span data-tooltip="Success is '1' when a push was done and a feedback from a button was received, else is '0'">Success: [{lastTest.success}]</span> <br>
+                        <span>Date: {lastTest.date}</span>, <span>Time: {lastTest.time}</span>
+                    </div>
+                    {#key ind}
+                        <div>
+                            <LinePlot X={lastTest.time_val[ind]} Y={lastTest.force_val[ind]} W=400 H=350/>
+                        </div>
                     {/key}
-                </select>
-            </div>
-            <div>
-                Button: {lastTest.button}; Success: [{lastTest.success}] <br>
-                Date: {lastTest.date}; Time: {lastTest.time}
-            </div>
-            {#key ind}
-                <div>
-                    <LinePlot X={lastTest.time_val[ind]} Y={lastTest.force_val[ind]}/>
                 </div>
-            {/key}
+            </div>
         </div>
     </div>
-</div>
+</main>

@@ -49,10 +49,10 @@
 </style>
 
 <!-- Hamburger icon to open sidebar -->
-<button class="hamburger-icon text-3xl text-white scale-x-110" onclick={toggleSidebar}>&#9776;</button>
+<button class="hamburger-icon text-3xl scale-x-125 text-white" onclick={toggleSidebar}>&#9776;</button>
 
 <!-- Sidebar menu -->
-<div class="sidebar {sidebarOpen ? 'open' : ''} ">
+<div class="sidebar {sidebarOpen ? 'open' : ''}">
     <a href="/" onclick={toggleSidebar}>Home</a>
     <a href="/history" onclick={toggleSidebar}>History</a>
     <a href="/statistics" onclick={toggleSidebar}>Statistics</a>

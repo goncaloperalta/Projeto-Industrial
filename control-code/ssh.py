@@ -1,7 +1,6 @@
 import re
 import logging
 import paramiko
-import threading
 import credentials
 from os import system
 from time import sleep
@@ -43,8 +42,10 @@ def SSHConnect():
             system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
             try:
                 client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
-            except:
-                pass
+            except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException):
+                continue
+        except (paramiko.AuthenticationException, paramiko.SSHException):
+                continue
         
         print("\033[96m[SSH] Connected to gateway\033[00m")
         logger.info("Connection to DUT established")

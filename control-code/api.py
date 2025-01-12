@@ -10,6 +10,7 @@ logger = logging.getLogger("API")
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
+############################################################ START/ABORT TEST #########################
 class Params(BaseModel):        # Parameters of the test
     pName: str | None = 'None'  # Profile to use
     pressTime: int | None = 0   # Button press time in seconds
@@ -56,76 +57,14 @@ async def abortTest():
         
         sh.STATE = sh.state.ABORT
 
-    return {"message": "Aborted test"}
+    return {"message": "Test Aborted"}
 
-class Profile(BaseModel):
-    pName: str
-    pressTime: int
-    nTimes: int
-    interval: int
-@app.post("/add-profile")
-async def addProfile(profile: Profile, response: Response):
-    db = sql.connect("app.db")
-    cur = db.cursor()
-    try:
-        cur.execute(f"INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (\"{profile.pName}\", {profile.pressTime}, {profile.nTimes}, {profile.interval})")
-    except sql.OperationalError:
-        response.status_code = 400
-        return {"message": "A profile with that name already exists"}
-    db.commit()
-    cur.close()
-    db.close()
-
-    response.status_code = 201
-    return {"message": "Profile added to database"}
-
-class ProfileName(BaseModel):
-    pName: str
-@app.delete("/delete-profile")
-async def deleteProfile(profileName: ProfileName):
-    db = sql.connect("app.db")
-    cur = db.cursor()
-    cur.execute(f"DELETE FROM profiles WHERE pName = \"{profileName.pName}\"")
-    db.commit()
-    cur.close()
-    db.close()
-
-    return {"message": "Profile deleted from database"}
-
-@app.get("/get-profiles")
-async def getProfiles():
-    db = sql.connect("app.db")
-    cur = db.cursor()
-    res = cur.execute(f"SELECT * FROM profiles")
-    
-    profiles = {
-        "profiles": {
-            "profile": []
-        }
-    }
-
-    while True:
-        row = res.fetchone()
-        if row is None: break
-        profile = {
-            "id": row[0],
-            "pName": row[1],
-            "pressTime": row[2],
-            "nTimes": row[3],
-            "interval": row[4]
-        }
-        profiles["profiles"]["profile"].append(profile)
-
-    cur.close()
-    db.close()
-
-    return profiles
-
+############################################################ TEST DATA #########################
 @app.get("/get-tests")
 async def getTest():
     db = sql.connect("app.db")
     cur = db.cursor()
-    res = cur.execute(f"SELECT * FROM tests ORDER BY date DESC, time DESC")
+    res = cur.execute("SELECT * FROM tests ORDER BY date DESC, time DESC")
 
     tests = {
         "tests": {
@@ -185,14 +124,14 @@ async def getLastTest():
         "force_val": row[3],
         "time_val": row[4],
         "date": row[5],
-        "time": row[6],
+        "time": row[6]
     }
 
 @app.get("/get-success")
 async def getSuccess():
     db = sql.connect("app.db")
     cur = db.cursor()
-    res = cur.execute(f"SELECT success FROM tests")
+    res = cur.execute("SELECT success FROM tests")
     val = []
     while True:
         row = res.fetchone()
@@ -203,3 +142,67 @@ async def getSuccess():
     db.close()
 
     return val
+
+############################################################ PROFILES #########################
+class Profile(BaseModel):
+    pName: str
+    pressTime: int
+    nTimes: int
+    interval: int
+@app.post("/add-profile")
+async def addProfile(profile: Profile, response: Response):
+    db = sql.connect("app.db")
+    cur = db.cursor()
+    try:
+        cur.execute(f"INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (\"{profile.pName}\", {profile.pressTime}, {profile.nTimes}, {profile.interval})")
+    except sql.OperationalError:
+        response.status_code = 400
+        return {"message": "A profile with that name already exists"}
+    db.commit()
+    cur.close()
+    db.close()
+
+    response.status_code = 201
+    return {"message": "Profile added to database"}
+
+class ProfileName(BaseModel):
+    pName: str
+@app.delete("/delete-profile")
+async def deleteProfile(profileName: ProfileName):
+    db = sql.connect("app.db")
+    cur = db.cursor()
+    cur.execute(f"DELETE FROM profiles WHERE pName = \"{profileName.pName}\"")
+    db.commit()
+    cur.close()
+    db.close()
+
+    return {"message": "Profile deleted from database"}
+
+@app.get("/get-profiles")
+async def getProfiles():
+    db = sql.connect("app.db")
+    cur = db.cursor()
+    res = cur.execute("SELECT * FROM profiles")
+    
+    profiles = {
+        "profiles": {
+            "profile": []
+        }
+    }
+
+    while True:
+        row = res.fetchone()
+        if row is None: break
+        profile = {
+            "id": row[0],
+            "pName": row[1],
+            "pressTime": row[2],
+            "nTimes": row[3],
+            "interval": row[4]
+        }
+        profiles["profiles"]["profile"].append(profile)
+
+    cur.close()
+    db.close()
+
+    return profiles

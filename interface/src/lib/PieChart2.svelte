@@ -16,7 +16,7 @@
         var g = svg.append("g")
             .attr("transform", "translate(" + radius + "," + radius + ")");
 
-        var color = d3.scaleOrdinal(["#22c55e","#ef6d80"]);
+        var color = d3.scaleOrdinal(["#22c55e","#ef4444"]);
 
         var pie = d3.pie().value((d) => {
             return d;

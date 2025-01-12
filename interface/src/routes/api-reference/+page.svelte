@@ -1,5 +1,5 @@
 <script>
-    import Endpoint from "./Endpoint.svelte";
+    import Endpoint from "../../lib/Endpoint.svelte";
 </script>
 
 <main class="bg-slate-800 text-white text-xl h-auto">
