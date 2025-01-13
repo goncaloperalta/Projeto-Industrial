@@ -2,10 +2,12 @@
     import Endpoint from "../../lib/Endpoint.svelte";
 </script>
 
-<main class="bg-slate-800 text-white text-xl h-auto">
+<main class="bg-slate-800 text-white text-sm sm:text-xl h-auto">
     <div class="flex">
-        <div class="mx-auto my-14 w-3/4">
-            <strong class="text-3xl">API Reference</strong>
+        <div class="mx-auto w-3/4 pb-10">
+            <div class="p-20 pb-10 text-3xl text-center">
+                API Reference
+            </div>
             <div class="my-4">
                 This web interface runs on port <code class="px-1 bg-slate-900 rounded-sm">:5173</code>, however the system also provides a RESTful API on port <code class="px-1 bg-slate-900 rounded-sm">:8000</code>. Anything done in this web interface is based on this API.<br>
                 The API accepts and returns <u>only</u> <code class="px-1 bg-slate-900 rounded-sm">JSON</code> encoded objects with no need for authentication. There are diferent ways to use it, one is with <code class="px-1 bg-slate-900 rounded-sm">Python</code>:
@@ -29,7 +31,7 @@ print(res.text)     </code></pre>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/api"
+url = "http://192.168.43.97:8000:8000/api"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -42,7 +44,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/status"
+url = "http://192.168.43.97:8000:8000/status"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -61,7 +63,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/status"
+url = "http://192.168.43.97:8000:8000/status"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -88,7 +90,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-tests"
+url = "http://192.168.43.97:8000:8000/get-tests"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -105,7 +107,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-last-test"
+url = "http://192.168.43.97:8000:8000/get-last-test"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -120,7 +122,7 @@ print(res.text)'/>
 ]'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-success"
+url = "http://192.168.43.97:8000:8000/get-success"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -145,7 +147,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-profiles"
+url = "http://192.168.43.97:8000:8000/get-profiles"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -158,7 +160,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/add-profile"
+url = "http://192.168.43.97:8000:8000/add-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -172,7 +174,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/delete-profile"
+url = "http://192.168.43.97:8000:8000/delete-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;

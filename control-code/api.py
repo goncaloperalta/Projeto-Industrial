@@ -1,9 +1,11 @@
 import logging
 import sqlite3 as sql
+from os import system
 import shared_memory as sh
 from fastapi import FastAPI, Response
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import FileResponse
 
 logger = logging.getLogger("API")
 
@@ -58,6 +60,33 @@ async def abortTest():
         sh.STATE = sh.state.ABORT
 
     return {"message": "Test Aborted"}
+
+@app.get("/get-status")
+async def getStatus():
+    with sh.access:
+        if sh.STATE == sh.state.READY:
+            return {"message": "Ready"}
+        elif sh.STATE == sh.state.ABORT:
+            return {"message": "Aborting the test"}
+        else:
+            return {"message": "Running a test"}
+
+@app.get("/get-current-parameters")
+async def getCurrentParameters():
+    with sh.access:
+        if sh.STATE != sh.state.READY:
+            return {
+                "pressTime": sh.parameters.pressTime, 
+                "nTimes": sh.parameters.nTimes,
+                "interval": sh.parameters.interval
+            }
+        else:
+            return {"message": "Not running a test"}
+
+@app.get("/get-test-data")
+async def getTestData():
+    system("sqlite3 app.db -cmd \".mode json\" \".output static/data.json\" \"SELECT * FROM tests\" \".output stdout\"")
+    return FileResponse("static/data.json", media_type='application/octet-stream',filename="data.json")
 
 ############################################################ TEST DATA #########################
 @app.get("/get-tests")

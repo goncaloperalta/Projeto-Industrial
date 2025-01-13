@@ -1,8 +1,11 @@
 <script>
     import "../app.css";
     import SideBar from "../lib/SideBar.svelte";
+    import TopBar from "../lib/TopBar.svelte";
 </script>
-  
+
+<TopBar />
+
 <SideBar />
 
 <slot />
