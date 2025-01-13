@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from "svelte";
+    import { onDestroy, onMount } from "svelte";
 
     let status = 'Ready'
     let parameters = {
@@ -7,23 +7,27 @@
         "nTimes": 1,
         "interval": 1,
     }
-    refreshVars()
 
+    let setIntervalRefTopBar = setInterval(refreshVars, 5000)
     onMount(() => {
-        setInterval(refreshVars, 10000)
+        refreshVars()
+    })
+
+    onDestroy(() => {
+        clearInterval(setIntervalRefTopBar)
     })
     
     async function refreshVars(){
-        let res = await fetch("http://192.168.43.97:8000:8000/get-status")
+        let res = await fetch("http://192.168.43.97:8000/get-status")
         status = await res.json()
         status = status.message
 
-        res = await fetch("http://192.168.43.97:8000:8000/get-current-parameters")
+        res = await fetch("http://192.168.43.97:8000/get-current-parameters")
         parameters = await res.json()
     }
 
     async function abortTest(){
-        await fetch("http://192.168.43.97:8000:8000/abort-test")
+        await fetch("http://192.168.43.97:8000/abort-test")
     }
 </script>
 

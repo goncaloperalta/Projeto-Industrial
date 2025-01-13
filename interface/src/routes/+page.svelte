@@ -1,11 +1,13 @@
 <script>
-    import { onMount } from "svelte";
+    import { onDestroy } from "svelte";
     import LinePlot from "../lib/LinePlot.svelte";
 
     let {data} = $props();
 
-    onMount(() => {
-        // setInterval(refreshLastTest, 5000);
+    let setIntervalRef = setInterval(refreshLastTest, 5000);
+
+    onDestroy(() => {
+        clearInterval(setIntervalRef)
     })
 
     let profiles = $state(data.profile);
@@ -27,7 +29,7 @@
         if(selected == 0){
             showProfileInputName = !showProfileInputName;
             if(profileName && showProfileInputName == 0){
-                await fetch("http://192.168.43.97:8000:8000/add-profile", {
+                await fetch("http://192.168.43.97:8000/add-profile", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -38,7 +40,7 @@
                     })
                 });
                 
-                const res = await fetch("http://192.168.43.97:8000:8000/get-profiles");
+                const res = await fetch("http://192.168.43.97:8000/get-profiles");
                 const json = await res.json();
                 profiles = json.profiles.profile;
                 data = json.profiles;
@@ -47,7 +49,7 @@
     }
     async function deleteProfile(){
         if(selected != 0){
-            await fetch("http://192.168.43.97:8000:8000/delete-profile", {
+            await fetch("http://192.168.43.97:8000/delete-profile", {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -55,7 +57,7 @@
                 })
             });
 
-            const res = await fetch("http://192.168.43.97:8000:8000/get-profiles");
+            const res = await fetch("http://192.168.43.97:8000/get-profiles");
             const json = await res.json();
             profiles = json.profiles.profile;
             data = json.profiles;
@@ -80,7 +82,7 @@
         }
 
         let params = currentProfile;
-        await fetch('http://192.168.43.97:8000:8000/start', {
+        await fetch('http://192.168.43.97:8000/start', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -99,7 +101,7 @@
     }
 
     async function refreshLastTest(){
-        const res = await fetch('http://192.168.43.97:8000:8000/get-last-test');
+        const res = await fetch('http://192.168.43.97:8000/get-last-test');
         const data = await res.json();
 
         lastTest = data;

@@ -1,7 +1,7 @@
 
 export const load = async ({fetch}) => {
     const fetchTests = async () => {
-        const res = await fetch('http://192.168.43.97:8000:8000/get-tests');
+        const res = await fetch('http://192.168.43.97:8000/get-tests');
         const data = await res.json();
         
         return data.tests.test;

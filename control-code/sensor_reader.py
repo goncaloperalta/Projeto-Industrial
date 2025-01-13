@@ -34,7 +34,9 @@ def SensorReader():
                 try:
                     bytes = bus.read_i2c_block_data(0x28, 0, 2)
                 except OSError:
-                    bytes = 0
+                    with sh.access:
+                        sh.ERROR = 'SENSOR'
+                    bytes = [1, 1]
                 Output = (bytes[0] << 8) + bytes[1];
                 Force = (Output-OutputMIN)*ForceRated/(OutputMAX-OutputMIN)
                 if Force < 0:   # Sensor gives -0.15 as the lowest value

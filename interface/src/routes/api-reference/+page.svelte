@@ -4,7 +4,7 @@
 
 <main class="bg-slate-800 text-white text-sm sm:text-xl h-auto">
     <div class="flex">
-        <div class="mx-auto w-3/4 pb-10">
+        <div class="sm:mx-auto w-full sm:w-3/4 pb-10">
             <div class="p-20 pb-10 text-3xl text-center">
                 API Reference
             </div>
@@ -31,20 +31,39 @@ print(res.text)     </code></pre>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/api"
+url = "http://192.168.43.97:8000/api"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
 res = requests.get(url, headers=headers)
 print(res.text)'/>
-                <Endpoint verb="GET" endpoint="/state" message="Returns a message with the current state which can be on of the following:"
+                <Endpoint verb="GET" endpoint="/get-status" message="Returns a message with the current state which can be on of the following:"
                             jsonReturn='&lbrace;
-    "message": "READY"              // Ready to start a test
-    "message": "RUNNING A TEST"     // Already running a test
+    "message": "Ready"              // Ready to start a test
+    "message": "Running a test"     // Already running a test
+    "message": "Aborting the test"  // Aborting the running test
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/status"
+url = "http://192.168.43.97:8000/get-status"
+headers = &lbrace;
+    "Content-type": "application/json"
+&rbrace;
+res = requests.get(url, headers=headers)
+print(res.text)'/>
+
+                <Endpoint verb="GET" endpoint="/get-current-parameters" message="If a test is running, returns an object with the parameters being used:"
+                            jsonReturn='&lbrace;    // If a test is running
+    "pressTime": 0
+    "pressTime": 1
+    "pressTime": 0     
+&rbrace;           
+&lbrace;    // If no test is running
+    "message": "Not running a test"  
+&rbrace;'
+                            code='import requests
+
+url = "http://192.168.43.97:8000/get-current-parameters"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -63,7 +82,20 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/status"
+url = "http://192.168.43.97:8000/status"
+headers = &lbrace;
+    "Content-type": "application/json"
+&rbrace;
+res = requests.get(url, headers=headers)
+print(res.text)'/>
+                <Endpoint verb="GET" endpoint="/abort" message="If a test is running aborts it. The test will only abort after finishing the current actuation "
+                            jsonReturn='&lbrace;
+    "message": "No test to abort"   // If not running a test
+    "message": "Test Aborted"
+&rbrace;'
+                            code='import requests
+
+url = "http://192.168.43.97:8000/status"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -71,6 +103,20 @@ res = requests.get(url, headers=headers)
 print(res.text)'/>
 
                 <h2 class="italic font-bold">TESTS DATA</h2>
+                <Endpoint verb="GET" endpoint="/get-test-data" message="Returns a file a JSON file with the all tests done, with format: "
+                            jsonReturn='[
+    &lbrace;
+        "id": 5,
+        "button": "INFO",
+        "success": 1,
+        "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+        "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+        "date": "2024-12-30",
+        "time": "11:45:43"
+    &rbrace;,
+    ...
+]'
+                            code='Using a browser you can open the link directly and a donwload should appear'/>
                 <Endpoint verb="GET" endpoint="/get-tests" message="Returns all tests done, from oldest to newest, with format: "
                             jsonReturn='&lbrace;
     "tests": &lbrace;
@@ -90,7 +136,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/get-tests"
+url = "http://192.168.43.97:8000/get-tests"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -107,7 +153,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/get-last-test"
+url = "http://192.168.43.97:8000/get-last-test"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -122,7 +168,7 @@ print(res.text)'/>
 ]'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/get-success"
+url = "http://192.168.43.97:8000/get-success"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -147,7 +193,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/get-profiles"
+url = "http://192.168.43.97:8000/get-profiles"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -160,7 +206,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/add-profile"
+url = "http://192.168.43.97:8000/add-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -174,7 +220,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000:8000/delete-profile"
+url = "http://192.168.43.97:8000/delete-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;

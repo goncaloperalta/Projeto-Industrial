@@ -26,6 +26,17 @@ def getButtonPressed(initial, changed):
 
     return -1
 
+def errorHandler():
+    with sh.access:
+        sh.feedback = {
+            'button': 'No feedback',
+            'success': 0
+        }
+        sh.readings['val'] = [0, 0, 0] 
+        sh.readings['time'] = [0, 0, 0]
+        sh.feedbackReady.release()
+        sh.sensorReadingsReady.release()
+
 def SSHConnect():
     while True:
         sh.startSSH.acquire()
@@ -43,29 +54,16 @@ def SSHConnect():
             try:
                 client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
             except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException):
-                sh.feedback = {
-                    'button': 'Error while connecting via SSH',
-                    'success': 0
-                }
-                sh.readings['val'] = [0, 0, 0] 
-                sh.readings['time'] = [0, 0, 0]
-                sh.feedbackReady.release()
-                sh.sensorReadingsReady.release()
+                sh.ERROR = "SSH"
+                errorHandler()
                 continue
         except (paramiko.AuthenticationException, paramiko.SSHException):
-            sh.feedback = {
-                'button': 'Error while connecting via SSH',
-                'success': 0
-            }
-            sh.readings['val'] = [0, 0, 0] 
-            sh.readings['time'] = [0, 0, 0]
-            sh.feedbackReady.release()
-            sh.sensorReadingsReady.release()
+            sh.ERROR = "SSH"
+            errorHandler()
             continue
         
         print("\033[96m[SSH] Connected to gateway\033[00m")
         logger.info("Connection to DUT established")
-        client.exec_command("dmesg -c") # Clear the ring
 
         # Get initial counters
         stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")

@@ -46,6 +46,14 @@
         flex-direction: column;
         gap: 4px;
     }
+    @media (max-width: 640px) {
+        .hamburger-icon {
+            top: 100px;
+        }
+        .sidebar.open{
+            padding-top: 160px;
+        }
+    }
 </style>
 
 <!-- Hamburger icon to open sidebar -->

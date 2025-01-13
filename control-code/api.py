@@ -46,7 +46,7 @@ async def start(params: Params, response: Response):
         sh.parameters.nTimes = params.nTimes
         sh.parameters.interval = params.interval
 
-    logger.info(f"Got request with: PressTime: {sh.parameters.pressTime}s, nTimes: {sh.parameters.nTimes}, Interval: {sh.parameters.interval}s")
+    logger.info(f"Starting a test with parameters: PressTime: {sh.parameters.pressTime}s, nTimes: {sh.parameters.nTimes}, Interval: {sh.parameters.interval}s")
     sh.startTest.release()
 
     return {"message": "Test started"}
@@ -60,6 +60,11 @@ async def abortTest():
         sh.STATE = sh.state.ABORT
 
     return {"message": "Test Aborted"}
+
+############################################################ SYSTEM STATUS #########################
+@app.get("/api")
+async def api():
+    return {"message": "API running."}
 
 @app.get("/get-status")
 async def getStatus():
@@ -78,17 +83,22 @@ async def getCurrentParameters():
             return {
                 "pressTime": sh.parameters.pressTime, 
                 "nTimes": sh.parameters.nTimes,
-                "interval": sh.parameters.interval
+                "interval": sh.parameters.interval,
+                "currentRun": sh.CURRENT_RUN
             }
         else:
             return {"message": "Not running a test"}
 
+@app.get("/get-logs")
+async def getLogs():
+    return FileResponse("app.log", media_type='application/octet-stream', filename="logs.txt")
+
+############################################################ TEST DATA #########################
 @app.get("/get-test-data")
 async def getTestData():
     system("sqlite3 app.db -cmd \".mode json\" \".output static/data.json\" \"SELECT * FROM tests\" \".output stdout\"")
-    return FileResponse("static/data.json", media_type='application/octet-stream',filename="data.json")
+    return FileResponse("static/data.json", media_type='application/octet-stream', filename="data.json")
 
-############################################################ TEST DATA #########################
 @app.get("/get-tests")
 async def getTest():
     db = sql.connect("app.db")

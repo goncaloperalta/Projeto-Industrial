@@ -60,6 +60,9 @@ STATE = state.READY
 CURRENT_RUN = 0
 """Shared variable to get the current run"""
 
+ERROR = ""
+"""Shared variable to show if a error occured"""
+
 class Parameters:
     pressTime : int
     nTimes : int
