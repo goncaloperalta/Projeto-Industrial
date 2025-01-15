@@ -30,6 +30,8 @@ def SensorReader():
         flag = 0
         with sh.access:
             holdTime = sh.parameters.pressTime
+            sh.modulesData['force_val'] = []
+            sh.modulesData['time_val'] = []
 
         print("\033[95m[SENSOR] Starting to read from force sensor\033[00m")
         logger.info("Starting to read from force sensor")
@@ -73,7 +75,7 @@ def SensorReader():
                 sleep(0.01)
         
         if flag:
-            time = linspace(0, perf_counter()-tic, len(sh.readings['val'])).tolist()
+            time = linspace(0, perf_counter()-tic, len(sh.modulesData['force_val'])).tolist()
             sh.modulesData['time_val'] = [round(el, 3) for el in time]
 
         print("\033[95m[SENSOR] Readings ready\033[00m")

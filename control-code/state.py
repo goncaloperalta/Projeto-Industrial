@@ -53,13 +53,12 @@ def State():
         }
         with sh.access:
             sh.resetModulesData()
-            testData['parameters'].append([sh.parameters.pressTime, sh.parameters.nTimes, sh.parameters.interval])
+            testData['parameters'] = [sh.parameters.pressTime, sh.parameters.nTimes, sh.parameters.interval]
             sh.STATE = sh.state.RUNNING
             sh.CURRENT_RUN = 0
             sh.ERROR = 'No Error'
 
         testI2C()
-
         for i in range(testData['parameters'][1]):
             with sh.access:
                 if sh.ERROR != 'No Error':
@@ -81,7 +80,7 @@ def State():
                 testData['time_val'].append(sh.modulesData['time_val'])
 
             # Wait interval
-            if interval:
+            if testData['parameters'][2]:
                 logger.info("Waiting interval between actuations")
                 sleep(testData['parameters'][2])
 

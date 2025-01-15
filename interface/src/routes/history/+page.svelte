@@ -76,7 +76,7 @@
 						<tr onclick={() => showDetails(index)} class="h-12 border-b border-gray-700 hover:bg-slate-700 transition-all cursor-pointer flex w-full mb-4">
 							<td class="w-1/3 m-auto">{post.button}</td>
 							<td class="w-1/3 m-auto">
-								{#if post.success == 1}
+								{#if getSuccess(post.success) == 'All actuations worked as expected'}
 									<span class="p-1 pl-4 pr-4 rounded-sm bg-green-500">Yes</span>
 								{:else}
 									<span class="p-1 pl-4 pr-4 rounded-sm bg-red-500">No</span>
