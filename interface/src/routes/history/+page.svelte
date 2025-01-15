@@ -29,6 +29,18 @@
 			shDetails = -1;
 		}
 	}
+
+	function getSuccess(success){
+		let sum = 0;
+		success.forEach(x => {
+			sum += x;
+		});
+		if(sum == success.length){
+			return 'All actuations worked as expected';
+		} else{
+			return `Out of ${success.length} only ${sum} worked as expected`;
+		}
+	}
 </script>
 
 <main class="min-h-screen bg-slate-800 text-white">
@@ -53,7 +65,7 @@
 
 			<table class="w-full sm:w-3/4 mt-5 transparent m-auto p-10 justify-between table-fixed h-[50vh]">
 				<thead class="text-white flex w-full">
-					<tr class="h-12 bg-slate-700 flex w-full">
+					<tr class="h-12 bg-slate-700 flex italic w-full">
 						<th class="w-1/3 m-auto" scope="col">BUTTON</th>
 						<th data-tooltip="Success is 'Yes' when a push was done and a feedback from a button was received, else is 'No'" class="w-1/3 m-auto" scope="col">SUCCESS</th>
 						<th class="w-1/3 m-auto" scope="col">DATE</th>
@@ -75,11 +87,11 @@
 						{#if shDetails == index}
 							<tr>
 								<td colspan="3">
-									<div class="h-fit min-[1770px]:grid min-[1770px]:grid-cols-3">
-										<div class="flex">
+									<div class="h-fit min-[1770px]:grid min-[1770px]:grid-cols-2">
+										<div class="flex mx-auto">
 											<select name="graph-number" bind:value={ind} class="bg-slate-500 border-slate-500 rounded-lg p-2 w-fit h-fit text-center">											
 												{#each post.time_val as _, index}
-												<option value="{index}">{index+1}</option>
+													<option value="{index}">{index+1}</option>
 												{/each}
 											</select>
 											{#key ind}
@@ -88,11 +100,16 @@
 											</div>
 											{/key}
 										</div>
-										<div>
-											data
-										</div>
-										<div>
-											12331
+										<div class=" text-left my-10  min-[1770px]:my-auto">
+											<div>Test done at {post.time} of the day {post.date}.</div>
+											<div>{getSuccess(post.success)}</div>
+											<div>{post.error == 'No Error' ? 'No errors occured' : post.error}</div>
+											<div>Test ran with a press time of {post.parameters[0]}s, number of actuations of {post.parameters[1]} and an interval of {post.parameters[2]}s</div>
+											{#if post.presses == post.parameters[1]}
+												<div>Test was not aborted</div>
+											{:else}
+												<div>Test was aborted at {post.presses} of {post.parameters[1]} actuations</div>
+											{/if}
 										</div>
 									</div>
 								</td>

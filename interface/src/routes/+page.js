@@ -16,6 +16,7 @@ export const load = async ({fetch}) => {
     }
     const lastTest = await fetchLastTest();
     lastTest.success = JSON.parse(lastTest.success);
+    lastTest.parameters = JSON.parse(lastTest.parameters);
     lastTest.force_val = JSON.parse(lastTest.force_val);
     lastTest.time_val = JSON.parse(lastTest.time_val);
 

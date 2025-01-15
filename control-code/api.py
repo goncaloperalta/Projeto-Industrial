@@ -45,8 +45,8 @@ async def start(params: Params, response: Response):
         sh.parameters.pressTime = params.pressTime
         sh.parameters.nTimes = params.nTimes
         sh.parameters.interval = params.interval
+        logger.info(f"Starting a test with parameters: PressTime: {sh.parameters.pressTime}s, nTimes: {sh.parameters.nTimes}, Interval: {sh.parameters.interval}s")
 
-    logger.info(f"Starting a test with parameters: PressTime: {sh.parameters.pressTime}s, nTimes: {sh.parameters.nTimes}, Interval: {sh.parameters.interval}s")
     sh.startTest.release()
 
     return {"message": "Test started"}
@@ -119,10 +119,13 @@ async def getTest():
             "id": row[0],
             "button": row[1],
             "success": row[2],
-            "force_val": row[3],
-            "time_val": row[4],
-            "date": row[5],
-            "time": row[6]
+            "error": row[3],
+            "presses": row[4],
+            "parameters": row[5],
+            "force_val": row[6],
+            "time_val": row[7],
+            "date": row[8],
+            "time": row[9]
         }
         tests["tests"]["test"].append(test)
 
@@ -131,23 +134,23 @@ async def getTest():
 
     return tests
 
-class Test(BaseModel):
-    button: str
-    success: int
-    force_val: list
-    time_val: list
-    date: str
-    time: str
-@app.post("/add-test")
-async def addTest(test: Test):
-    db = sql.connect("app.db")
-    cur = db.cursor()
-    cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{test.button}\", {test.success}, \"{test.force_val}\", \"{test.time_val}\", \"{test.date}\", \"{test.time}\")")
-    db.commit()
-    cur.close()
-    db.close()
+# class Test(BaseModel):
+#     button: str
+#     success: int
+#     force_val: list
+#     time_val: list
+#     date: str
+#     time: str
+# @app.post("/add-test")
+# async def addTest(test: Test):
+#     db = sql.connect("app.db")
+#     cur = db.cursor()
+#     cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{test.button}\", {test.success}, \"{test.force_val}\", \"{test.time_val}\", \"{test.date}\", \"{test.time}\")")
+#     db.commit()
+#     cur.close()
+#     db.close()
 
-    return {"message": "Test added to database"}
+#     return {"message": "Test added to database"}
 
 @app.get("/get-last-test")
 async def getLastTest():
@@ -161,10 +164,13 @@ async def getLastTest():
         "id": row[0],
         "button": row[1],
         "success": row[2],
-        "force_val": row[3],
-        "time_val": row[4],
-        "date": row[5],
-        "time": row[6]
+        "error": row[3],
+        "presses": row[4],
+        "parameters": row[5],
+        "force_val": row[6],
+        "time_val": row[7],
+        "date": row[8],
+        "time": row[9]
     }
 
 @app.get("/get-success")

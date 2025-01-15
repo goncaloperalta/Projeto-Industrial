@@ -39,8 +39,8 @@ cur.execute("""INSERT INTO tests (button, success, error, presses, parameters, f
                 "No Error",
                 1,
                 "[0, 1, 0]",
-                "[1, 2, 3]",
-                "[1, 2, 3]",
+                "[[1, 2, 3]]",
+                "[[1, 2, 3]]",
                 "15-01-2025",
                 "15:01:22"
 )""")

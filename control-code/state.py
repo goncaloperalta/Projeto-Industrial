@@ -43,6 +43,7 @@ def State():
         testData = {
             'button': '',
             'success': [],
+            'error': '',
             'presses': 0,
             'parameters': [],
             'force_val': [],
@@ -92,6 +93,7 @@ def State():
     
         with sh.access:
             testData['presses'] = sh.CURRENT_RUN
+            testData['error'] = sh.ERROR
             
         logger.info("Storing all data on database")
         # Store data on the database
@@ -101,7 +103,7 @@ def State():
 
         db = sql.connect("app.db")
         cur = db.cursor()
-        cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{testData['button']}\", \"{testData['success']}\", \"{testData['force_val']}\", \"{testData['time_val']}\", \"{testData['date']}\", \"{testData['time']}\")")
+        cur.execute(f"INSERT INTO tests (button, success, error, presses, parameters, force_val, time_val, date, time) VALUES (\"{testData['button']}\", \"{testData['success']}\", \"{testData['error']}\", {testData['presses']}, \"{testData['parameters']}\", \"{testData['force_val']}\", \"{testData['time_val']}\", \"{testData['date']}\", \"{testData['time']}\")")
         db.commit()
         cur.close()
         db.close()
