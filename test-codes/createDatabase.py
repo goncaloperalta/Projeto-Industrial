@@ -11,7 +11,7 @@ cur = db.cursor()
 cur.execute("""CREATE TABLE tests(
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
                 button      VARCHAR(255),
-                success     TINYINT
+                success     TEXT,
                 error       VARCHAR(255),
                 presses     INT,
                 parameters  TEXT,
@@ -29,18 +29,21 @@ cur.execute("""CREATE TABLE profiles (
                 interval    INT
             )""")
 
-try:
-    cur.execute("""INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (
+cur.execute("""INSERT INTO profiles (pName, pressTime, nTimes, interval) VALUES (
                     "Custom", 0, 1, 0
                 )""")
-except sql.IntegrityError:
-    print("123")
 
-try:
-    print(cur.execute("""DELETE FROM profiles WHERE pName = "123"
-                """))
-except sql.IntegrityError:
-    print("123")
+cur.execute("""INSERT INTO tests (button, success, error, presses, parameters, force_val, time_val, date, time) VALUES (
+                "None",
+                "[1]",
+                "No Error",
+                1,
+                "[0, 1, 0]",
+                "[1, 2, 3]",
+                "[1, 2, 3]",
+                "15-01-2025",
+                "15:01:22"
+)""")
 #     cur.execute(f"INSERT INTO tests 
 # (pName, pressTime, nTimes, interval) 
 # VALUES (\"{profile['pName']}\", {profile['pressTime']}, {profile['nTimes']}, {profile['interval']})")
