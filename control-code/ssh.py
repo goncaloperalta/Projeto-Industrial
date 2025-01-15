@@ -28,17 +28,26 @@ def getButtonPressed(initial, changed):
 
 def errorHandler():
     with sh.access:
-        sh.feedback = {
-            'button': 'No feedback',
-            'success': 0
-        }
-        sh.readings['val'] = [0, 0, 0] 
-        sh.readings['time'] = [0, 0, 0]
+        sh.modulesData['button'] = 'No Feedback'
+        sh.modulesData['success'] = 0
+        sh.modulesData['force_val'] = [0, 0, 0]
+        sh.modulesData['time_val'] = [0, 0, 0]
+        
         sh.feedbackReady.release()
         sh.sensorReadingsReady.release()
 
 def SSHConnect():
     while True:
+        # SSH Loop
+        # 1 - Wait to Start
+        # 2 - Connect to the DUT
+        # 3 - Start the sensor and the control signal modules
+        # 4 - Wait for the actuator to press something
+        # 5 - Execute the command to read the feedback
+        # 6 - Store the results on the shared dictionary
+        # 7 - Resume the state module
+        # Repeat
+ 
         sh.startSSH.acquire()
 
         # Connect
@@ -82,44 +91,31 @@ def SSHConnect():
         sh.buttonPressed.acquire()
 
         with sh.access:
-            if sh.PRESSED:
-                sleep(0.01)
-                stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
-                output = stdout.readlines()
-                print(output)
-                counters = processCommand(output)
-                print(counters)
-                buttonPressed = getButtonPressed(initialCounters, counters)
-                print(buttonPressed)
-                if buttonPressed != -1:
-                    print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
-                    logger.info(f"Got a feedback from button: {arr[buttonPressed]}")
-                    sh.feedback = {
-                        'button': arr[buttonPressed],
-                        'success': 1
-                    }
-                else:
-                    print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
-                    logger.info("Could not get a feedback from any button")
-                    sh.feedback = {
-                        'button': 'No Feedback',
-                        'success': 0
-                    }
-                stdin.close()
-                stdout.close()
-                stderr.close()
-                client.close()
+            sleep(0.1)
+            stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
+            output = stdout.readlines()
+            print(output)
+            counters = processCommand(output)
+            print(counters)
+            buttonPressed = getButtonPressed(initialCounters, counters)
+            print(buttonPressed)
+            if buttonPressed != -1:
+                print("\033[96m[SSH] Got a feedback from a button: " + arr[buttonPressed] + "\033[00m")
+                logger.info(f"Got a feedback from button: {arr[buttonPressed]}")
+                sh.modulesData['button'] = arr[buttonPressed]
+                sh.modulesData['success'] = 1
             else:
                 print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
                 logger.info("Could not get a feedback from any button")
-                sh.feedback = {
-                    'button': 'Not Pressed',
-                    'success': 0
-                }
-                client.close()
+                sh.modulesData['button'] = 'No Feedback'
+                sh.modulesData['success'] = 0
+            stdin.close()
+            stdout.close()
+            stderr.close()
+            client.close()
 
         print("\033[96m[SSH] Connection closed\033[00m")
-        logger.info("Connection to the DUT closed")
+        logger.info("Closed SSH connection to the DUT")
         
-        # Alert the feedback is ready
+        # Feedback is ready
         sh.feedbackReady.release()

@@ -52,9 +52,10 @@ async def start(params: Params, response: Response):
     return {"message": "Test started"}
 
 @app.get("/abort-test")
-async def abortTest():
+async def abortTest(response: Response):
     with sh.access:
         if sh.STATE == sh.state.READY:
+            response.status_code = 400
             return {"message": "No test to abort"}
         
         sh.STATE = sh.state.ABORT

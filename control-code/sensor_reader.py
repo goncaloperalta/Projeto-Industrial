@@ -14,15 +14,23 @@ Force = 0
 
 def SensorReader():
     while True:
+        # Sensor Loop
+        # 1 - Wait for start
+        # 2 - Get the pressTime parameter
+        # 3 - Store current time
+        # 4 - Read force values
+        # 5 - If force is greater than a threshold read for the pressTime and 2 more seconds
+        # 6 - Store the results on the shared dictionary
+        # 7 - Resume the state module
+        # Repeat
+        
         sh.startSensorAndControl.acquire()      # Wait for the SSH connection
         logger.info("Sensor module started")
 
         flag = 0
-        holdTime = 0
         with sh.access:
-            sh.readings = {}                # Reset old readings
-            sh.readings['val'] = []         # Reset old force values
-            sh.readings['time'] = []        # Reset old time values
+            holdTime = sh.parameters.pressTime
+
         print("\033[95m[SENSOR] Starting to read from force sensor\033[00m")
         logger.info("Starting to read from force sensor")
 
@@ -41,15 +49,15 @@ def SensorReader():
                 Force = (Output-OutputMIN)*ForceRated/(OutputMAX-OutputMIN)
                 if Force < 0:   # Sensor gives -0.15 as the lowest value
                     Force = 0
+
                 with sh.access:
-                    sh.readings['val'].append(round(Force, 4))    
+                    sh.modulesData['force_val'].append(round(Force, 4))
 
                 if flag == 0:
                     if Force > 2: # If more than 5 newtons are read stop the actuator
-                        logger.info("Force greater than 5 Newtons read")
+                        logger.info("Sensed force greater than 5 Newtons")
                         with sh.access:
                             sh.PRESSED = True
-                            holdTime = sh.parameters.pressTime
                         flag = 1
                         tic2 = perf_counter()
                         sh.buttonPressed.release(2)
@@ -59,15 +67,15 @@ def SensorReader():
                         sh.buttonPressed.release(2)
                         break
 
-                elif perf_counter() > (tic2 + holdTime + 1):
+                elif perf_counter() > (tic2 + holdTime + 2):
                     logger.info("Stoped reading")
                     break
                 sleep(0.01)
         
         if flag:
             time = linspace(0, perf_counter()-tic, len(sh.readings['val'])).tolist()
-            sh.readings['time'] = [round(el, 3) for el in time]
+            sh.modulesData['time_val'] = [round(el, 3) for el in time]
 
         print("\033[95m[SENSOR] Readings ready\033[00m")
         logging.info("Force readings ready")
-        sh.sensorReadingsReady.release() # Signal the API that the Force readings are ready to be sent
+        sh.sensorReadingsReady.release()

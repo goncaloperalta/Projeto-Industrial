@@ -75,27 +75,20 @@ class Parameters:
 
 parameters = Parameters()
 
-readings = {}
-"""
-Shared variable to store the force sensor readings:
-
->>> readings = {
-    'val' = []  # force values
-    'time' = [] # time values
-}
-"""
-
-feedback = {}
-"""
-Shared variable to store the button feedback:
->>> feedback = {
-    'button': 'None',   # button pressed: wps/info/reset/none
-    'success': success  # success: 1/0
-}
-"""
-
 PRESSED = False
-"""
-Flag to indicate if a press was done or not
-"""
+"""Flag to indicate if a press was done or not"""
 
+modulesData = {
+    'button': 'None',
+    'success': 0,
+    'force_val': [],
+    'time_val': [],
+}
+
+def resetModulesData():
+    modulesData = {
+        'button': 'None',
+        'success': 0,
+        'force_val': [],
+        'time_val': [],
+    }

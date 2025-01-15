@@ -48,8 +48,18 @@ def ControlCode():
     pINB.start(0)
 
     while True:
+        # Control Signal Loop
+        # 1 - Wait for start
+        # 2 - Extend the Actuator
+        # 3 - Wait for a call from the sensor
+        # 4 - Hold of the specified time
+        # 5 - Retract the actuator
+        # Repeat
+        
         # wait for start signal 
         sh.startSensorAndControl.acquire()
+        
+        reverseTime = 1.5
         print("\033[93m[CONTROL] Starting\033[00m")
         logging.info("Enabling controller circuit")
 
@@ -76,6 +86,7 @@ def ControlCode():
         with sh.access:
             if sh.PRESSED:
                 holdTime = sh.parameters.pressTime
+            reverseTime = 2.5
         logger.info(f"Holding Actuator position for {holdTime} seconds")
         sleep(holdTime)
                 
@@ -88,7 +99,7 @@ def ControlCode():
         #sleep(0.001)
         #GPIO.output(RESET, GPIO.HIGH)
 
-        sleep(1.5)
+        sleep(reverseTime)
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
 

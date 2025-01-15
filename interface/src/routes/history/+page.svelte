@@ -7,6 +7,7 @@
 	let filteredQuery = posts;
 
 	let searchQuery = '';
+	let ind = 0;
 	let fromDate = '';
 	let toDate = '';
 	function search(){
@@ -74,12 +75,25 @@
 						{#if shDetails == index}
 							<tr>
 								<td colspan="3">
-									<div class=" h-fit grid min-[1110px]:grid-cols-2 min-[1650px]:grid-cols-3">
-										{#each post.time_val as _, ind}
-											<div class="m-auto">
+									<div class="h-fit min-[1770px]:grid min-[1770px]:grid-cols-3">
+										<div class="flex">
+											<select name="graph-number" bind:value={ind} class="bg-slate-500 border-slate-500 rounded-lg p-2 w-fit h-fit text-center">											
+												{#each post.time_val as _, index}
+												<option value="{index}">{index+1}</option>
+												{/each}
+											</select>
+											{#key ind}
+											<div>
 												<LinePlot X={post.time_val[ind]} Y={post.force_val[ind]} W=400 H=350/>
 											</div>
-										{/each}
+											{/key}
+										</div>
+										<div>
+											data
+										</div>
+										<div>
+											12331
+										</div>
 									</div>
 								</td>
 							</tr>

@@ -23,33 +23,49 @@ def testI2C():
                 sh.feedbackReady.release()
                 sh.sensorReadingsReady.release()
     
-
 def State():
     while True:
+        # State Loop
+        # 1 - Wait for start
+        # 2 - Get parameters of the test
+        # 3 - Start the SSH module
+        # 4 - Wait until Sensor and SSH finish
+        # 5 - Store the modules data
+        # 6 - Wait the interval between actuations
+        # 7 - Repeat for nTimes
+        # 8 - Store data on the database
+        # Repeat
+
         sh.startTest.acquire()
         logger.info("Starting a test")
         
         # Set up initial states
-        n = 0
-        interval = 0
-        readingsValData = []
-        readingsTimeData = []
-        feedbackButtonData = 'No Feedback'
-        feedbackSuccessData = []
+        testData = {
+            'button': '',
+            'success': [],
+            'presses': 0,
+            'parameters': [],
+            'force_val': [],
+            'time_val': [],
+            'date': '',
+            'time': ''
+        }
         with sh.access:
-            n = sh.parameters.nTimes
-            interval = sh.parameters.interval
+            sh.resetModulesData()
+            testData['parameters'].append([sh.parameters.pressTime, sh.parameters.nTimes, sh.parameters.interval])
             sh.STATE = sh.state.RUNNING
             sh.CURRENT_RUN = 0
-            sh.ERROR = ''
+            sh.ERROR = 'No Error'
 
-        for i in range(n):
+        testI2C()
+
+        for i in range(testData['parameters'][1]):
             with sh.access:
-                if sh.ERROR != '':
+                if sh.ERROR != 'No Error':
                     break
             # Start SSH Module
             sh.startSSH.release()               # Signal to start the SSH client
-            logger.info(f"Test {i+1}/{n}")
+            logger.info(f"Test {i+1}/{testData['parameters'][1]}")
 
             # Wait until the other modules finish...
             sh.sensorReadingsReady.acquire()
@@ -58,33 +74,34 @@ def State():
 
             # Store data on variable
             with sh.access:
-                readingsValData.append(sh.readings['val'])
-                readingsTimeData.append(sh.readings['time'])
-                if sh.feedback['button'] != 'No Feedback' and sh.feedback['button'] != 'Not pressed':
-                    feedbackButtonData = sh.feedback['button'] 
-                print("Success ", sh.feedback['success'])
-                feedbackSuccessData.append(sh.feedback['success'])
+                testData['button'] = sh.modulesData['button']
+                testData['success'].append(sh.modulesData['success'])
+                testData['force_val'].append(sh.modulesData['force_val'])
+                testData['time_val'].append(sh.modulesData['time_val'])
 
             # Wait interval
             if interval:
                 logger.info("Waiting interval between actuations")
-                sleep(interval)
+                sleep(testData['parameters'][2])
 
             with sh.access:
                 sh.CURRENT_RUN = sh.CURRENT_RUN + 1
                 if sh.STATE == sh.state.ABORT:
                     sh.STATE = sh.state.READY
                     break
-        
+    
+        with sh.access:
+            testData['presses'] = sh.CURRENT_RUN
+            
         logger.info("Storing all data on database")
         # Store data on the database
         now = datetime.now()
-        date = now.strftime("%Y-%m-%d")
-        time = now.strftime("%H:%M:%S")
+        testData['date'] = now.strftime("%d-%m-%Y")
+        testData['time'] = now.strftime("%H:%M:%S")
 
         db = sql.connect("app.db")
         cur = db.cursor()
-        cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{feedbackButtonData}\", \"{feedbackSuccessData}\", \"{readingsValData}\", \"{readingsTimeData}\", \"{date}\", \"{time}\")")
+        cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{testData['button']}\", \"{testData['success']}\", \"{testData['force_val']}\", \"{testData['time_val']}\", \"{testData['date']}\", \"{testData['time']}\")")
         db.commit()
         cur.close()
         db.close()
@@ -96,4 +113,4 @@ def State():
             sh.parameters.interval = 0
             sh.parameters.nTimes = 1
 
-        logger.info("Test done")
+        logger.info("Test finished")

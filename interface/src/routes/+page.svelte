@@ -29,7 +29,7 @@
         if(selected == 0){
             showProfileInputName = !showProfileInputName;
             if(profileName && showProfileInputName == 0){
-                await fetch("http://192.168.43.97:8000/add-profile", {
+                let res = await fetch("http://192.168.43.97:8000/add-profile", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -39,12 +39,17 @@
                         interval: Number(currentProfile.interval)
                     })
                 });
+                if(res.status == 400){
+                    alert("A Profile with that name already exists")
+                }
                 
-                const res = await fetch("http://192.168.43.97:8000/get-profiles");
+                res = await fetch("http://192.168.43.97:8000/get-profiles");
                 const json = await res.json();
                 profiles = json.profiles.profile;
                 data = json.profiles;
             }
+        } else{
+            alert("The parameters for the new profile must be changed on the Custom profile")
         }
     }
     async function deleteProfile(){
@@ -66,8 +71,7 @@
             alert("The Custom profile is needed on the system and cannot be deleted.");
         }
     }
-
-    async function showResults(){
+    async function startTest(){
         if(!isNumber(currentProfile.pressTime) || currentProfile.pressTime < 0){
             alert("Button press time must be a positive number");
             return;
@@ -152,7 +156,7 @@
         
                     <div class="text-center">
                         <span>
-                            <button data-tooltip="Start the test with the above parameters" onclick={showResults} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Start</button>
+                            <button data-tooltip="Start the test with the above parameters" onclick={startTest} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Start</button>
                         </span>
                         <span>
                             <button data-tooltip="Save the current profile. A text box will pop-up to insert it's name" onclick={saveProfile} class="w-[8.5rem] py-2 font-bold rounded-lg transition-all bg-slate-500  hover:bg-slate-400 text-white">Save</button>
@@ -185,14 +189,14 @@
                         <span>Button: {lastTest.button}</span>, <span data-tooltip="Success is '1' when a push was done and a feedback from a button was received, else is '0'">Success: [{lastTest.success}]</span> <br>
                         <span>Date: {lastTest.date}</span>, <span>Time: {lastTest.time}</span>
                     </div>
-                    {#key ind}
+                    {#key lastTest}
                         {#await lastTest}
                             <p>Loading...</p>
-                        {:then _}     
+                        {:then _}
                             <div>
                                 <LinePlot X={lastTest.time_val[ind]} Y={lastTest.force_val[ind]} W=400 H=350/>
                             </div>
-                        {/await}        
+                        {/await}
                     {/key}
                 </div>
             </div>
