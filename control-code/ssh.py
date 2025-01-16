@@ -91,7 +91,7 @@ def SSHConnect():
         sh.buttonPressed.acquire()
 
         with sh.access:
-            sleep(0.1)
+            sleep(1.5)
             stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
             output = stdout.readlines()
             print(output)
