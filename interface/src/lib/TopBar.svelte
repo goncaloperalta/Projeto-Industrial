@@ -18,16 +18,16 @@
     })
     
     async function refreshVars(){
-        let res = await fetch("http://10.42.0.1:8000/get-status")
+        let res = await fetch("http://192.168.43.97:8000/get-status")
         status = await res.json()
         status = status.message
 
-        res = await fetch("http://10.42.0.1:8000/get-current-parameters")
+        res = await fetch("http://192.168.43.97:8000/get-current-parameters")
         parameters = await res.json()
     }
 
     async function abortTest(){
-        const res = await fetch("http://10.42.0.1:8000/abort-test")
+        const res = await fetch("http://192.168.43.97:8000/abort-test")
         if(res.status == 400){
             alert("Test has already finished")
         }

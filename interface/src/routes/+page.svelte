@@ -29,7 +29,7 @@
         if(selected == 0){
             showProfileInputName = !showProfileInputName;
             if(profileName && showProfileInputName == 0){
-                let res = await fetch("http://10.42.0.1:8000/add-profile", {
+                let res = await fetch("http://192.168.43.97:8000/add-profile", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -43,7 +43,7 @@
                     alert("A Profile with that name already exists")
                 }
                 
-                res = await fetch("http://10.42.0.1:8000/get-profiles");
+                res = await fetch("http://192.168.43.97:8000/get-profiles");
                 const json = await res.json();
                 profiles = json.profiles.profile;
                 data = json.profiles;
@@ -54,7 +54,7 @@
     }
     async function deleteProfile(){
         if(selected != 0){
-            await fetch("http://10.42.0.1:8000/delete-profile", {
+            await fetch("http://192.168.43.97:8000/delete-profile", {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -62,7 +62,7 @@
                 })
             });
 
-            const res = await fetch("http://10.42.0.1:8000/get-profiles");
+            const res = await fetch("http://192.168.43.97:8000/get-profiles");
             const json = await res.json();
             profiles = json.profiles.profile;
             data = json.profiles;
@@ -86,7 +86,7 @@
         }
 
         let params = currentProfile;
-        await fetch('http://10.42.0.1:8000/start', {
+        await fetch('http://192.168.43.97:8000/start', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -105,7 +105,7 @@
     }
 
     async function refreshLastTest(){
-        const res = await fetch('http://10.42.0.1:8000/get-last-test');
+        const res = await fetch('http://192.168.43.97:8000/get-last-test');
         const data = await res.json();
 
         lastTest = data;
