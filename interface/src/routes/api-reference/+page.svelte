@@ -31,7 +31,7 @@ print(res.text)     </code></pre>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/api"
+url = "http://localhost:8000/api"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -45,7 +45,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-status"
+url = "http://localhost:8000/get-status"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -63,7 +63,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-current-parameters"
+url = "http://localhost:8000/get-current-parameters"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -82,7 +82,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/status"
+url = "http://localhost:8000/status"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -95,7 +95,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/status"
+url = "http://localhost:8000/status"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -136,7 +136,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-tests"
+url = "http://localhost:8000/get-tests"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -153,7 +153,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-last-test"
+url = "http://localhost:8000/get-last-test"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -168,7 +168,7 @@ print(res.text)'/>
 ]'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-success"
+url = "http://localhost:8000/get-success"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -193,7 +193,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/get-profiles"
+url = "http://localhost:8000/get-profiles"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -206,7 +206,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/add-profile"
+url = "http://localhost:8000/add-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -220,7 +220,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://192.168.43.97:8000/delete-profile"
+url = "http://localhost:8000/delete-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;

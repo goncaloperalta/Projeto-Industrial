@@ -98,7 +98,7 @@ async def getLogs():
 @app.get("/get-test-data")
 async def getTestData():
     system("sqlite3 app.db -cmd \".mode json\" \".output data.json\" \"SELECT * FROM tests ORDER BY id DESC\" \".output stdout\"")
-    return FileResponse("static/data.json", media_type='application/octet-stream', filename="data.json")
+    return FileResponse("data.json", media_type='application/octet-stream', filename="data.json")
 
 @app.get("/get-tests")
 async def getTest():
@@ -170,6 +170,59 @@ async def getSuccess():
     db.close()
 
     return val
+
+class Range(BaseModel):
+    size: int
+    offset: int
+@app.post("/get-tests-range")
+async def getTestsRange(range: Range):
+    db = sql.connect("app.db")
+    cur = db.cursor()
+
+    res = cur.execute(f"SELECT * FROM tests ORDER BY id DESC LIMIT {range.size} OFFSET {range.offset}")
+
+    tests = {
+        "tests": {
+            "test": []
+        }
+    }
+
+    while True:
+        row = res.fetchone()
+        if row is None: break
+        test = {
+            "id": row[0],
+            "button": row[1],
+            "success": row[2],
+            "error": row[3],
+            "presses": row[4],
+            "parameters": row[5],
+            "force_val": row[6],
+            "time_val": row[7],
+            "date": row[8],
+            "time": row[9]
+        }
+        tests["tests"]["test"].append(test)
+
+    db.commit()
+    cur.close()
+    db.close()
+
+    return tests
+
+@app.get("/get-count")
+async def getCount():
+    db = sql.connect("app.db")
+    cur = db.cursor()
+
+    res = cur.execute(f"SELECT COUNT(*) FROM tests")
+    count = res.fetchone()
+
+    db.commit()
+    cur.close()
+    db.close()
+
+    return {"count": count[0]}
 
 ############################################################ PROFILES #########################
 class Profile(BaseModel):

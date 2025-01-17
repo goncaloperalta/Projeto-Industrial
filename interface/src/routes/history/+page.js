@@ -1,7 +1,14 @@
 
 export const load = async ({fetch}) => {
     const fetchTests = async () => {
-        const res = await fetch('http://192.168.43.97:8000/get-tests');
+        const res = await fetch('http://localhost:8000/get-tests-range', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                size: 10,
+                offset: 0
+            })
+        });
         const data = await res.json();
         
         return data.tests.test;
@@ -10,7 +17,7 @@ export const load = async ({fetch}) => {
     const tests = await fetchTests();
     for(let i = 0; i < tests.length; i++){
         let timeVal = JSON.parse(tests[i].time_val);
-        let forceVal = JSON.parse(tests[i].force_val);    
+        let forceVal = JSON.parse(tests[i].force_val);
         
         for(let j = 0; j < timeVal.length; j++){
             tests[i].time_val = timeVal;
@@ -21,7 +28,16 @@ export const load = async ({fetch}) => {
         tests[i].parameters = JSON.parse(tests[i].parameters);
     }
 
+    const fetchCount = async () => {
+        const res = await fetch('http://localhost:8000/get-count');
+        const data = await res.json();
+
+        return data.count;
+    }
+    const count = await fetchCount();
+
     return {
-        tests
+        tests,
+        count
     };
 }

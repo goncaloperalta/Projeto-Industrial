@@ -9,4 +9,4 @@ pcbs/sensor/PCBsensor-backups/
 pcbs/controller/fp-info-cache
 pcbs/sensor/fp-info-cache
 /control-code/app.log
-/control-code/static/data.json
+/control-code/data.json
