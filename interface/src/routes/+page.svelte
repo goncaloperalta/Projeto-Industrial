@@ -5,14 +5,12 @@
     let {data} = $props();
 
     let setIntervalRef = setInterval(refreshLastTest, 5000);
-
     onDestroy(() => {
         clearInterval(setIntervalRef)
     })
 
+    // ******************* Profiles System ******************
     let profiles = $state(data.profile);
-    let ind = $state(0);
-    let lastTest = $state(data.lastTest);
     let selected = $state(0);
     let currentProfile = $state(data.profile[0]);
     let showProfileInputName = $state(0);
@@ -61,7 +59,7 @@
                     pName: currentProfile.pName
                 })
             });
-
+            
             const res = await fetch("http://192.168.43.97:8000/get-profiles");
             const json = await res.json();
             profiles = json.profiles.profile;
@@ -71,6 +69,10 @@
             alert("The Custom profile is needed on the system and cannot be deleted.");
         }
     }
+
+    // ******************* Start Test system ******************
+    let ind = $state(0);
+    let lastTest = $state(data.lastTest);
     async function startTest(){
         if(!isNumber(currentProfile.pressTime) || currentProfile.pressTime < 0){
             alert("Button press time must be a positive number");
@@ -84,7 +86,7 @@
             alert("Interval between actions must be a positive number");
             return;
         }
-
+        
         let params = currentProfile;
         await fetch('http://192.168.43.97:8000/start', {
             method: "POST",
@@ -96,30 +98,31 @@
             })
         });
     }
-
     function isNumber(n){
         if(typeof n == 'number'){
             return true;
         }
         return false;
     }
-
+    
+    // ******************* Refresh Last test system ******************
+    let updateLastTest = $state(0);
     async function refreshLastTest(){
         const res = await fetch('http://192.168.43.97:8000/get-last-test');
         const data = await res.json();
-
-        lastTest = data;
-        lastTest.success = JSON.parse(lastTest.success);
-        lastTest.force_val = JSON.parse(lastTest.force_val);
-        lastTest.time_val = JSON.parse(lastTest.time_val);
+        if(lastTest != data){
+            lastTest = data;
+            lastTest.success = JSON.parse(lastTest.success);
+            lastTest.force_val = JSON.parse(lastTest.force_val);
+            lastTest.time_val = JSON.parse(lastTest.time_val);
+            updateLastTest = !updateLastTest;
+        }
     }    
 </script>
 
 <main class="min-h-screen bg-slate-800 text-white pb-20">
     <div class="text-center block">
-        <div class="p-20 pb-10 text-3xl">
-			Button testing web interface and platform
-		</div>
+        <div class="p-20 pb-10 text-3xl">Button testing web interface and platform</div>
 
         <div class="block lg:flex lg:items-center lg:justify-center bg-slate-800 text-white">
             <div class="lg:flex lg:items-center lg:bg-slate-600 rounded-lg shadow-lg h-fit w-fit mx-auto">
@@ -175,28 +178,22 @@
                 </div>
                 
                 <div class=" bg-slate-600 mt-10 lg:mt-0 p-5 sm:p-10 text-center rounded-lg">
-                    <div>
-                        <span class="text-2xl m-auto">Last Test<button data-tooltip="Refresh" onclick={refreshLastTest} class="hover:bg-slate-900 transition-all ml-1 w-10 h-10 rounded-lg">&#8634;</button></span>
-                        <select name="graph-number" bind:value={ind} class="bg-slate-500 border-slate-500 rounded-lg p-2 text-center">
-                            {#key lastTest}
+                    {#key updateLastTest}
+                        <div>
+                            <span class="text-2xl m-auto">Last Test<button data-tooltip="Refresh" onclick={refreshLastTest} class="hover:bg-slate-900 transition-all ml-1 w-10 h-10 rounded-lg">&#8634;</button></span>
+                            <select name="graph-number" bind:value={ind} class="bg-slate-500 border-slate-500 rounded-lg p-2 text-center">
                                 {#each lastTest.time_val as _, index}
                                     <option value="{index}">{index+1}</option>
                                 {/each}
-                            {/key}
-                        </select>
-                    </div>
-                    <div>
-                        <span>Button: {lastTest.button}</span>, <span data-tooltip="Success is '1' when a push was done and a feedback from a button was received, else is '0'">Success: [{lastTest.success}]</span> <br>
-                        <span>Date: {lastTest.date}</span>, <span>Time: {lastTest.time}</span>
-                    </div>
-                    {#key lastTest}
-                        {#await lastTest}
-                            <p>Loading...</p>
-                        {:then _}
+                            </select>
+                        </div>
+                        <div>
+                            <span>Button: {lastTest.button}</span>, <span data-tooltip="Success is '1' when a push was done and a feedback from a button was received, else is '0'">Success: [{lastTest.success}]</span> <br>
+                            <span>Date: {lastTest.date}</span>, <span>Time: {lastTest.time}</span>
+                        </div>
                             <div>
                                 <LinePlot X={lastTest.time_val[ind]} Y={lastTest.force_val[ind]} W=400 H=350/>
-                            </div>
-                        {/await}
+                        </div>
                     {/key}
                 </div>
             </div>

@@ -97,14 +97,14 @@ async def getLogs():
 ############################################################ TEST DATA #########################
 @app.get("/get-test-data")
 async def getTestData():
-    system("sqlite3 app.db -cmd \".mode json\" \".output static/data.json\" \"SELECT * FROM tests\" \".output stdout\"")
+    system("sqlite3 app.db -cmd \".mode json\" \".output data.json\" \"SELECT * FROM tests ORDER BY id DESC\" \".output stdout\"")
     return FileResponse("static/data.json", media_type='application/octet-stream', filename="data.json")
 
 @app.get("/get-tests")
 async def getTest():
     db = sql.connect("app.db")
     cur = db.cursor()
-    res = cur.execute("SELECT * FROM tests ORDER BY date DESC, time DESC")
+    res = cur.execute("SELECT * FROM tests ORDER BY id DESC")
 
     tests = {
         "tests": {
@@ -134,24 +134,6 @@ async def getTest():
 
     return tests
 
-# class Test(BaseModel):
-#     button: str
-#     success: int
-#     force_val: list
-#     time_val: list
-#     date: str
-#     time: str
-# @app.post("/add-test")
-# async def addTest(test: Test):
-#     db = sql.connect("app.db")
-#     cur = db.cursor()
-#     cur.execute(f"INSERT INTO tests (button, success, force_val, time_val, date, time) VALUES (\"{test.button}\", {test.success}, \"{test.force_val}\", \"{test.time_val}\", \"{test.date}\", \"{test.time}\")")
-#     db.commit()
-#     cur.close()
-#     db.close()
-
-#     return {"message": "Test added to database"}
-
 @app.get("/get-last-test")
 async def getLastTest():
     db = sql.connect("app.db")
@@ -177,7 +159,7 @@ async def getLastTest():
 async def getSuccess():
     db = sql.connect("app.db")
     cur = db.cursor()
-    res = cur.execute("SELECT success FROM tests")
+    res = cur.execute("SELECT success FROM tests ORDER BY id DESC")
     val = []
     while True:
         row = res.fetchone()

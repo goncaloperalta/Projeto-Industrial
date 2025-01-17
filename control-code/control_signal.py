@@ -59,7 +59,8 @@ def ControlCode():
         # wait for start signal 
         sh.startSensorAndControl.acquire()
         
-        reverseTime = 1.5
+        with sh.access:
+            holdTime = sh.parameters.pressTime
         print("\033[93m[CONTROL] Starting\033[00m")
         logging.info("Enabling controller circuit")
 
@@ -82,13 +83,8 @@ def ControlCode():
         # brake and hold
         pINA.ChangeDutyCycle(0)
         pINB.ChangeDutyCycle(0)
-        holdTime = 0
-        with sh.access:
-            if sh.PRESSED:
-                holdTime = sh.parameters.pressTime
-            reverseTime = 2.5
         logger.info(f"Holding Actuator position for {holdTime} seconds")
-        sleep(holdTime)
+        sleep(1.5)
                 
         # retract
         logger.info("Retracting Actuator")

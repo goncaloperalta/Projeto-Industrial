@@ -13,7 +13,7 @@ def testI2C():
             bus.read_i2c_block_data(0x28, 0, 2)
         except OSError:
             with sh.access:
-                sh.ERROR = 'SENSOR'
+                sh.ERROR = "Couldn't connect to the force sensor"
                 sh.feedback = {
                     'button': 'No feedback',
                     'success': 0
@@ -59,6 +59,7 @@ def State():
             sh.ERROR = 'No Error'
 
         testI2C()
+        
         for i in range(testData['parameters'][1]):
             with sh.access:
                 if sh.ERROR != 'No Error':

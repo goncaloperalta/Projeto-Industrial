@@ -26,12 +26,14 @@ def getButtonPressed(initial, changed):
 
     return -1
 
-def errorHandler():
+def errorHandler(err):
+    logger.error(err)
     with sh.access:
+        sh.ERROR = err
         sh.modulesData['button'] = 'No Feedback'
         sh.modulesData['success'] = 0
-        sh.modulesData['force_val'] = [0, 0, 0]
-        sh.modulesData['time_val'] = [0, 0, 0]
+        sh.modulesData['force_val'] = [0]
+        sh.modulesData['time_val'] = [0]
         
         sh.feedbackReady.release()
         sh.sensorReadingsReady.release()
@@ -56,19 +58,11 @@ def SSHConnect():
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
         try:
             client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
-        except paramiko.BadHostKeyException:
-            system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
-            try:
-                client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
-            except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException):
-                sh.ERROR = "SSH"
-                errorHandler()
-                continue
-        except (paramiko.AuthenticationException, paramiko.SSHException):
-            sh.ERROR = "SSH"
-            errorHandler()
+        except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException):
+            errorHandler("Couldn't connect to DUT via SSH")
             continue
         
         print("\033[96m[SSH] Connected to gateway\033[00m")
@@ -106,7 +100,7 @@ def SSHConnect():
                 sh.modulesData['success'] = 1
             else:
                 print("\033[96m[SSH] Could not get a feedback from any button\033[00m")
-                logger.info("Could not get a feedback from any button")
+                logger.warning("Could not get a feedback from any button")
                 sh.modulesData['button'] = 'No Feedback'
                 sh.modulesData['success'] = 0
             stdin.close()
