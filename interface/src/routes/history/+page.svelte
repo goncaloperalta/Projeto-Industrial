@@ -3,7 +3,6 @@
 	
 	let url = "http://localhost:8000/"
     if(typeof document != "undefined"){
-        hostname = window.location.hostname
         url = `http://${window.location.hostname}:8000/`
     }
 
