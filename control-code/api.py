@@ -102,15 +102,31 @@ async def getTestData():
 
 @app.get("/get-tests")
 async def getTest():
-    db = sql.connect("app.db")
-    cur = db.cursor()
-    res = cur.execute("SELECT * FROM tests ORDER BY id DESC")
-
     tests = {
         "tests": {
             "test": []
         }
     }
+
+    db = sql.connect("app.db")
+    cur = db.cursor()
+    res = cur.execute("SELECT * FROM tests ORDER BY id DESC")
+
+    row = res.fetchone()
+    if row != None and row[9] != None:
+        test = {
+            "id": row[0],
+            "button": row[1],
+            "success": row[2],
+            "error": row[3],
+            "presses": row[4],
+            "parameters": row[5],
+            "force_val": row[6],
+            "time_val": row[7],
+            "date": row[8],
+            "time": row[9]
+        }
+        tests["tests"]["test"].append(test)
 
     while True:
         row = res.fetchone()
@@ -138,7 +154,12 @@ async def getTest():
 async def getLastTest():
     db = sql.connect("app.db")
     cur = db.cursor()
-    row = cur.execute("SELECT * FROM tests ORDER BY id DESC LIMIT 1").fetchone()
+
+    res = cur.execute("SELECT * FROM tests ORDER BY id DESC LIMIT 2")
+    row = res.fetchone()
+    if row != None or row[9] != None:
+        row = res.fetchone()
+
     cur.close()
     db.close()
 
@@ -164,6 +185,8 @@ async def getSuccess():
     while True:
         row = res.fetchone()
         if row is None: break
+        if row[0][-1] != ']':
+            continue
         val.append(row[0])
     db.commit()
     cur.close()
@@ -176,16 +199,20 @@ class Range(BaseModel):
     offset: int
 @app.post("/get-tests-range")
 async def getTestsRange(range: Range):
-    db = sql.connect("app.db")
-    cur = db.cursor()
-
-    res = cur.execute(f"SELECT * FROM tests ORDER BY id DESC LIMIT {range.size} OFFSET {range.offset}")
-
     tests = {
         "tests": {
             "test": []
         }
     }
+
+    db = sql.connect("app.db")
+    cur = db.cursor()
+    
+    row = cur.execute(f"SELECT time FROM tests ORDER BY id DESC LIMIT 1").fetchone()
+    if row[0] is None:
+        range.offset += 1
+
+    res = cur.execute(f"SELECT * FROM tests ORDER BY id DESC LIMIT {range.size} OFFSET {range.offset}")
 
     while True:
         row = res.fetchone()
@@ -217,12 +244,16 @@ async def getCount():
 
     res = cur.execute(f"SELECT COUNT(*) FROM tests")
     count = res.fetchone()
+    res = cur.execute(f"SELECT time FROM tests ORDER BY id DESC")
+    count = count[0]
+    if res.fetchone()[0] == None:
+        count -= 1
 
     db.commit()
     cur.close()
     db.close()
 
-    return {"count": count[0]}
+    return {"count": count}
 
 ############################################################ PROFILES #########################
 class Profile(BaseModel):
