@@ -1,7 +1,8 @@
+import os from 'os'
 
 export const load = async ({fetch}) => {
     const fetchProfiles = async () => {
-        const res = await fetch('http://localhost:8000/get-profiles');
+        const res = await fetch(`http://${os.hostname}:8000/get-profiles`);
         const data = await res.json();
 
         return data.profiles.profile;
@@ -9,7 +10,7 @@ export const load = async ({fetch}) => {
     const profile = await fetchProfiles();
 
     const fetchLastTest = async () => {
-        const res = await fetch('http://localhost:8000/get-last-test');
+        const res = await fetch(`http://${os.hostname}:8000/get-last-test`);
         const data = await res.json();
 
         return data;

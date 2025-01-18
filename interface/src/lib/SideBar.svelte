@@ -65,5 +65,4 @@
     <a href="/history" onclick={toggleSidebar}>History</a>
     <a href="/statistics" onclick={toggleSidebar}>Statistics</a>
     <a href="/api-reference" onclick={toggleSidebar}>API Reference</a>
-    <a href="/about" onclick={toggleSidebar}>About</a>
 </div>

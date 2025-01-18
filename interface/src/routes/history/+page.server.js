@@ -1,7 +1,8 @@
+import os from 'os'
 
 export const load = async ({fetch}) => {
     const fetchTests = async () => {
-        const res = await fetch('http://localhost:8000/get-tests-range', {
+        const res = await fetch(`http://${os.hostname}:8000/get-tests-range`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -29,7 +30,7 @@ export const load = async ({fetch}) => {
     }
 
     const fetchCount = async () => {
-        const res = await fetch('http://localhost:8000/get-count');
+        const res = await fetch(`http://${os.hostname}:8000/get-count`);
         const data = await res.json();
 
         return data.count;

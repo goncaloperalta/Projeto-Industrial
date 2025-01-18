@@ -118,7 +118,7 @@
 			History
 		</div>
 		<div class="m-auto flex sm:w-3/4 justify-end">
-			<a href={url+"get-tests-data"} target="_blank" class=" bg-teal-500 px-2 mb-1 rounded-sm">Download data as JSON</a>
+			<a href={url+"get-test-data"} target="_blank" class=" bg-teal-500 px-2 mb-1 rounded-sm">Download data as JSON</a>
 		</div>
 		<div class="text-center block pb-10">
 			<div class="flex w-full sm:w-3/4 m-auto h-10 text-gray-200 rounded-sm shadow-2xl bg-slate-500">

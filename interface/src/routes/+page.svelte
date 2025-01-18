@@ -93,7 +93,7 @@
         }
         
         let params = currentProfile;
-        await fetch(url+"/start", {
+        await fetch(url+"start", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -113,7 +113,7 @@
     // ******************* Refresh Last test system ******************
     let updateLastTest = $state(0);
     async function refreshLastTest(){
-        const res = await fetch(url+"/get-last-test");
+        const res = await fetch(url+"get-last-test");
         const data = await res.json();
         if(lastTest != data){
             lastTest = data;
