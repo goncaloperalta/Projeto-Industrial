@@ -1,12 +1,12 @@
 <script>
     import LinePlot from "../../lib/LinePlot.svelte";
 	
-	url = "http://localhost:8000/"
+	let url = "http://localhost:8000/"
     if(typeof document != undefined){
         hostname = window.location.hostname
         url = `http://${window.location.hostname}:8000/`
     }
-	
+
 	export let data;
 
 	let posts = data.tests;	
