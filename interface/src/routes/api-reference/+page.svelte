@@ -19,11 +19,12 @@ headers = &lbrace;
 &rbrace;
 
 res = requests.get(url, headers=headers)
-print(res.text)     </code></pre>
+print(res.text)</code></pre>
                 </div>
-                In each of the endpoints bellow it's provided the expected return and a sample code to trigger it.
+                In each of the endpoints bellow it's provided the expected returns and a sample code to use it.
             </div>
                 <hr class="my-2">
+<!--                        STATUS                        -->
                 <h2 class="italic font-bold">STATUS</h2>
                 <Endpoint verb="GET" endpoint="/api" message="Returns a message if the API is up and running."
                             jsonReturn='&lbrace;
@@ -39,9 +40,12 @@ res = requests.get(url, headers=headers)
 print(res.text)'/>
                 <Endpoint verb="GET" endpoint="/get-status" message="Returns a message with the current state which can be on of the following:"
                             jsonReturn='&lbrace;
-    "message": "Ready"              // Ready to start a test
-    "message": "Running a test"     // Already running a test
-    "message": "Aborting the test"  // Aborting the running test
+    // Ready to start a test
+    "message": "Ready"
+    // Already running a test
+    "message": "Running a test"
+    // Aborting the running test
+    "message": "Aborting the test"
 &rbrace;'
                             code='import requests
 
@@ -51,7 +55,6 @@ headers = &lbrace;
 &rbrace;
 res = requests.get(url, headers=headers)
 print(res.text)'/>
-
                 <Endpoint verb="GET" endpoint="/get-current-parameters" message="If a test is running, returns an object with the parameters being used:"
                             jsonReturn='&lbrace;    // If a test is running
     "pressTime": 0
@@ -69,28 +72,45 @@ headers = &lbrace;
 &rbrace;
 res = requests.get(url, headers=headers)
 print(res.text)'/>
+                <Endpoint verb="GET" endpoint="/get-logs" message="Returns a file with the logs of the last test done. Can be accessed by just opening on the browser."
+                            jsonReturn=''
+                            code=''/>
 
+
+
+<!--                        RUN A TEST                        -->
                 <h2 class="italic font-bold">RUN A TEST</h2>
-                <Endpoint verb="POST" endpoint="/start" message="Starts a button test, with the given parameters or profile chosen. If a valid profile is given the other parameters are ignored. A request with no body starts the test with all parameters set to zero. Returns one of the following messages: "
+                <Endpoint verb="POST" endpoint="/start" message="Starts a button test, with the given parameters or profile chosen. If a valid profile is given the other parameters are ignored. A request with no body starts the test with parameter nTimes equal to one an the others set to zero. Returns one of the following messages: "
                             jsonReturn='&lbrace;
-    "message": "Test started."              // Status code 200 OK
-    "message": "A Test is already running." // Status code 304 Not Modified
-    "message": "Profile not found"          // Status code 404 Not Found
-    "detail": [                             // Status code 422 Unprocessable Entity
+    // Status code 200 OK
+    "message": "Test started."
+    // Status code 304 Not Modified
+    "message": "A Test is already running."
+    // Status code 404 Not Found
+    "message": "Profile not found"
+    // Status code 422 Unprocessable Entity
+    "detail": [
         ...
     ]
 &rbrace;'
                             code='import requests
-
-url = "http://localhost:8000/status"
+url = "http://localhost:8000/delete-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
-res = requests.get(url, headers=headers)
+body = &lbrace;
+    "pName": "Example"
+    // Or define the parameters
+    // "pressTime": 0
+    // "nTimes": 1
+    // "interval": 0
+&rbrace;
+
+res = requests.post(url, headers=headers, json=body)
 print(res.text)'/>
-                <Endpoint verb="GET" endpoint="/abort" message="If a test is running aborts it. The test will only abort after finishing the current actuation "
+                <Endpoint verb="GET" endpoint="/abort-test" message="If a test is running aborts it. The test will only abort after finishing the current actuation "
                             jsonReturn='&lbrace;
-    "message": "No test to abort"   // If not running a test
+    "message": "No test to abort"
     "message": "Test Aborted"
 &rbrace;'
                             code='import requests
@@ -102,13 +122,19 @@ headers = &lbrace;
 res = requests.get(url, headers=headers)
 print(res.text)'/>
 
+
+
+<!--                        TESTS DATA                        -->
                 <h2 class="italic font-bold">TESTS DATA</h2>
-                <Endpoint verb="GET" endpoint="/get-test-data" message="Returns a file a JSON file with the all tests done, with format: "
+                <Endpoint verb="GET" endpoint="/get-test-data" message="Returns a file a JSON file with the all tests done from newest to oldest. Using a browser you can open the link directly and a download should appear. Data has the format: "
                             jsonReturn='[
     &lbrace;
         "id": 5,
-        "button": "INFO",
+        "button": "WPS",
         "success": 1,
+        "error": "No error",
+        "presses": 2,
+        "parameters": [0, 2, 1],
         "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
         "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
         "date": "2024-12-30",
@@ -116,15 +142,18 @@ print(res.text)'/>
     &rbrace;,
     ...
 ]'
-                            code='Using a browser you can open the link directly and a donwload should appear'/>
-                <Endpoint verb="GET" endpoint="/get-tests" message="Returns all tests done, from oldest to newest, with format: "
+                            code=''/>
+                <Endpoint verb="GET" endpoint="/get-tests" message="Returns all tests done, from newest to oldest, with format: "
                             jsonReturn='&lbrace;
     "tests": &lbrace;
         "test": [
             &lbrace;
                 "id": 5,
-                "button": "INFO",
+                "button": "WPS",
                 "success": 1,
+                "error": "No error",
+                "presses": 2,
+                "parameters": [0, 2, 1],
                 "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
                 "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
                 "date": "2024-12-30",
@@ -144,12 +173,16 @@ res = requests.get(url, headers=headers)
 print(res.text)'/>
                 <Endpoint verb="GET" endpoint="/get-last-test" message="Returns only the last test done: "
                             jsonReturn='&lbrace;
-    "button": 7,
-    "success": "INFO",
-    "force_val": 1,
-    "time_val": "[[1, 2, 3, 4, 5]]",
-    "date": "[[1, 2, 3, 4, 5]]",
-    "time": "2024-12-30"
+    "id": 5,
+    "button": "WPS",
+    "success": 1,
+    "error": "No error",
+    "presses": 2,
+    "parameters": [0, 2, 1],
+    "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+    "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+    "date": "2024-12-30",
+    "time": "11:45:43"
 &rbrace;'
                             code='import requests
 
@@ -174,7 +207,56 @@ headers = &lbrace;
 &rbrace;
 res = requests.get(url, headers=headers)
 print(res.text)'/>
+                <Endpoint verb="POST" endpoint="/get-tests-range" message="Returns a defined range of tests: "
+                            jsonReturn='&lbrace;
+    "tests": &lbrace;
+        "test": [
+            &lbrace;
+                "id": 5,
+                "button": "WPS",
+                "success": 1,
+                "error": "No error",
+                "presses": 2,
+                "parameters": [0, 2, 1],
+                "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+                "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+                "date": "2024-12-30",
+                "time": "11:45:43"
+            &rbrace;,
+            ...
+        ]
+    &rbrace;
+&rbrace;'
+                            code='import requests
 
+url = "http://localhost:8000/get-tests-range"
+headers = &lbrace;
+    "Content-type": "application/json"
+&rbrace;
+body = &lbrace;
+    "size": 2,
+    "offset": 3
+&rbrace;
+
+res = requests.post(url, headers=headers, json=body)
+print(res.text)'/>
+                <Endpoint verb="GET" endpoint="/get-count" message="Returns the total number of tests done: "
+                            jsonReturn='&lbrace;
+    "count": 19
+&rbrace;'
+                            code='import requests
+
+url = "http://localhost:8000/get-count"
+headers = &lbrace;
+    "Content-type": "application/json"
+&rbrace;
+res = requests.get(url, headers=headers)
+print(res.text)'/>
+
+
+
+
+<!--                        PROFILES                        -->
                 <h2 class="italic font-bold">PROFILES</h2>
                 <Endpoint verb="GET" endpoint="/get-profiles" message="Returns all profiles: "
                             jsonReturn='&lbrace;

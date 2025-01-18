@@ -24,12 +24,16 @@
 {#if shDetails}
 <div class="px-4 my-4">
     {message}
-    <div class="bg-slate-900 my-4 rounded-md py-5 px-4">            
-        <pre><code>{jsonReturn}</code></pre>
-    </div>
-    Sample <code class="px-1 bg-slate-900 rounded-sm">python</code> code:
-    <div class="bg-slate-900 my-3 rounded-md py-5 px-4">
-        <pre><div class="whitespace-pre-warp" id="codebox">{code}</div></pre>
-    </div>
+    {#if jsonReturn != ''}
+        <div class="bg-slate-900 my-4 rounded-md py-5 px-4">
+            <pre><code>{jsonReturn}</code></pre>
+        </div>
+    {/if}
+    {#if code != ''}
+        Sample <code class="px-1 bg-slate-900 rounded-sm">python</code> code:
+        <div class="bg-slate-900 my-3 rounded-md py-5 px-4">
+            <pre><div class="whitespace-pre-warp" id="codebox">{code}</div></pre>
+        </div>
+    {/if}
 </div>
 {/if}
