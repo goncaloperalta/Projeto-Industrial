@@ -1,6 +1,12 @@
 <script>
     import LinePlot from "../../lib/LinePlot.svelte";
 	
+	url = "http://localhost:8000/"
+    if(typeof document != undefined){
+        hostname = window.location.hostname
+        url = `http://${window.location.hostname}:8000/`
+    }
+	
 	export let data;
 
 	let posts = data.tests;	
@@ -47,7 +53,7 @@
 	async function leftPage(){
 		if(offset >= 10){
 			offset -= 10;
-			const res = await fetch('http://localhost:8000/get-tests-range', {
+			const res = await fetch(url+"get-tests-range", {
 				method: "POST",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify({
@@ -77,7 +83,7 @@
 		}
 
 		if(flag){
-			const res = await fetch('http://localhost:8000/get-tests-range', {
+			const res = await fetch(url+"get-tests-range", {
 				method: "POST",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify({
@@ -113,7 +119,7 @@
 			History
 		</div>
 		<div class="m-auto flex sm:w-3/4 justify-end">
-			<a href="http://localhost:8000/get-test-data" target="_blank" class=" bg-teal-500 px-2 mb-1 rounded-sm">Download data as JSON</a>
+			<a href={url+"get-tests-data"} target="_blank" class=" bg-teal-500 px-2 mb-1 rounded-sm">Download data as JSON</a>
 		</div>
 		<div class="text-center block pb-10">
 			<div class="flex w-full sm:w-3/4 m-auto h-10 text-gray-200 rounded-sm shadow-2xl bg-slate-500">

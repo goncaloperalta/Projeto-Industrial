@@ -1,5 +1,11 @@
 <script>
     import { onDestroy, onMount } from "svelte";
+    
+    url = "http://localhost:8000/"
+    if(typeof document != undefined){
+        hostname = window.location.hostname
+        url = `http://${window.location.hostname}:8000/`
+    }
 
     let status = 'Ready'
     let parameters = {
@@ -18,16 +24,16 @@
     })
     
     async function refreshVars(){
-        let res = await fetch("http://localhost:8000/get-status")
+        let res = await fetch(url+"get-status")
         status = await res.json()
         status = status.message
 
-        res = await fetch("http://localhost:8000/get-current-parameters")
+        res = await fetch(url+"get-current-parameters")
         parameters = await res.json()
     }
 
     async function abortTest(){
-        const res = await fetch("http://localhost:8000/abort-test")
+        const res = await fetch(url+"abort-test")
         if(res.status == 400){
             alert("Test has already finished")
         }
