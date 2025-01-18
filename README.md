@@ -1,34 +1,48 @@
-# Projeto-Industrial
+# Automatic, universal push-button actuator, equipped with force gauge
 ## Table of contents
-- [Control Code](#control-code)
-- [Interface](#interface)
-- [PCB's](#pcbs)
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Pre-installation](#pre-installation)
+- [Installation](#installation)
+- [Interacting with the system](#interacting-with-the-system)
 
-## Control Code
-Code for the unit controller. Launching it exposes a RESTful API on port `:8000` being this only way to interact with the system.
+## Overview
+This repository contains all the code to run the system, the PCB's files and the 3D designs.
 
-Run it with:
+## Requirements
+This software is expected to run on a Raspberry Pi 4B (or equivalent), running **Raspberry Pi OS** not needing the graphical interface. 
 
-	cd control-code
-	python3 main.py
+## Pre-installation
+Before installing, you must configure the way you want to connect to the Raspberry.
+You can either connect it to the local network or use it has an access point.
+> The former option is worse since you may run into conflits if the gateway ip of the local network and the ip of the DUT are the same.
 
-The code is divided in four modules:
+To enable the access point run the command:
 
-| Module 		    | Description |
-| :---------------- | :----------- |
-| API    		    | Exposes a RESTful API on port `:8000` |
-| SSH			    | Connects to the gateway via `SSH` |
-| Sensor Reader     | Reads the force values from the Force Sensor |
-| Control Signal    | Generates the control signals to drive the Linear Actuator |
+	sudo nmcli device wifi hotspot ssid <network-name> password <password>
 
-## Interface
-Code for the web interface. This an example of an interface to interact with system on port `:5173`. It formats the data from the [Control Code](#control-code) API.
+If you want to disable it:
 
-Requires `npm`. Rut it with:
+	sudo nmcli device disconnect wlan0
+	sudo nmcli device up wlan0
 
-	cd interface 
-	npm install
-	sudo npm run dev
+## Installation
+Start by installing `docker` and `docker-compose` with:
 
-## PCB's
-PCB designs for the controller circuit and the force sensor.
+	sudo apt install docker.io docker-compose
+
+then add your user to docker:
+
+	sudo gpasswd -a $USER docker
+	newgrp docker
+
+finally clone the repository, `cd` into it and run a container with:
+
+	docker compose up -d --build
+
+Since this is the first time, it may take some minutes to finish building. After that you should see on port `:3000` the home page of the interface running, meaning the system is ready.
+
+## Interacting with the system
+The main way to interact with the system is to use the web interface on port `:3000`, however you can also use the a RESTful API on port `:8000`. On the **API Reference** page of the web interface you can see all the endpoints, what the returns are and a sample code to use it.
+
+The API is independent of the web interface and can be run without it but the opposite is not possible.
