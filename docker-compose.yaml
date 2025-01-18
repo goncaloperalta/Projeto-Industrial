@@ -1,0 +1,20 @@
+services:
+    control-code:
+        build:
+            context: ./control-code
+        volumes:
+            - ./control-code:/app
+        ports:
+            - "8000:8000"
+        command: ["python3", "main.py"]
+
+    interface:
+        build:
+            context: ./interface
+        volumes:
+            - ./interface:/app
+        ports:
+            - "3000:3000"
+        command: ["node", "build/index.js"]
+        depends_on:
+            - control-code

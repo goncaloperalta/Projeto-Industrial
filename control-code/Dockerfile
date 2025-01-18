@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3
 
 WORKDIR /app
 
@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
 
-CMD ['python3', 'main.py']
+CMD ["python3", "main.py"]

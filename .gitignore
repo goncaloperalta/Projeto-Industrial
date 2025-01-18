@@ -10,3 +10,4 @@ pcbs/controller/fp-info-cache
 pcbs/sensor/fp-info-cache
 /control-code/app.log
 /control-code/data.json
+/control-code/venv
