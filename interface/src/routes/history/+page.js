@@ -1,8 +1,12 @@
-import os from 'os'
 
 export const load = async ({fetch}) => {
+    let url = "http://localhost:8000/"
+    if(typeof document != "undefined"){
+        url = `http://${window.location.hostname}:8000/`
+    }
+
     const fetchTests = async () => {
-        const res = await fetch(`http://${os.hostname}:8000/get-tests-range`, {
+        const res = await fetch(url + "get-tests-range", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -30,7 +34,7 @@ export const load = async ({fetch}) => {
     }
 
     const fetchCount = async () => {
-        const res = await fetch(`http://${os.hostname}:8000/get-count`);
+        const res = await fetch(url + "get-count");
         const data = await res.json();
 
         return data.count;

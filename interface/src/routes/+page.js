@@ -1,8 +1,12 @@
-import os from 'os'
 
 export const load = async ({fetch}) => {
+    let url = "http://localhost:8000/"
+    if(typeof document != "undefined"){
+        url = `http://${window.location.hostname}:8000/`
+    }
+
     const fetchProfiles = async () => {
-        const res = await fetch(`http://${os.hostname}:8000/get-profiles`);
+        const res = await fetch(url + "get-profiles");
         const data = await res.json();
 
         return data.profiles.profile;
@@ -10,7 +14,7 @@ export const load = async ({fetch}) => {
     const profile = await fetchProfiles();
 
     const fetchLastTest = async () => {
-        const res = await fetch(`http://${os.hostname}:8000/get-last-test`);
+        const res = await fetch(url + "get-last-test");
         const data = await res.json();
 
         return data;
