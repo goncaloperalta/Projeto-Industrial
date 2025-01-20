@@ -27,7 +27,7 @@
 				{/key}
 			</div>
 			<div class="mx-10 md:mx-20 lg:mx-40 my-auto text-2xl">
-				Total number of tests: {length}
+				Total number of actuations: {length}
 			</div>
 		</div>
 	</div>

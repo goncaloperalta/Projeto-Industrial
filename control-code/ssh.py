@@ -55,10 +55,10 @@ def SSHConnect():
         # Connect
         print("\033[96m[SSH] Connecting to gateway...\033[00m")
         logger.info("Atempting connection to SSH server")
+        system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
         client = paramiko.SSHClient()
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        system("ssh-keygen -f \"/home/rpi400/.ssh/known_hosts\" -R \"192.168.1.1\"")
         try:
             client.connect("192.168.1.1", username=credentials.host, password=credentials.passw)
         except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException):
@@ -85,7 +85,7 @@ def SSHConnect():
         sh.buttonPressed.acquire()
 
         with sh.access:
-            sleep(1.5)
+            sleep(0.1)
             stdin, stdout, stderr = client.exec_command("/3party/ptinBoardDiagXSR150DX 0")
             output = stdout.readlines()
             print(output)

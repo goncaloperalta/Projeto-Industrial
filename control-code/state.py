@@ -110,7 +110,7 @@ def State():
             db = sql.connect("app.db")
             cur = db.cursor()
 
-            cur.execute(f"UPDATE tests SET button = {sh.modulesData['button']}, success = success || \"]\", error = {sh.ERROR}, presses = {sh.CURRENT_RUN}, force_val = force_val || \"]\", time_val = time_val || \"]\", date = \"{date}\", time = \"{time}\" WHERE id = {rowID}")
+            cur.execute(f"UPDATE tests SET button = \"{sh.modulesData['button']}\", success = success || \"]\", error = \"{sh.ERROR}\", presses = {sh.CURRENT_RUN}, force_val = force_val || \"]\", time_val = time_val || \"]\", date = \"{date}\", time = \"{time}\" WHERE id = {rowID}")
 
             db.commit()
             cur.close()

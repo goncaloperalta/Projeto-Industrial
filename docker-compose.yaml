@@ -3,6 +3,8 @@ services:
         build:
             context: ./control-code
         network_mode: host
+        privileged: true
+        restart: always
         volumes:
             - ./control-code:/app
 
@@ -10,5 +12,6 @@ services:
         build:
             context: ./interface
         network_mode: host
+        restart: always
         depends_on:
             - control-code

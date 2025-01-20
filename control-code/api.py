@@ -157,7 +157,7 @@ async def getLastTest():
 
     res = cur.execute("SELECT * FROM tests ORDER BY id DESC LIMIT 2")
     row = res.fetchone()
-    if row != None or row[9] != None:
+    if row[9] is None:
         row = res.fetchone()
 
     cur.close()

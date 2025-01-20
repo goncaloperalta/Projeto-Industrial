@@ -56,12 +56,13 @@ def SensorReader():
                     sh.modulesData['force_val'].append(round(Force, 4))
 
                 if flag == 0:
-                    if Force > 2: # If more than 5 newtons are read stop the actuator
+                    if Force > 5: # If more than 5 newtons are read stop the actuator
                         logger.info("Sensed force greater than 5 Newtons")
                         with sh.access:
                             sh.PRESSED = True
                         flag = 1
                         tic2 = perf_counter()
+                        print(tic2)
                         sh.buttonPressed.release(2)
                     
                     if (perf_counter() - tic) > 5:  # Timeout 5 sec
@@ -69,7 +70,8 @@ def SensorReader():
                         sh.buttonPressed.release(2)
                         break
 
-                elif perf_counter() > (tic2 + holdTime + 2):
+                elif perf_counter() > (tic2 + holdTime + 1):
+                    print(f"{perf_counter()} -> {tic2+holdTime+2}")
                     logger.info("Stoped reading")
                     break
                 sleep(0.01)
