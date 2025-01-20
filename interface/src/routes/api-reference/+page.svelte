@@ -21,7 +21,8 @@ headers = &lbrace;
 res = requests.get(url, headers=headers)
 print(res.text)</code></pre>
                 </div>
-                In each of the endpoints bellow it's provided the expected returns and a sample code to use it.
+                In each of the endpoints bellow it's provided the expected returns and a sample code to use it. <br>
+                All code can be seen on the <a href="https://github.com/goncaloperalta/Projeto-Industrial">GitHub</a> repository.
             </div>
                 <hr class="my-2">
 <!--                        STATUS                        -->
