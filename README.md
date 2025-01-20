@@ -26,6 +26,10 @@ If you want to disable it:
 	sudo nmcli device disconnect wlan0
 	sudo nmcli device up wlan0
 
+The ethernet port must also be configured to have a static IPv4 (something like `192.168.1.5`), the gateway IP must be `192.168.1.1` and the route should not be set as default. That can be done using the `nmtui` command:
+
+	sudo nmtui
+
 ## Installation
 Start by installing `docker` and `docker-compose` with:
 
