@@ -19,7 +19,7 @@
 			let button = post.button.toLowerCase();
 			let buttonfilter = button.includes(searchQuery.toLowerCase());
 			if(fromDate != '' && toDate != ''){
-				buttonfilter = buttonfilter && ((post.date >= fromDate && post.date <= toDate) ? 1 : 0);
+				buttonfilter = buttonfilter && ((parseDate(post.date) >= new Date(fromDate) && parseDate(post.date) <= new Date(toDate)) ? 1 : 0);
 			}
 			return buttonfilter;
 		})
@@ -49,24 +49,6 @@
 	let count = data.count;
 	let offset = 0;
 	let updateTable = 0;
-	async function leftPage(){
-		if(offset >= 10){
-			offset -= 10;
-			const res = await fetch(url+"get-tests-range", {
-				method: "POST",
-				headers: {"Content-Type": "application/json"},
-				body: JSON.stringify({
-					size: 10,
-					offset: offset
-				})
-			});
-        	const data = await res.json();
-        
-        	posts = data.tests.test;
-			shDetails = -1;
-			updateTable = !updateTable;
-		}
-	}
 	async function changePage(pm){
 		let flag = 0;
 		if(pm == '-'){
@@ -109,7 +91,10 @@
 			updateTable = !updateTable;
 		}
 	}
-	console.log(filteredQuery)
+	function parseDate(dateStr) {
+        let parts = dateStr.split('-');
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
 </script>
 
 <main class="min-h-screen bg-slate-800 text-white">
@@ -129,7 +114,7 @@
 				<span class="m-auto">From:</span>
 				<input bind:value={fromDate} oninput={search} type="date" class="ml-1 bg-slate-500">
 				<span class="m-auto ml-5">To:</span>
-				<input bind:value={toDate} oninput={search} type="date" class="ml-1 mr-2 bg-slate-500">
+				<input bind:value={toDate} oninput={search} type="date" placeholder="dd-mm-yyyy" class="ml-1 mr-2 bg-slate-500">
 			</div>
 
 			{#key updateTable}

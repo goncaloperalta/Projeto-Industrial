@@ -22,7 +22,7 @@ res = requests.get(url, headers=headers)
 print(res.text)</code></pre>
                 </div>
                 In each of the endpoints bellow it's provided the expected returns and a sample code to use it. <br>
-                All code can be seen on the <a href="https://github.com/goncaloperalta/Projeto-Industrial">GitHub</a> repository.
+                All code can be seen on the <a href="https://github.com/goncaloperalta/Projeto-Industrial" class="font-bold">GitHub</a> repository.
             </div>
                 <hr class="my-2">
 <!--                        STATUS                        -->
@@ -95,7 +95,7 @@ print(res.text)'/>
     ]
 &rbrace;'
                             code='import requests
-url = "http://localhost:8000/delete-profile"
+url = "http://localhost:8000/start"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -116,7 +116,7 @@ print(res.text)'/>
 &rbrace;'
                             code='import requests
 
-url = "http://localhost:8000/status"
+url = "http://localhost:8000/abort-test"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
@@ -135,7 +135,7 @@ print(res.text)'/>
         "success": 1,
         "error": "No error",
         "presses": 2,
-        "parameters": [0, 2, 1],
+        "parameters": "[0, 2, 1]",
         "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
         "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
         "date": "2024-12-30",
@@ -154,7 +154,7 @@ print(res.text)'/>
                 "success": 1,
                 "error": "No error",
                 "presses": 2,
-                "parameters": [0, 2, 1],
+                "parameters": "[0, 2, 1]",
                 "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
                 "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
                 "date": "2024-12-30",
@@ -218,7 +218,7 @@ print(res.text)'/>
                 "success": 1,
                 "error": "No error",
                 "presses": 2,
-                "parameters": [0, 2, 1],
+                "parameters": "[0, 2, 1]",
                 "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
                 "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
                 "date": "2024-12-30",
@@ -253,8 +253,45 @@ headers = &lbrace;
 &rbrace;
 res = requests.get(url, headers=headers)
 print(res.text)'/>
+                <Endpoint verb="POST" endpoint="/get-by-id" message="Returns the test data with the same id: "
+                            jsonReturn='&lbrace;
+    "id": 5,
+    "button": "WPS",
+    "success": 1,
+    "error": "No error",
+    "presses": 2,
+    "parameters": "[0, 2, 1]",
+    "force_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+    "time_val": "[[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]",
+    "date": "2024-12-30",
+    "time": "11:45:43"
+&rbrace;'
+                            code='import requests
 
+url = "http://localhost:8000/get-by-id"
+headers = &lbrace;
+    "Content-type": "application/json"
+&rbrace;
+body = &lbrace;
+    "id": 5
+&rbrace;
+res = requests.post(url, headers=headers, json=body)
+print(res.text)'/>
+                <Endpoint verb="DELETE" endpoint="/delete-tests-before-date" message="Deletes all tests before the given date: "
+                            jsonReturn='&lbrace;
+    "message": "Tests deleted"
+&rbrace;'
+                            code='import requests
 
+url = "http://localhost:8000/delete-tests-before-date"
+headers = &lbrace;
+    "Content-type": "application/json"
+&rbrace;
+body = &lbrace;
+    "day": "2024-12-30"
+&rbrace;
+res = requests.delete(url, headers=headers, json=body)
+print(res.text)'/>
 
 
 <!--                        PROFILES                        -->
@@ -293,7 +330,14 @@ url = "http://localhost:8000/add-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
-res = requests.get(url, headers=headers)
+body = &lbrace;
+    "pName": "Test Profile",
+    "pressTime": 3,
+    "nTimes": 2,
+    "interval": 1
+&rbrace;
+
+res = requests.post(url, headers=headers, json=body)
 print(res.text)'/>
 
                 <Endpoint verb="DELETE" endpoint="/delete-profile" message="Deletes a profile given it's name. Returns on of the messages: "
@@ -307,7 +351,11 @@ url = "http://localhost:8000/delete-profile"
 headers = &lbrace;
     "Content-type": "application/json"
 &rbrace;
-res = requests.get(url, headers=headers)
+body = &lbrace;
+    "pName": "Test Profile"
+&rbrace;
+
+res = requests.delete(url, headers=headers, json=body)
 print(res.text)'/>
         </div>
     </div>

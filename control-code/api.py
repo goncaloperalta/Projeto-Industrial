@@ -255,6 +255,50 @@ async def getCount():
 
     return {"count": count}
 
+class IDClass(BaseModel):
+    id: int
+@app.post("/get-by-id")
+async def getById(ID: IDClass):
+    db = sql.connect("app.db")
+    cur = db.cursor()
+
+    res = cur.execute(f"SELECT * FROM tests WHERE id={ID.id}")
+    row = res.fetchone()
+
+    cur.close()
+    db.close()
+
+    if row is None:
+        return {"message": "Invalid ID"}
+    else:
+        return {
+            "id": row[0],
+            "button": row[1],
+            "success": row[2],
+            "error": row[3],
+            "presses": row[4],
+            "parameters": row[5],
+            "force_val": row[6],
+            "time_val": row[7],
+            "date": row[8],
+            "time": row[9]
+        }
+
+class Date(BaseModel):
+    day: str
+@app.delete("/delete-tests-before-date")
+async def deleteTestsBeforeDate(Date: Date):
+    db = sql.connect("app.db")
+    cur = db.cursor()
+
+    cur.execute(f"DELETE FROM tests WHERE date < \"{Date.day}\"")
+
+    cur.close()
+    db.close()
+
+    return {"message": "Tests deleted"}
+
+
 ############################################################ PROFILES #########################
 class Profile(BaseModel):
     pName: str

@@ -47,10 +47,6 @@ cur.execute("""INSERT INTO tests (button, success, error, presses, parameters, f
                 "15:01:22"
 )""")
 
-#     cur.execute(f"INSERT INTO tests 
-# (pName, pressTime, nTimes, interval) 
-# VALUES (\"{profile['pName']}\", {profile['pressTime']}, {profile['nTimes']}, {profile['interval']})")
-
 db.commit()
 cur.close()
 db.close()
