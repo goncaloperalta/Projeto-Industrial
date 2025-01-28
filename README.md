@@ -30,6 +30,12 @@ The ethernet port must also be configured to have a static IPv4 (something like 
 
 	sudo nmtui
 
+You **must** also create a file inside the [control-code](control-code/) folder called `credentials.py`. The contents of the file should be the credentials used to connect to the DUT via SSH, formatted as:
+
+	host="<hostname of the DUT>"
+	pass="<password>"
+
+without the characters `<` and `>`. 
 ## Installation
 Start by installing `docker` and `docker-compose` with:
 
@@ -47,6 +53,6 @@ finally clone the repository, `cd` into it and run a container with:
 Since this is the first time, it may take some minutes to finish building. After that you should see on port `:3000` the home page of the interface running, meaning the system is ready.
 
 ## Interacting with the system
-The main way to interact with the system is to use the web interface on port `:3000`, however you can also use the a RESTful API on port `:8000`. On the **API Reference** page of the web interface you can see all the endpoints, what the returns are and a sample code to use it.
+The main way to interact with the system is to use the web interface on port `:3000`, however you can also use the a RESTful API on port `:8000`. On the **API Reference** page of the web interface you can see all the endpoints, what the returns are and a sample code to use it, you can also view the [api-reference.pdf](documents/api-reference.pdf) file which contains the same content.
 
 The API is independent of the web interface and can be run without it but the opposite is not possible.
